@@ -58,7 +58,7 @@ module.exports = class extends Command {
                 {
                     name: "Presence", value: [
                         `Status: \`${user.presence.status === "dnd" ? "Do Not Disturb" : user.presence.status.toProperCase()}\``,
-                        `Activities: \`${user.presence.activities.length === 0 ? "None" : user.presence.activities.map(a => `${a.type === "LISTENING" ? "Listening to" : a.type == "CUSTOM_STATUS" ? "Custom Status" : a.type.toProperCase()} ${a.name}`).join(", ")}\``,
+                        `Activities: \`${user.presence.activities.length === 0 ? "None" : user.presence.activities.map(a => `${a.type === "LISTENING" ? "Listening to" : a.type == "CUSTOM_STATUS" ? "Custom Status:" : a.type.toProperCase()} ${a.type === "CUSTOM_STATUS" ? a.state : a.name}`).join(", ")}\``,
                         `Client Status: \`${user.presence.clientStatus ? Object.keys(user.presence.clientStatus).map(c => c.toProperCase()).join(" & ") : "N/A"}\``
                     ]
                 }
