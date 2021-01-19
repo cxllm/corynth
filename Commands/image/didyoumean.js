@@ -31,6 +31,7 @@ module.exports = class extends Command {
         let text = [arr[0], arr[1]]
         if (!arr || !text) return msg.reply(client.presets.no_text)
         for (let str in text) {
+            if (!text[str]) return await msg.reply(client.UsageEmbed(this));
             if (text[str].length > 500) return msg.reply(client.presets.less_than_500)
             else text[str] = encodeURIComponent(text[str])
 
