@@ -11,9 +11,15 @@ class Util {
         this.client = client;
     }
     async botLists() {
-        await this.client.top_gg.postStats({
-            serverCount: this.client.guilds.cache.size,
-        }); // top.gg
+        await this.client.axios.post(`https://top.gg/api/bots/${this.client.user.id}/stats`, {
+            server_count: this.client.guilds.cache.size
+        },
+        {
+            headers: {
+                Authorization: this.client.config.botlists.top_gg,
+                'Content-Type': 'application/json'
+            }
+        });
         await this.client.axios.post(`https://botsfordiscord.com/api/bot/${this.client.user.id}`, {
             server_count: this.client.guilds.cache.size
         }, {

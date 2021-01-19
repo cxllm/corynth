@@ -18,7 +18,11 @@ module.exports = {
         "eu-west": "Western Europe",
         "london": "London",
         "amsterdam": "Amsterdam",
-        "hongkong": "Hong Kong"
+        "hongkong": "Hong Kong",
+        "russia": "Russia",
+        "southafrica": "South Africa",
+        "japan": "Japan",
+        "india": "India"
     },
     guildFeatures: {
         ANIMATED_ICON: "Animated Icon",

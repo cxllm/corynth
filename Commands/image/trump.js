@@ -6,17 +6,17 @@ module.exports = class extends Command {
         super("trump", {
             help: {
                 aliases: [],
-                usage: "<text>",
-                description: "Make a trump tweet meme"
+                usage: "",
+                description: "Disabled due to Trump's account being disabled"
             },
             config: {
-                args: 1,
+                args: 0,
                 permissions: {
                     user: false,
                     bot: false
                 },
                 owner: false,
-                cooldown: "5s"
+                cooldown: false
             }
         })
     }
@@ -26,7 +26,8 @@ module.exports = class extends Command {
      * @param {Message} msg 
      */
     async run(client, msg) {
-        let text = encodeURIComponent(msg.args.join(" "))
+        return await msg.reply("This command has been disabled due to Trump's twitter account being shut down.")
+        /*let text = encodeURIComponent(msg.args.join(" "))
         if (text.length > 140) return msg.reply("Text has to be shorter than 140 characters!")
         await msg.reply(`${client.config.emojis.loading}`)
         try {
@@ -40,6 +41,6 @@ module.exports = class extends Command {
         } catch {
             await msg.reply(client.presets.chars_inv)
         }
-
+        */
     }
 }

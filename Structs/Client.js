@@ -10,12 +10,10 @@ const { Client, Collection } = require("discord.js-light"),
     { Shoukaku } = require("shoukaku"),
     { MongoClient } = require("mongodb"),
     Model = require("./Model"),
-    canvacord = require("canvacord"),
-    Topgg = require('@top-gg/sdk');
+    canvacord = require("canvacord");
 
 module.exports = class Corynth extends Client {
     config = config;
-    top_gg = new Topgg.Api(this.config.botlists.top_gg);
     website = "corynth.xyz";
     axios = require("axios").default;
     Util = new Util(this);
