@@ -26,6 +26,6 @@ module.exports = class extends Command {
      * @param {Message} msg 
      */
     async run(client, msg) {
-        await msg.send(msg.cleanArgs.join(" "))
+        await msg.send(client.Util.filterMentions(msg, msg.args).join(" "));
     }
 }

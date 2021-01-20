@@ -159,6 +159,18 @@ class Util {
     }
     /**
      * 
+     * @param {Message} msg 
+     */
+    filterMentions(msg, args) {
+        return args.map(arg => {
+            const user = msg.mentions.users.find(u => u.id === this.handleMention(arg));
+            if (!user) return arg.replace("<", "").replace(">", "").replace("@", "").replace("!", "").replace("&", "")
+            else return `@​​​​​​​​​​​​​​​​​${user.username}`
+        });
+
+    }
+    /**
+     * 
      * @param {String} content The content of the sourcebin
      * @param {String} name The file name
      */
