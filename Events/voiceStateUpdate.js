@@ -17,7 +17,21 @@ module.exports = class extends Event {
         let guild = oldState?.guild
         if (!guild) guild = newState.guild;
         if (!guild) return;
-        if (!guild.me.voice.channel) return;
+        if (!guild.me.voice.channel) {
+            const queue = client.queue.get(guild.id)
+            if (!queue) return;
+            else {
+                const embed = {
+                    title: "Queue Cleared",
+                    description: "I was disconnected from the voice channel so I disconnected.",
+                    color: client.config.colours.main
+                }
+                queue.text.send({ embed });
+                queue.songs = [];
+                queue.player.stopTrack();
+                client.queue.delete(guild.id);
+            }
+        }
         if (guild.me.voice.channel.members.size > 1) return;
         else {
             const queue = client.queue.get(guild.id)
