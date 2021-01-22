@@ -23,7 +23,7 @@ module.exports = class extends Event {
             else {
                 const embed = {
                     title: "Queue Cleared",
-                    description: "I was disconnected from the voice channel so I disconnected.",
+                    description: "I was disconnected from the voice channel so I cleared the queue.",
                     color: client.config.colours.main
                 }
                 queue.text.send({ embed });
