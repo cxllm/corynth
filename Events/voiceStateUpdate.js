@@ -28,6 +28,7 @@ module.exports = class extends Event {
                 }
                 queue.text.send({ embed });
                 queue.songs = [];
+                queue.timedout = true;
                 queue.player.stopTrack();
                 client.queue.delete(guild.id);
             }
