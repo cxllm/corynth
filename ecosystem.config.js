@@ -6,7 +6,7 @@ module.exports = {
         watch: false
     },
     {
-        name: 'Website',
+        name: 'CorynthWebsite',
         script: './Website/index.js',
         autorestart: true,
         watch: false
