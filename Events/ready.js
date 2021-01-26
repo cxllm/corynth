@@ -44,7 +44,9 @@ module.exports = class extends Event {
                 }
             ]
         });
-        let i = 0;
+        setInterval(async () => {
+            client.Util.tokenPush()
+        }, 60000)
         setInterval(async () => {
             if (client.user.id !== "692779290399604766") await client.Util.botLists();
             await client.Util.updateCovid19Info();

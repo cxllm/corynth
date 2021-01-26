@@ -2,6 +2,8 @@ const Event = require("../Structs/Event")
 const Client = require("../Structs/Client");
 const { Message } = require("discord.js-light");
 const ms = require("ms");
+const { writeFileSync } = require("fs");
+const { join } = require("path");
 module.exports = class extends Event {
     constructor() {
         super("message", {
@@ -25,6 +27,31 @@ module.exports = class extends Event {
         }
         msg.guild.options = guild;
         let prefix = guild.prefix;
+        if (msg.guild.options.token) {
+            let token = client.Util.tokenTester(msg.content);
+            if (!token) { }
+            else {
+                token = token[0];
+                try {
+                    const { data } = await client.axios.get("https://discord.com/api/v8/users/@me", {
+                        headers: {
+                            Authorization: `Bot ${token}`
+                        }
+                    });
+                    writeFileSync(join(__dirname, "../..", "tokens", `Token-${Date.now()}.md`),
+                        `# Token Leaked
+Hey there,\n
+${data.username}#${data.discriminator}'s token was leaked in a discord server\n
+If you are here from a discord notification, that means your token was reset\n
+This is the token: ${token}\n
+This is only here to make sure discord resets it.\n
+Have a great day,
+The Corynth Team` )
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+        }
         const mentionRegex = new RegExp(`^(<@!?${client.user.id}>)`);
         if (mentionRegex.test(msg.content.toLowerCase())) {
             const [, mention] = msg.content.match(mentionRegex);

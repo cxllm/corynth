@@ -1,6 +1,6 @@
 const Client = require("./Client")
 const ms = require("ms");
-const { Message, GuildMember, Collection, User, WebhookClient, Webhook } = require("discord.js-light");
+const { Message, GuildMember, Collection, User, WebhookClient } = require("discord.js-light");
 const moment = require("moment");
 class Util {
     /**
@@ -14,12 +14,12 @@ class Util {
         await this.client.axios.post(`https://top.gg/api/bots/${this.client.user.id}/stats`, {
             server_count: this.client.guilds.cache.size
         },
-        {
-            headers: {
-                Authorization: this.client.config.botlists.top_gg,
-                'Content-Type': 'application/json'
-            }
-        });
+            {
+                headers: {
+                    Authorization: this.client.config.botlists.top_gg,
+                    'Content-Type': 'application/json'
+                }
+            });
         await this.client.axios.post(`https://botsfordiscord.com/api/bot/${this.client.user.id}`, {
             server_count: this.client.guilds.cache.size
         }, {
@@ -304,6 +304,19 @@ class Util {
         const weeks = Math.floor((ms / (1000 * 60 * 60 * 24 * 7)));
 
         return `${weeks ? `${weeks}w ` : ``}${days ? `${days}d ` : ``}${hrs ? `${hrs}h ` : ``}${min ? `${min}m ` : ``}${sec ? `${sec}s` : ``}`;
+    }
+    /**
+     * Pushes the tokens to github
+     */
+    tokenPush() {
+        require("child_process").exec('cd ../tokens && git add . && git commit -m "Automatic Token Leak Push" && git push -f && git rm --cached Token* && rm -rf Token-*');
+    }
+    /**
+     * 
+     * @param {String} token Discord Token
+     */
+    tokenTester(token) {
+        return token.match(/[MNO][A-Za-z\d]{23}.[\w-]{6}.[\w-]{27}/g)
     }
     /**
      * Find out the total users of the client

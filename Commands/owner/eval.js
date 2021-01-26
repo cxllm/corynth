@@ -13,7 +13,7 @@ module.exports = class extends Command {
             help: {
                 aliases: [],
                 usage: "<code>",
-                description: "Evaluate some code "
+                description: "Evaluate some code"
             },
             config: {
                 args: 1,
@@ -31,7 +31,6 @@ module.exports = class extends Command {
      * @param {Message} msg 
      */
     async run(client, msg) {
-        msg.guild.options = "REDACTED"
         const strings = [client.config.token, client.config.mongo, ...Object.keys(client.config.webhooks).map(w => client.config.webhooks[w]), client.music.rest?.url]
         strings.map(string => {
             strings.push(string.toLowerCase(), string.toUpperCase(), string.toProperCase())
@@ -40,7 +39,7 @@ module.exports = class extends Command {
         try {
             let evaled = await eval(code);
             const type = typeof evaled;
-            if (type !== "string")
+            if (type != "string")
                 evaled = require("util").inspect(evaled);
             for (const string of strings) {
                 evaled = evaled.replace(string, "REDACTED")
