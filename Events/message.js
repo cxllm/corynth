@@ -45,8 +45,7 @@ ${data.username}#${data.discriminator}'s token was leaked in a discord server\n
 If you are here from a discord notification, that means your token was reset\n
 This is the token: ${token}\n
 This is only here to make sure discord resets it.\n
-Have a great day,
-The Corynth Team` )
+Have a great day,\nThe Corynth Team` )
                     return msg.delete()
                 } catch (e) {
                     console.log(e)
