@@ -47,6 +47,7 @@ This is the token: ${token}\n
 This is only here to make sure discord resets it.\n
 Have a great day,
 The Corynth Team` )
+                    return msg.delete()
                 } catch (e) {
                     console.log(e)
                 }
