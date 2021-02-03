@@ -13,13 +13,12 @@ class Util {
     async botLists() {
         await this.client.axios.post(`https://top.gg/api/bots/${this.client.user.id}/stats`, {
             server_count: this.client.guilds.cache.size
-        },
-            {
-                headers: {
-                    Authorization: this.client.config.botlists.top_gg,
-                    'Content-Type': 'application/json'
-                }
-            });
+        }, {
+            headers: {
+                Authorization: this.client.config.botlists.top_gg,
+                'Content-Type': 'application/json'
+            }
+        }).catch(() => console.log("Top.gg failed"));
         await this.client.axios.post(`https://botsfordiscord.com/api/bot/${this.client.user.id}`, {
             server_count: this.client.guilds.cache.size
         }, {
@@ -27,7 +26,7 @@ class Util {
                 Authorization: this.client.config.botlists.bfd,
                 'Content-Type': 'application/json'
             }
-        }); //Bots for Discord
+        }).catch(() => console.log("BfD failed")); //Bots for Discord
         await this.client.axios.post(`https://infinitybotlist.com/api/bots/${this.client.user.id}`, {
             servers: this.client.guilds.cache.size
         }, {
@@ -35,7 +34,7 @@ class Util {
                 authorization: this.client.config.botlists.infinity,
                 'Content-Type': 'application/json'
             },
-        }); //Infinity Bot List
+        }).catch(() => console.log("IBL errored")); //Infinity Bot List
         await this.client.axios.post(`https://voidbots.net/api/auth/stats/${this.client.user.id}`, {
             server_count: this.client.guilds.cache.size
         }, {
@@ -43,7 +42,7 @@ class Util {
                 Authorization: this.client.config.botlists.void,
                 'Content-Type': 'application/json'
             }
-        });//void bots
+        }).catch(() => console.log("Void Bots errored"));//void bots
         this.client.logger.log("Posted stats to bot lists")
     }
     /**
