@@ -4,7 +4,7 @@ const app = express();
 const { join } = require("path");
 const links = {
     invite: "https://discord.com/api/oauth2/authorize?client_id=660818351638970370&permissions=8&scope=bot",
-    support: "https://discord.gg/v9Z5nzGaRw",
+    support: "https://discord.gg/6kFbxxkX5p",
     vote: "https://top.gg/bot/660818351638970370",
     donate: "https://paypal.me/cx11m"
 };

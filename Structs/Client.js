@@ -33,7 +33,7 @@ module.exports = class Corynth extends Client {
     queue = new Collection();
     links = {
         "invite link": "",
-        "support server": "https://discord.gg/v9Z5nzGaRw",
+        "support server": "https://discord.gg/6kFbxxkX5p",
         "website": `https://${this.website}`,
         "donate": "https://paypal.me/cx11m"
     }
