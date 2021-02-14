@@ -5,7 +5,7 @@ module.exports = class extends Command {
     constructor() {
         super("queue", {
             help: {
-                aliases: ["q"],
+                aliases: ["q", "np", "nowplaying"],
                 usage: "",
                 description: "View the server queue"
             },
