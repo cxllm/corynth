@@ -256,7 +256,6 @@ class Util {
         const start = new Date(info.timestamps.start).getTime();
         const end = new Date(info.timestamps.end).getTime();
         let artistArray = info.state.split(";") || [info.state];
-        console.log(Date.now() - new Date(start).getTime())
         let song = {
             title: info.details,
             artist: info.state.includes(";") ? info.state.split(";").join(",") : info.state,

@@ -20,6 +20,7 @@
     "mongodb": "^3.6.2",
     "ms": "^2.1.2",
     "shoukaku": "github:Deivu/Shoukaku#filters",
-    "sourcebin": "^3.2.5"
+    "sourcebin": "^3.2.5",
+    "ytpl": "^2.0.5"
   }
 }

@@ -13,7 +13,8 @@ module.exports = class extends Event {
      * @param {Message} oldmsg 
      * @param {Message} msg 
      */
-    async run(client, _, msg) {
+    async run(client, oldmsg, msg) {
+        if (oldmsg.content === msg.content) return;
         client.events.get("message").run(client, msg)
     }
 }

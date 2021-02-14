@@ -1,7 +1,8 @@
 const Command = require("../../Structs/Command");
 const Client = require("../../Structs/Client");
 const { Message, Guild } = require("discord.js-light");
-const { ShoukakuTrack } = require("shoukaku")
+const { ShoukakuTrack } = require("shoukaku");
+const ytpl = require("ytpl");
 module.exports = class extends Command {
     constructor() {
         super("play", {
@@ -34,18 +35,44 @@ module.exports = class extends Command {
         }
         let query = msg.args.join(" ");
         let loadmsg = await msg.reply(`${client.config.emojis.loading} Loading song...`);
+        if (query.includes("list=")) {
+            query = {
+                id: query.split("list=")[1]
+            }
+        }
         let results;
         try {
-            results = await client.music.rest.resolve(query, `youtube`)
+            if (query.id) {
+                const playlist = await ytpl(query.id);
+                results = {
+                    playlistName: playlist.title,
+                    tracks: playlist.items.map(item => {
+                        return {
+                            track: null,
+                            info: {
+                                identifier: item.id,
+                                title: item.title,
+                                uri: item.shortUrl,
+                                length: item.durationSec * 1000,
+                                duration: client.Util.timestamp(item.durationSec * 1000),
+                                author: item.author.name,
+                                isStream: item.isLive,
+                                isSeekable: !item.isLive
+                            }
+                        }
+                    })
+                }
+            }
+            else results = await client.music.rest.resolve(query, `youtube`)
             if (!results) throw new Error("Not found")
         } catch (e) {
             console.log(e)
-            return await msg.reply(`${client.config.emojis.cross} Song not found`)
+            return await msg.reply(`${client.config.emojis.cross} Not found`)
         }
-        const song = results.tracks[0];
-        if (!song) return await msg.reply(`${client.config.emojis.cross} Song not found`);
+        let song = results.tracks[0];
+        if (!song) return await msg.reply(`${client.config.emojis.cross} Not found`);
         if (song.live) return await msg.reply(`${client.config.emojis.cross} Livestreams can't be played due to issues with playing them.`);
-        this.handle(client, msg, song, loadmsg);
+        this.handle(client, msg, song, loadmsg, results.playlistName ? results : undefined);
     }
     /**
      *
@@ -53,7 +80,7 @@ module.exports = class extends Command {
      * @param {Message} msg
      * @param {ShoukakuTrack} song 
      */
-    async handle(client, msg, song, loadmsg) {
+    async handle(client, msg, song, loadmsg, playlist) {
         let queue = client.queue.get(msg.guild.id);
         if (!queue) {
             let queueStruct = {
@@ -76,9 +103,29 @@ module.exports = class extends Command {
             return await msg.reply("The song can't be longer than 1 day!")
         }
         song.info.duration = client.Util.timestamp(song.info.length);
-        queue.songs.push(song);
-        if (queue.songs.length > 1) {
-            let embed = {
+        const before = queue.songs.length;
+        if (playlist) {
+            queue.songs.push(...playlist.tracks);
+
+        } else queue.songs.push(song);
+        if (before > 0) {
+            let embed;
+            if (playlist) embed = {
+                title: "Playlist added to Queue",
+                fields: [
+                    {
+                        name: "Playlist Name",
+                        value: playlist.playlistName
+                    },
+                    {
+                        name: "Total Songs",
+                        value: playlist.tracks.length
+                    }
+                ],
+                color: client.config.colours.main
+            }
+
+            else embed = {
                 title: "Song added to Queue",
                 fields: [
                     {
@@ -99,7 +146,26 @@ module.exports = class extends Command {
             return await loadmsg.edit("", { embed })
         }
         else try {
-            await this.play(client, msg.guild, queue, song, loadmsg)
+            if (playlist) {
+                await queue.text.send({
+                    embed: {
+                        title: "Playlist added to Queue",
+                        fields: [
+                            {
+                                name: "Playlist Name",
+                                value: playlist.playlistName
+                            },
+                            {
+                                name: "Total Songs",
+                                value: playlist.tracks.length
+                            }
+                        ],
+                        color: client.config.colours.main
+                    }
+                })
+            }
+            await this.play(client, msg.guild, queue, song);
+            loadmsg.delete()
         } catch (e) {
             console.log(e)
             client.queue.delete(msg.guild.id)
@@ -112,9 +178,8 @@ module.exports = class extends Command {
      * @param {Guild} guild 
      * @param {*} queue 
      * @param {ShoukakuTrack} song 
-     * @param {Message} loadmsg 
      */
-    async play(client, guild, queue, song, loadmsg) {
+    async play(client, guild, queue, song) {
         if (!song) {
             queue.player.disconnect();
             if (queue.timedout) return;
@@ -141,31 +206,41 @@ module.exports = class extends Command {
             }
             this.play(client, guild, queue, queue.songs[0]);
         });
-        await queue.player.playTrack(song.track)
-        await queue.player.setGroupedFilters(queue.filters)
-        let embed = {
-            title: "Now Playing",
-            fields: [
-                {
-                    name: "Title", value: `[${song.info.title}](${song.info.uri})`
-                },
-                {
-                    name: "Author", value: song.info.author,
-                },
-                {
-                    name: "Duration", value: song.info.duration
-                },
+        if (!song.track) {
+            let info = (await client.music.rest.resolve(song.info.uri, `youtube`));
+            if (info?.tracks) song.track = info.tracks[0].track
+            else {
+                let info2 = (await client.music.rest.resolve(`${song.info.title} ${song.info.author}`, `youtube`));
+                if (info2?.tracks) song.track = info2.tracks[0].track
 
-            ],
-            thumbnail: {
-                url: queue.thumbnail
-            },
-            color: client.config.colours.main
+            }
         }
-        const msg = loadmsg ?
-            await loadmsg.edit("", { embed })
-            : await queue.text.send({ embed })
 
-        queue.npmsg = msg;
+        if (!song.track) queue.player.stopTrack();
+        else {
+            await queue.player.playTrack(song.track)
+            await queue.player.setGroupedFilters(queue.filters)
+            let embed = {
+                title: "Now Playing",
+                fields: [
+                    {
+                        name: "Title", value: `[${song.info.title}](${song.info.uri})`
+                    },
+                    {
+                        name: "Author", value: song.info.author,
+                    },
+                    {
+                        name: "Duration", value: song.info.duration
+                    },
+
+                ],
+                thumbnail: {
+                    url: queue.thumbnail
+                },
+                color: client.config.colours.main
+            }
+            queue.npmsg = await queue.text.send({ embed });
+        }
+
     }
 }

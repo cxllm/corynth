@@ -5,9 +5,9 @@ module.exports = class extends Command {
     constructor() {
         super("remove", {
             help: {
-                aliases: [],
+                aliases: ["rm"],
                 usage: "",
-                description: "Remove a song"
+                description: "Remove a song from the queue"
             },
             config: {
                 args: 0,
