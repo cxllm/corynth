@@ -19,7 +19,7 @@
     "moment": "^2.29.1",
     "mongodb": "^3.6.2",
     "ms": "^2.1.2",
-    "shoukaku": "github:Deivu/Shoukaku#filters",
+    "shoukaku": "^1.6.0",
     "sourcebin": "^3.2.5",
     "ytpl": "^2.0.5"
   }

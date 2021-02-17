@@ -8,7 +8,7 @@ const links = {
     vote: "https://top.gg/bot/660818351638970370",
     donate: "https://paypal.me/cx11m"
 };
-const { server } = require("../config.js");
+const { server, ip } = require("../config.js");
 app.set('view engine', 'ejs');
 app.set('views', join(__dirname, "pages"))
 app.use(express.static(join(__dirname, "public")))
@@ -29,6 +29,7 @@ Object.keys(links).map(link => {
 app.get("*", (req, res) => {
     res.render("404");
 });
-app.listen(server, () => {
+app.listen(server, ip, () => {
     console.log(`Webserver is listening on ${server}`)
 });
+console.log(`Webserver is listening on ${server}`)

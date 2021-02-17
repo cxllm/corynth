@@ -27,14 +27,14 @@ class Util {
                 'Content-Type': 'application/json'
             }
         }).catch(() => console.log("BfD failed")); //Bots for Discord
-        await this.client.axios.post(`https://infinitybotlist.com/api/bots/${this.client.user.id}`, {
+        await this.client.axios.post(`https://api.infinitybotlist.com/bots/${this.client.user.id}`, {
             servers: this.client.guilds.cache.size
         }, {
             headers: {
                 authorization: this.client.config.botlists.infinity,
                 'Content-Type': 'application/json'
             },
-        }).catch(() => console.log("IBL errored")); //Infinity Bot List
+        }).catch(() => console.log("IBL failed")); //Infinity Bot List
         await this.client.axios.post(`https://voidbots.net/api/auth/stats/${this.client.user.id}`, {
             server_count: this.client.guilds.cache.size
         }, {
@@ -42,7 +42,7 @@ class Util {
                 Authorization: this.client.config.botlists.void,
                 'Content-Type': 'application/json'
             }
-        }).catch(() => console.log("Void Bots errored"));//void bots
+        }).catch(() => console.log("Void Bots failed"));//void bots
         this.client.logger.log("Posted stats to bot lists")
     }
     /**
