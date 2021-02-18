@@ -27,7 +27,7 @@ class Util {
                 'Content-Type': 'application/json'
             }
         }).catch(() => console.log("BfD failed")); //Bots for Discord
-        await this.client.axios.post(`https://api.infinitybotlist.com/bots/${this.client.user.id}`, {
+        await this.client.axios.post(`https://api.infinitybotlist.com/bot/${this.client.user.id}`, {
             servers: this.client.guilds.cache.size
         }, {
             headers: {
