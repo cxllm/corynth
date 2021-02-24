@@ -11,7 +11,7 @@ module.exports = class extends Event {
      * @param {Client} client 
      */
     async run(client) {
-        const presence = `@${client.user.username} help | ${client.website}`
+        const presence = `Currently being rewritten | ${client.website}`
         client.logger.connection(`The client has connected to the gateway as ${client.user.tag}`);
         client.user.setPresence({ activity: { name: presence }, status: 'dnd' })
         setInterval(() => {
