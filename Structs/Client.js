@@ -55,7 +55,7 @@ module.exports = class Corynth extends Client {
             moveOnDisconnect: false,
             resumable: false,
             resumableTimeout: 30,
-            reconnectTries: 10,
+            reconnectTries: 1000,
             restTimeout: 10000
         });
         this.musicHandler.on('ready', async (name) => {
