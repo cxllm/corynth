@@ -28,7 +28,7 @@ module.exports = class extends Event {
                             value: [
                                 `Name: \`${guild.name}\``,
                                 `Members: \`${guild.memberCount}\``,
-                                `Owner: \`${(await client.users.fetch(guild.ownerID, false)).tag}\``,
+                                `Owner: \`${guild.ownerID}\``,
                                 `ID: \`${guild.id}\``
                             ]
                         }
