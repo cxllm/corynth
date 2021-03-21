@@ -1,5 +1,6 @@
 //Modules
-import Discord, { Client, Collection, DMChannel, NewsChannel, TextChannel, VoiceChannel, WebhookClient } from "discord.js-light";
+import Discord from "discord.js";
+import { Client, Collection, DMChannel, NewsChannel, TextChannel, VoiceChannel, WebhookClient } from "discord.js-light";
 //@ts-ignore
 Discord.version = "12";
 import axios from "axios"
