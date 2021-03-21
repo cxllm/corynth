@@ -18,7 +18,7 @@ export = class extends Command {
     }
     async run(msg: Message) {
         exec("git fetch --all && git reset --hard origin/master && tsc", async (_, out, stderr) => {
-            return await msg.send(`\`\`\`${(out || stderr).substr(0, 1994)}\`\`\``)
+            return await msg.send(`Pulled latest changes`)
         });
 
     }
