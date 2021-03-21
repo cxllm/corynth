@@ -17,7 +17,7 @@ export = class extends Command {
         this.client = client;
     }
     async run(msg: Message) {
-        exec("git fetch --all && git reset --hard origin/master && tsc", async (_, out, stderr) => {
+        exec("git fetch --all && git reset --hard origin/main && tsc", async (_, out, stderr) => {
             return await msg.send(`Pulled latest changes`)
         });
 
