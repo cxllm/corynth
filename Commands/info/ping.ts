@@ -16,7 +16,7 @@ export = class extends Command {
         this.client = client;
     }
     async run(msg: Message) {
-        const m = await msg.send(`Testing Latency`);
+        const m = await msg.send("Testing Latency");
         const latency = m.createdTimestamp - msg.createdTimestamp;
         await msg.send("", {
             embed: {

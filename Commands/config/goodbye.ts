@@ -27,7 +27,7 @@ export = class extends Command {
         switch (arg) {
             case "on":
                 embed = {
-                    description: `Please mention a channel below, or type its ID. You have 15 seconds`,
+                    description: "Please mention a channel below, or type its ID. You have 15 seconds",
                     color: this.client.config.colours.main
                 }
                 m = await msg.send({ embed })
