@@ -7,7 +7,7 @@ export = class extends Event {
         super(client, "messageUpdate", "on");
     }
     async run(oldMsg: Message, msg: Message) {
-        if (msg.author.bot || oldMsg?.content == msg.content) return;
+        if (msg.author?.bot || oldMsg?.content == msg.content) return;
         this.client.events.get("message").run(msg);
     }
 }
