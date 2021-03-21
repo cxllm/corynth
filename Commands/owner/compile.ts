@@ -19,7 +19,7 @@ export = class extends Command {
     async run(msg: Message) {
         await msg.send(`Compiling...`)
         exec("tsc", async () => {
-            return await msg.send(`Compiled`)
+            return await msg.send(`Compiled.`)
         });
 
     }
