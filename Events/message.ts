@@ -4,6 +4,7 @@ import Message from "../Structs/Message";
 import ms from "ms";
 import { writeFileSync } from "fs";
 import { join } from "path";
+import permissions from "../permissions";
 export = class extends Event {
 
     constructor(client: Client) {

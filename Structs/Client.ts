@@ -28,7 +28,6 @@ export default class Corynth extends Client {
     config: Config = config;
     presets = presets;
     UsageEmbed = UsageEmbed;
-    permissions = permissions;
 
     //Modules
     web = axios;
@@ -82,8 +81,8 @@ export default class Corynth extends Client {
     mongo = new MongoClient(this.config.mongo, { useUnifiedTopology: true, keepAlive: true, useNewUrlParser: true });
     database: Db;
     db = {
-        guilds: new Database("guilds", "id", true),
-        users: new Database("users", "id", false)
+        guilds: new Database("Guilds", "id", true),
+        users: new Database("Users", "id", false)
     }
     music: ShoukakuSocket;
 

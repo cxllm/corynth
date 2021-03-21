@@ -30,13 +30,15 @@ export = class extends Event {
         setInterval(() => {
             this.client.Util.tokenPush();
         }, 60 * 1000)
+        setInterval(() => {
+            this.client.users.cache.clear();
+            this.client.db.guilds.clearCache();
+        }, 10 * 60 * 1000)
         setTimeout(async () => {
             this.client.user.setActivity(activity);
             await this.client.Util.updateCovid19Info();
             if (this.client.user.id !== "692779290399604766") await this.client.Util.botLists();
             await this.checkUsers()
-            this.client.users.cache.clear();
-            this.client.db.guilds.clearCache();
         }, 30 * 60 * 1000)
     }
     async checkUsers() {

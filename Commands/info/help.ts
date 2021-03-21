@@ -1,6 +1,7 @@
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import Message from "../../Structs/Message";
+import permissions from "../../permissions"
 export = class extends Command {
     private client: Client;
     constructor(client: Client) {
@@ -35,8 +36,8 @@ export = class extends Command {
                     {
                         name: 'Permissions Needed',
                         value: [
-                            `Permissions needed for the User: \`${this.client.permissions[command.config.permissions.user] || "None"}\``,
-                            `Permissions needed for the Bot: \`${this.client.permissions[command.config.permissions.bot] || "None"}\``
+                            `Permissions needed for the User: \`${permissions[command.config.permissions.user] || "None"}\``,
+                            `Permissions needed for the Bot: \`${permissions[command.config.permissions.bot] || "None"}\``
                         ]
                     }
                 ],
