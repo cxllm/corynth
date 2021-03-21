@@ -8,10 +8,10 @@ export = class extends Command {
         super("pull", {
             description: "Pull from the git repo.",
             aliases: [],
-            usage: "<command>"
+            usage: ""
         }, {
             owner: true,
-            args: 1,
+            args: 0,
             permissions: {}
         })
         this.client = client;
