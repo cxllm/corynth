@@ -1,0 +1,27 @@
+{
+  "exclude": [
+    "./node_modules",
+    "./dist",
+    "./test"
+  ],
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    /* Lib */
+    "lib": [
+      "ES2019"
+    ],
+    "target": "ES2019",
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    /* Out */
+    "rootDir": "./",
+    "outDir": "./dist",
+    /* Compiler options */
+    "allowJs": true,
+    "declaration": false,
+    "esModuleInterop": true,
+    "pretty": true
+  }
+}
