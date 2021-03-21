@@ -4,3 +4,4 @@ covid-19.json
 yarn-error.log
 config.js
 dist
+config.backup.ts

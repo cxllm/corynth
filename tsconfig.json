@@ -5,7 +5,8 @@
     "./ecosystem.config.js",
     "./Tokens",
     "./covid-19.json",
-    "./Website"
+    "./Website",
+    "./config.backup.ts"
   ],
   "include": [
     "./**/*"
