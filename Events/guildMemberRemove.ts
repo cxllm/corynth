@@ -9,12 +9,7 @@ export = class extends Event {
     }
     async run(member: GuildMember) {
         let guilddb = await this.client.db.guilds.get(member.guild.id);
-        if (!guilddb) {
-            guilddb = {
-                prefix: this.client.config.prefix
-            }
-            return await this.client.db.guilds.set(member.guild.id, guilddb)
-        }
+        if (!guilddb) return;
         if (guilddb.leave) {
             if (guilddb.leave && guilddb.leave.channel && guilddb.leave.message) {
                 let channel;
