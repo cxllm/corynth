@@ -31,4 +31,3 @@ app.get("*", (req, res) => {
 app.listen(server, () => {
     console.log(`Webserver is listening on ${server}`)
 });
-console.log(`Webserver is listening on ${server}`)

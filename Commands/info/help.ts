@@ -7,7 +7,7 @@ export = class extends Command {
     constructor(client: Client) {
         super("help", {
             description: "View the bot's commands, find out more info on a specific command, and receive some helpful links where you can receive support and find out more.",
-            aliases: ["commands", "cmds", "links", "invite", "support", "website"],
+            aliases: ["commands", "cmds"],
             usage: "[command]"
         }, {
             owner: false,

@@ -1,3 +1,4 @@
+import { Collection, Message as M, MessageEmbedOptions } from "discord.js";
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import Message from "../../Structs/Message";
@@ -20,26 +21,26 @@ export = class extends Command {
     }
     async run(msg: Message) {
         let arg = msg.args[0].toLowerCase();
-        let embed;
-        let channels;
-        let m;
+        let embed: MessageEmbedOptions;
+        let messages;
+        let m: Message;
         switch (arg) {
             case "on":
                 embed = {
-                    description: `Please mention a channel below, or type its ID. You have 10 seconds`,
+                    description: `Please mention a channel below, or type its ID. You have 15 seconds`,
                     color: this.client.config.colours.main
                 }
                 m = await msg.send({ embed });
                 try {
-                    channels = await msg.channel.awaitMessages(m => m.author.id == msg.author.id, {
+                    messages = await msg.channel.awaitMessages(m => m.author.id == msg.author.id, {
                         max: 1,
-                        time: 10000,
+                        time: 15000,
                         errors: ["time"]
                     });
                 } catch {
                     return await m.edit("Timed out")
                 }
-                let chan = channels.first().mentions.channels.first() || msg.guild.channels.cache.get(channels.first().content);
+                let chan = messages.first().mentions.channels.first() || msg.guild.channels.cache.get(messages.first().content);
                 if (!chan || chan.type != "text") return await msg.send(`${this.client.config.emojis.cross} Invalid Channel!`)
                 const webhook = await chan.createWebhook(`${this.client.user.username} Suggestions`, {
                     avatar: this.client.user.avatarURL()

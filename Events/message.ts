@@ -56,7 +56,7 @@ Have a great day,\n<br>The Corynth Team` )
                 color: this.client.config.colours.main
             }
         });
-        if (!msg.content.startsWith(prefix.toLowerCase())) return;
+        if (!msg.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
         msg.args = msg.content.slice(prefix.length).trim().split(" ");
         let cmd = msg.args.shift().toLowerCase();
         let command = this.client.getCommand(cmd);
