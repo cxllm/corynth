@@ -1,7 +1,7 @@
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import Message from "../../Structs/Message";
-import { WebhookClient, Message as M } from "discord.js-light"
+import { WebhookClient } from "discord.js-light"
 export = class extends Command {
     private client: Client;
     constructor(client: Client) {
@@ -12,16 +12,15 @@ export = class extends Command {
         }, {
             owner: false,
             args: 1,
-            permissions: {
-                bot: "ADD_REACTIONS"
-            }
+            permissions: {},
+            cooldown: "3s"
         })
         this.client = client;
     }
     async run(msg: Message) {
         const { suggestions } = msg.db;
-        if (!suggestions || !suggestions.id || !suggestions.token) return await msg.reply(`Suggestions are disabled in this server`);
-        let webhook;
+        if (!suggestions || !suggestions.id || !suggestions.token) return await msg.send(`Suggestions are disabled in this server`);
+        let webhook: WebhookClient;
         try {
             webhook = new WebhookClient(suggestions.id, suggestions.token);
             await webhook.send('', {
@@ -46,8 +45,8 @@ export = class extends Command {
             console.log(e)
             msg.db.suggestions = null;
             await this.client.db.guilds.set(msg.guild.id, msg.db);
-            return await msg.reply(`Suggestions are disabled in this server`);
+            return await msg.send(`Suggestions are disabled in this server`);
         }
-        await msg.send(`Suggestion sent`)
+        return await msg.send(`Suggestion sent`)
     }
 }

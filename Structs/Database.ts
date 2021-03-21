@@ -5,7 +5,7 @@ export default class Database {
     private name: string;
     private key: string;
     private cache?: Collection<string, any>;
-    private collection: collection;
+    public collection: collection;
     constructor(name: string, key: string, cache: boolean) {
         this.name = name;
         this.key = key;

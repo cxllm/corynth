@@ -13,4 +13,6 @@ export default {
     no_spotify: `This user is not listening to spotify!`,
     filters: `[filter] has been set to \`[number]\`! Please give it a few seconds to apply.`,
     utc: `All dates are using the UTC/GMT timezone`,
+    edit_image: `${emojis.loading} Editing image...`,
+    loading_image: `${emojis.loading} Loading image...`
 }

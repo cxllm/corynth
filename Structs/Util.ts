@@ -12,14 +12,14 @@ export default class Util {
         this.client = client;
     }
     async botLists() {
-        await this.client.web.post(`https://top.gg/api/bots/${this.client.user.id}/stats`, {
+        await this.client.web.post(`https://discord.boats/api/bot/${this.client.user.id}`, {
             server_count: this.client.guilds.cache.size
         }, {
             headers: {
-                Authorization: this.client.config.botlists.top_gg,
+                Authorization: this.client.config.botlists.boats,
                 'Content-Type': 'application/json'
             }
-        }).catch(() => console.log("Top.gg failed"));
+        })
         await this.client.web.post(`https://botsfordiscord.com/api/bot/${this.client.user.id}`, {
             server_count: this.client.guilds.cache.size
         }, {
@@ -28,7 +28,7 @@ export default class Util {
                 'Content-Type': 'application/json'
             }
         }).catch(() => console.log("BfD failed")); //Bots for Discord
-        await this.client.web.post(`https://api.infinitybotlist.com/bot/${this.client.user.id}`, {
+        await this.client.web.post(`https://api.infinitybots.xyz/bot/${this.client.user.id}`, {
             servers: this.client.guilds.cache.size
         }, {
             headers: {
@@ -46,10 +46,6 @@ export default class Util {
         }).catch(() => console.log("Void Bots failed"));//void bots
         this.client.logs.log("Posted stats to bot lists")
     }
-    canPunish(punished: GuildMember, punisher: GuildMember) {
-        if (punisher.roles.highest.rawPosition <= punished.roles.highest.rawPosition || punished.guild.ownerID === punished.id) return false;
-        return true;
-    };
     dbLatency({ guild, author }: Message, cache: boolean): number | Promise<number> {
         const original = Date.now();
         return cache ? (() => {
@@ -99,11 +95,10 @@ export default class Util {
                     result += Array(8 - num.length + 1).join("0") + num;
                 }
                 return result;
-            case "hex":
-            case "base64":
-                return Buffer.from(text, "utf-8").toString(type)
             default:
-                return;
+                //@ts-ignore
+                return Buffer.from(text, "utf-8").toString(type)
+
         }
     }
 
@@ -197,10 +192,10 @@ export default class Util {
     * @param {Message} msg
     * @returns {GuildMember|User}
     */
-    async getPunishmentUser(msg: Message, query: string): Promise<GuildMember | User> {
+    async getPunishmentUser(msg: Message, query: string, u: boolean): Promise<GuildMember | User> {
         let user: GuildMember | User = await this.getMember(msg, query, false);
         try {
-            if (!user || user.id === msg.author.id) user = await this.client.users.fetch(query, false);
+            if ((!user || user.id === msg.author.id) && u) user = await this.client.users.fetch(query, false);
         } catch {
             return null;
         }

@@ -6,6 +6,7 @@ import axios from "axios"
 import { readdirSync } from "fs";
 import { join } from "path";
 import { Db, MongoClient } from "mongodb";
+const canvacord = require("canvacord"); //Module doesn't include typings
 
 //Files
 import config, { Config } from "../config";
@@ -33,6 +34,7 @@ export default class Corynth extends Client {
     web = axios;
     logs = new Logger();
     Util = new Util(this);
+    canva = canvacord.Canvas
 
     webhooks: {
         connections?: WebhookClient;

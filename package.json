@@ -17,6 +17,8 @@
     "discord.js": "git://github.com/discordjs/discord.js.git#master",
     "discord.js-light": "git://github.com/timotejroiko/discord.js-light.git#master",
     "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
     "lavaclient": "^3.2.5",
     "moment": "^2.29.1",
     "mongodb": "^3.6.4",
