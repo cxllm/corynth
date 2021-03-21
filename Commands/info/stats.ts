@@ -55,7 +55,7 @@ export = class extends Command {
             },
             {
                 name: "Bot Usage",
-                value: [`Memory: ${this.client.Util.memory(process.memoryUsage().rss)}MB/${Math.round(this.client.Util.memory(os.totalmem(), "gb"))}GB (${Math.round(process.memoryUsage().rss / os.totalmem() * 1000) / 10}%)`, `Uptime: ${this.client.Util.timestamp(this.client.uptime)}`],
+                value: [`Memory: ${this.client.Util.memory(process.memoryUsage().heapUsed)}MB/${Math.round(this.client.Util.memory(os.totalmem(), "gb"))}GB (${Math.round(process.memoryUsage().rss / os.totalmem() * 1000) / 10}%)`, `Uptime: ${this.client.Util.timestamp(this.client.uptime)}`],
             },
             {
                 name: "System Stats",
