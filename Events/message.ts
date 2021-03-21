@@ -56,7 +56,7 @@ Have a great day,\n<br>The Corynth Team` )
                 color: this.client.config.colours.main
             }
         });
-        if (!msg.content.startsWith(prefix)) return;
+        if (!msg.content.startsWith(prefix.toLowerCase())) return;
         msg.args = msg.content.slice(prefix.length).trim().split(" ");
         let cmd = msg.args.shift().toLowerCase();
         let command = this.client.getCommand(cmd);
@@ -67,14 +67,14 @@ Have a great day,\n<br>The Corynth Team` )
             !msg.member.permissions.has(command.config.permissions.user)
             && !this.client.owner(msg.author.id)) return await msg.reply({
                 embed: {
-                    description: `${this.client.config.emojis.cross} You don't have the required permission to run \`${command.name}\`, you need the \`${this.client.permissions[command.config.permissions.user]}\` permission.`,
+                    description: `${this.client.config.emojis.cross} You don't have the required permission to run \`${command.name}\`, you need the \`${permissions[command.config.permissions.user]}\` permission.`,
                     color: this.client.config.colours.error
                 }
             });
         if (command.config.permissions.bot &&
             !msg.guild.me.permissions.has(command.config.permissions.bot)) return await msg.reply({
                 embed: {
-                    description: `${this.client.config.emojis.cross} I don't have the required permission to run \`${command.name}\`, I need the \`${this.client.permissions[command.config.permissions.bot]}\` permission.`,
+                    description: `${this.client.config.emojis.cross} I don't have the required permission to run \`${command.name}\`, I need the \`${permissions[command.config.permissions.bot]}\` permission.`,
                     color: this.client.config.colours.error
                 }
             })
