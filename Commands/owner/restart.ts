@@ -8,10 +8,10 @@ export = class extends Command {
         super("restart", {
             description: "Restart the bot.",
             aliases: ["reboot"],
-            usage: "<command>"
+            usage: ""
         }, {
             owner: true,
-            args: 1,
+            args: 0,
             permissions: {}
         })
         this.client = client;
