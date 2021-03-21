@@ -11,8 +11,7 @@ const canvacord = require("canvacord"); //Module doesn't include typings
 
 //Files
 import config, { Config } from "../config";
-import presets from "../presets";
-import permissions from "../permissions";
+import presets = require("../presets");
 import Logger from "./Logger"
 import Database from "./Database";
 import Util from "./Util";

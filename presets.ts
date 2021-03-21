@@ -1,6 +1,6 @@
 import config from "./config";
 const emojis = config.emojis;
-export default {
+export = {
     nothing_playing: `${emojis.cross} There is nothing playing!`,
     not_queue_vc: `${emojis.cross} You aren't in the queue voice channel!`,
     invalid_role: `${emojis.cross} Invalid Role!`,
