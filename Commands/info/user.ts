@@ -1,6 +1,7 @@
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import Message from "../../Structs/Message";
+import perms from "../../permissions"
 export = class extends Command {
     private client: Client;
     constructor(client: Client) {
@@ -21,7 +22,7 @@ export = class extends Command {
         const member = await this.client.Util.getMember(msg);
         const user = member.user;
         const avatar = user.displayAvatarURL({ dynamic: true, format: "png" });
-        const permissions = member.permissions.toArray().map(perm => `\`${this.client.permissions[perm]}\``).join(", ") || "No Permissions"
+        const permissions = member.permissions.toArray().map(perm => `\`${perms[perm]}\``).join(", ") || "No Permissions"
         const embed = {
             author: {
                 name: user.tag,
