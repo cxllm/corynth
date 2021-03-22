@@ -38,7 +38,7 @@ export = class extends Command {
                         }
                     ],
                     footer: {
-                        text: `Information provided by the disease.sh API`
+                        text: "Information provided by the disease.sh API"
                     },
                     color: this.client.config.colours.main
                 }

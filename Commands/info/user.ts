@@ -31,7 +31,7 @@ export = class extends Command {
             thumbnail: {
                 url: avatar
             },
-            title: `User Info`,
+            title: "User Info",
             fields: [
                 {
                     name: "Info",
