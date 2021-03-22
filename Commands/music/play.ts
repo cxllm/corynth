@@ -81,7 +81,7 @@ export = class extends Command {
                 npmsg: null,
                 thumbnail: msg.guild.iconURL(),
                 filters: {
-                    volume: 0.5,
+                    volume: 0.25,
                     bassboost: null
                 }
             };
