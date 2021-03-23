@@ -39,7 +39,7 @@ export = class extends Command {
             thumbnail: { url: this.client.user.avatarURL({ format: "png" }) },
             fields: [{
                 name: "Statistics",
-                value: [`Servers: ${this.client.guilds.cache.size}`, `Users: ${this.client.Util.totalUsers()}`, `Cached Users: ${this.client.users.cache.size}`],
+                value: [`Servers: ${this.client.guilds.cache.size}`, `Users: ${this.client.Util.totalUsers().toLocaleString("fr")}`, `Cached Users: ${this.client.users.cache.size}`],
             },
             {
                 name: "Latency",
