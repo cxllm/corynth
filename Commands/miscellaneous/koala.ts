@@ -4,8 +4,8 @@ import Message from "../../Structs/Message";
 export = class extends Command {
     private client: Client;
     constructor(client: Client) {
-        super("fox", {
-            description: "See a picture of a fox.",
+        super("koala", {
+            description: "See a picture of a koala.",
             aliases: [],
             usage: ""
         }, {

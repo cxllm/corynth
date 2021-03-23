@@ -11,7 +11,7 @@ export = class extends Command {
         super("play", {
             description: "Play music to a voice channel.",
             aliases: [],
-            usage: "<new prefix|clear>"
+            usage: "<song>"
         }, {
             owner: false,
             args: 1,

@@ -26,6 +26,6 @@ export = class extends Command {
         if (number > 500 || number < 1) return msg.send(`Please enter a valid number between 1 and 500`)
         else queue.filters.volume = number / 100;
         await queue.player.setVolume(number / 100);
-        await msg.send(this.client.presets.filters.replace("[filter]", "Volume").replace("[number]", number.toString()))
+        await msg.send(this.client.presets.filters.replace("[filter]", "Volume").replace("[number]", number.toString() + "%"))
     }
 }

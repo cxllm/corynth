@@ -1073,14 +1073,14 @@ setprototypeof@1.1.1:
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.1.tgz#7e95acb24aa92f5885e0abef5ba131330d4ae683"
   integrity sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
 
-shoukaku@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/shoukaku/-/shoukaku-1.6.2.tgz#440d81a420bed0b5a156837974a6afbd97a0b560"
-  integrity sha512-I0U70reR9MXgvquLvj/n2Xj3fR+wF1lzZ0fCg67vP1zMt82i55nnQbo8OZTdbGRDQVBG2NMq2aJ5REM5LUqBcA==
+shoukaku@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/shoukaku/-/shoukaku-1.6.3.tgz#ab74ff205d853709d5bf1028c7d301c765878f3a"
+  integrity sha512-OT4ZFL7IGqGps/afZaSA1/fIE7USBn5eU+BnvC/BUAS3hPC2MTJ+c6pcTP6tRdrUg/R6iJdkOI2wDBLUOB2Wmw==
   dependencies:
     abort-controller "^3.0.0"
     node-fetch "^2.6.1"
-    ws "^7.4.3"
+    ws "^7.4.4"
 
 signal-exit@^3.0.0:
   version "3.0.3"
@@ -1238,10 +1238,15 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
-ws@^7.3.1, ws@^7.4.3:
+ws@^7.3.1:
   version "7.4.3"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.3.tgz#1f9643de34a543b8edb124bdcbc457ae55a6e5cd"
   integrity sha512-hr6vCR76GsossIRsr8OLR9acVVm1jyfEWvhbNjtgPOrfvAlKzvyeg/P6r8RuDjRyrcQoPQT7K0DGEPc7Ae6jzA==
+
+ws@^7.4.4:
+  version "7.4.4"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.4.tgz#383bc9742cb202292c9077ceab6f6047b17f2d59"
+  integrity sha512-Qm8k8ojNQIMx7S+Zp8u/uHOx7Qazv3Yv4q68MiWWWOJhiwG5W3x7iqmRtJo8xxrciZUY4vRxUTJCKuRnF28ZZw==
 
 yallist@^3.0.0, yallist@^3.0.3:
   version "3.1.1"
