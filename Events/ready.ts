@@ -11,8 +11,6 @@ export = class extends Event {
         this.client.links["invite link"] = `https://discord.com/oauth2/authorize?client_id=${this.client.user.id}&permissions=8&scope=bot`
         this.client.user.setActivity(activity);
         this.client.Util.updateCovid19Info();
-        this.client.Util.tokenPush();
-
         if (this.client.user.id !== "692779290399604766") await this.client.Util.botLists();
         await this.checkUsers();
         await this.client.webhooks.connections.send({
@@ -27,9 +25,6 @@ export = class extends Event {
                 }
             ]
         });
-        setInterval(() => {
-            this.client.Util.tokenPush();
-        }, 60 * 1000)
         setInterval(() => {
             this.client.users.cache.clear();
             this.client.db.guilds.clearCache();

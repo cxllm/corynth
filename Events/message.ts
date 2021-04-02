@@ -21,28 +21,6 @@ export = class extends Event {
         }
         msg.db = guild;
         let prefix = guild.prefix;
-        if (msg.db.token) {
-            let token: string[] | string = this.client.Util.tokenTester(msg.content)
-            if (token) {
-                token = token[0];
-                try {
-                    const { data } = await this.client.web.get("https://discord.com/api/v8/users/@me", {
-                        headers: {
-                            Authorization: `Bot ${token}`
-                        }
-                    });
-                    writeFileSync(join(process.cwd(), "Tokens", `Token-${Date.now()}.md`),
-                        `# Token Leaked
-Hey there,\n<br>
-${data.username}#${data.discriminator}'s token was leaked in by ${msg.author.tag} in ${msg.guild.name}\n<br>If you are here from a discord notification, that means your token was reset\n<br>This is the token: ${token}\n<br>This is an automatic process to make sure tokens that are leaked in servers are not used for malicious purposes.\n<br>
-Have a great day,\n<br>The Corynth Team` )
-                    return msg.delete()
-                } catch (e) {
-                    console.log(e)
-                }
-
-            }
-        }
         const mentionRegex = new RegExp(`^(<@!?${this.client.user.id}>)`);
         if (mentionRegex.test(msg.content.toLowerCase())) {
             const [, mention] = msg.content.match(mentionRegex);
