@@ -5,7 +5,7 @@ import { Guild } from "discord.js";
 export = class extends Event {
 
     constructor(client: Client) {
-        super(client, "guildCreate", "on");
+        super(client, "guildDelete", "on");
     }
     async run(guild: Guild) {
         await this.client.db.guilds.delete(guild.id);
