@@ -19,6 +19,7 @@ import Event from "./Event";
 import { Shoukaku, ShoukakuPlayer, ShoukakuSocket } from "shoukaku";
 import Message from "./Message";
 import Track from "./Track";
+import express from "express";
 
 export default class Corynth extends Client {
     //Files
@@ -31,12 +32,9 @@ export default class Corynth extends Client {
     logs = new Logger();
     Util = new Util(this);
     canva = canvacord.Canvas
+    server = express();
 
-    webhooks: {
-        connections?: WebhookClient;
-        guilds?: WebhookClient;
-        errors?: WebhookClient;
-    } = {}
+    webhooks: any = {}
 
     website = "corynth.xyz";
     links = {
@@ -154,6 +152,14 @@ export default class Corynth extends Client {
         Object.keys(hooks).map(hook => {
             this.webhooks[hook] = this.Util.webhook(hooks[hook], true)
         });
+    }
+    private handleServer() {
+        this.server.get("/check-alive", (req, res) => {
+            res.status(200).send("OK")
+        });
+        this.server.get("*", (req, res) => {
+            res.destroy();
+        })
     }
     getCommand(name: string): Command | undefined {
         return this.commands.get(name) || this.commands.get(this.aliases.get(name));
