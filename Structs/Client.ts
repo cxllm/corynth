@@ -100,6 +100,7 @@ export default class Corynth extends Client {
         this.handleDatabase();
         this.handleEvents();
         this.handleHooks();
+        this.handleServer();
     }
     public async connect(): Promise<string> {
         return await this.login(this.config.token);
