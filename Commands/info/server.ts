@@ -41,7 +41,7 @@ export = class extends Command {
                         `Members: \`${guild.memberCount}\``,
                         `Channels:\`${(await guild.channels.fetch({ cache: false })).size}\``,
                         `Roles: \`${guild.roles.cache.size}\``,
-                        `Owner: \`${(await guild.members.fetch(guild.ownerID)).user.tag}\``,
+                        `Owner: <@${guild.ownerID}>`,
                         `[Icon URL](${icon})`
                     ].join("\n")
                 },
