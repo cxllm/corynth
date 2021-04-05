@@ -75,6 +75,7 @@ export = class extends Event {
         try {
             await command.run(msg);
         } catch (e) {
+            throw e;
             await msg.send({
                 embed: {
                     title: "Sorry, an error occured",
