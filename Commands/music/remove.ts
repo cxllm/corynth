@@ -6,7 +6,7 @@ export = class extends Command {
     constructor(client: Client) {
         super("remove", {
             description: "Remove a song from the queue.",
-            aliases: [],
+            aliases: ["rm"],
             usage: "<song number>"
         }, {
             owner: false,

@@ -12,6 +12,7 @@ export default class Track extends ShoukakuTrack {
         uri?: string;
         duration?: string;
     }
+    skipped?: boolean;
     constructor() {
         super()
     }

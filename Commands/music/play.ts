@@ -10,7 +10,7 @@ export = class extends Command {
     constructor(client: Client) {
         super("play", {
             description: "Play music to a voice channel.",
-            aliases: [],
+            aliases: ["p"],
             usage: "<song>"
         }, {
             owner: false,
@@ -155,7 +155,7 @@ export = class extends Command {
                 })
             }
             //@ts-ignore
-            await this.play(client, msg.guild, queue, song);
+            await this.play(client, msg.guild, queue);
             loadmsg.delete()
         } catch (e) {
             console.log(e)
@@ -176,7 +176,8 @@ export = class extends Command {
             bassboost: number
         },
         timedout?: boolean
-    }, song) {
+    }) {
+        let song = queue.songs[0];
         if (!song) {
             queue.player.disconnect();
             if (queue.timedout) return;
@@ -195,13 +196,14 @@ export = class extends Command {
                     queue.songs.shift();
                     break;
                 case 1:
+                    if (queue.songs[0].skipped) queue.songs.shift()
                     break;
                 case 2:
                     let song = queue.songs.shift();
-                    queue.songs.push(song)
+                    if (!song.skipped) queue.songs.push(song)
                     break;
             }
-            this.play(client, guild, queue, queue.songs[0]);
+            this.play(client, guild, queue);
         });
         if (!song.track) {
             let info = (await client.music.rest.resolve(song.info.uri, `youtube`));

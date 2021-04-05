@@ -21,7 +21,7 @@ export = class extends Command {
         if (!queue || !queue.player) return await msg.send(this.client.presets.nothing_playing);
         if (!msg.member.voice.channel || msg.member.voice.channel.id != queue.voice.id) return await msg.send(this.client.presets.not_queue_vc);
         if (!queue.player.paused) return await msg.send("The queue is already playing!")
-        await queue.player.setPaused(true)
+        await queue.player.setPaused(false)
         await msg.send(`▶ Queue resumed`)
     }
 }

@@ -35,9 +35,9 @@ export = class extends Command {
             if (!results) throw new Error("Not found")
         } catch (e) {
             console.log(e)
-            return await msg.reply(`${this.client.config.emojis.cross} Song not found`);
+            return await msg.send(`${this.client.config.emojis.cross} Song not found`);
         }
-        if (!results || !results.tracks || results.tracks.length <= 0) return await msg.reply(`${this.client.config.emojis.cross} Song not found`);
+        if (!results || !results.tracks || results.tracks.length <= 0) return await msg.send(`${this.client.config.emojis.cross} Song not found`);
         const songs = results.tracks.slice(0, 5);
         let i = 1;
         let embed = {

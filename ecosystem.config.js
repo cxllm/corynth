@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
         name: 'Corynth',
-        script: 'npm start',
+        script: './dist/index.js',
         autorestart: true,
         watch: false
     },

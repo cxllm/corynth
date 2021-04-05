@@ -20,6 +20,7 @@ export = class extends Command {
         let queue = this.client.queue.get(msg.guild.id)
         if (!queue || !queue.player) return await msg.send(this.client.presets.nothing_playing);
         if (!msg.member.voice.channel || msg.member.voice.channel.id != queue.voice.id) return await msg.send(this.client.presets.not_queue_vc);
+        queue.songs[0].skipped = true;
         await queue.player.stopTrack()
         await msg.send(`⏭ Song Skipped`)
     }
