@@ -39,7 +39,6 @@ export = class extends Command {
                         `ID: \`${guild.id}\``,
                         `Region: \`${info.guildRegions[guild.region]}\``,
                         `Members: \`${guild.memberCount}\``,
-                        `Channels:\`${(await guild.channels.fetch({ cache: false })).size}\``,
                         `Roles: \`${guild.roles.cache.size}\``,
                         `Owner: <@${guild.ownerID}>`,
                         `[Icon URL](${icon})`
