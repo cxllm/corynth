@@ -35,7 +35,7 @@ export default class Util {
                 authorization: this.client.config.botlists.infinity,
                 'Content-Type': 'application/json'
             },
-        }).catch(() => console.log("IBL failed")); //Infinity Bot List
+        }).catch((e) => { console.log("IBL failed"), console.log(e) }); //Infinity Bot List
         await this.client.web.post(`https://voidbots.net/api/auth/stats/${this.client.user.id}`, {
             server_count: this.client.guilds.cache.size
         }, {
