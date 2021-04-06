@@ -62,10 +62,10 @@ export = class extends Command {
             if (!results) throw new Error("Not found")
         } catch (e) {
             console.log(e)
-            return await msg.send(`${this.client.config.emojis.cross} Not found`)
+            return await msg.send(this.client.presets.not_found)
         }
         let song = results.tracks[0];
-        if (!song) return await msg.send(`${this.client.config.emojis.cross} Not found`);
+        if (!song) return await msg.send(this.client.presets.not_found);
         if (song.live) return await msg.send(`${this.client.config.emojis.cross} Livestreams can't be played due to issues with playing them.`);
         this.handle(this.client, msg, song, loadmsg, results.playlistName ? results : undefined);
     }

@@ -14,5 +14,6 @@ export = {
     filters: `[filter] has been set to \`[number]\`! Please give it a few seconds to apply.`,
     utc: `All dates are using the UTC/GMT timezone`,
     edit_image: `${emojis.loading} Editing image...`,
-    loading_image: `${emojis.loading} Loading image...`
+    loading_image: `${emojis.loading} Loading image...`,
+    not_found: `${emojis.cross} This song was not found. Please try again (if you know it's a real song and it fails a second time, it's most likely a rate limit on our end).`
 }
