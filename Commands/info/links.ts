@@ -6,7 +6,7 @@ export = class extends Command {
     constructor(client: Client) {
         super("links", {
             description: "View the bot's important links.",
-            aliases: ["support", "invite", "donate", "website", "github", "repo"],
+            aliases: ["support", "invite", "donate", "website"],
             usage: ""
         }, {
             owner: false,
@@ -20,6 +20,7 @@ export = class extends Command {
             embed: {
                 title: "Important Links",
                 description: Object.keys(this.client.links).map(link => `[${link.toProperCase()}](${this.client.links[link]})`).join(" | "),
+                color: this.client.config.colours.main
             }
         });
     }

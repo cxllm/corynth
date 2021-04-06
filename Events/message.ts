@@ -20,6 +20,18 @@ export = class extends Event {
             this.client.db.guilds.set(msg.guild.id, guild);
         }
         msg.db = guild;
+        if (msg.db.swear && !msg.member.permissions.has("MANAGE_GUILD")) {
+            for (const word of msg.db.swear) {
+                if (msg.content.toLowerCase().includes(word.toLowerCase())) {
+                    await msg.delete();
+                    const m = await msg.channel.send(`${msg.author}, you can't say that word here.`);
+                    setTimeout(async () => {
+                        await m.delete();
+                    }, 2000)
+                    return;
+                } continue;
+            }
+        }
         let prefix = guild.prefix;
         const mentionRegex = new RegExp(`^(<@!?${this.client.user.id}>)`);
         if (mentionRegex.test(msg.content.toLowerCase())) {

@@ -23,7 +23,7 @@ export default class Command {
         this.config = config;
     }
     async run(msg: Message): Promise<any> {
-
+        return msg;
     }
 }
 export type { info, config };
