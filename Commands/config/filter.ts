@@ -8,7 +8,7 @@ export = class extends Command {
         super("filter", {
             description: "Filter certain words from being sent. Bypassed by users with the Manage Server permission to allow for them to edit it",
             aliases: ["swear-filter"],
-            usage: "<on | defaults | view [uncensored] | add <custom words/defaults> | remove [words/defaults] | off>"
+            usage: "<on | defaults [uncensored] | view [uncensored] | add <custom words/defaults> | remove [words/defaults] | off>"
         }, {
             owner: false,
             args: 1,
@@ -25,6 +25,7 @@ export = class extends Command {
         const arg = msg.args[0].toLowerCase();
         let embed;
         let messages;
+        let uncensored: boolean;
         let words: string[];
         switch (arg) {
             case "on":
@@ -46,14 +47,19 @@ export = class extends Command {
                 await this.client.db.guilds.set(msg.db.id, msg.db);
                 return await msg.send(`${this.client.config.emojis.tick} Filter turned on ${option == "y" ? "and default words enabled" : ""}.`)
             case "defaults":
+                uncensored = msg.args[1]?.toLowerCase() == "uncensored"
                 embed = {
-                    description: `The default words are: \`${defaults_filtered.join(", ")}\``,
-                    color: this.client.config.colours.main
+                    title: "Default Words to Filter",
+                    description: `\`${(uncensored ? defaults : defaults_filtered).join(", ")}\``,
+                    color: this.client.config.colours.main,
+                    footer: {
+                        text: uncensored ? `` : `To view an uncensored version, run: ${msg.db.prefix}${this.name} defaults uncensored`
+                    }
                 }
                 return await msg.send({ embed })
             case "view":
                 if (!msg.db.swear) return await msg.send(`Please enable the filter before viewing it. You can do so by running \`${msg.db.prefix}${this.name} on\``)
-                const uncensored = msg.args[1]?.toLowerCase() == "uncensored"
+                uncensored = msg.args[1]?.toLowerCase() == "uncensored"
                 embed = {
                     title: "Currently Filtered Words",
                     color: this.client.config.colours.main,

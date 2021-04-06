@@ -24,7 +24,7 @@ export = class extends Event {
             for (const word of msg.db.swear) {
                 if (msg.content.toLowerCase().includes(word.toLowerCase())) {
                     await msg.delete();
-                    const m = await msg.channel.send(`${msg.author}, you can't say that word here.`);
+                    const m = await msg.channel.send(`${msg.author}, you can't say that here.`);
                     setTimeout(async () => {
                         await m.delete();
                     }, 2000)
