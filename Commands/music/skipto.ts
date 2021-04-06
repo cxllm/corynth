@@ -25,7 +25,7 @@ export = class extends Command {
         if (isNaN(songNumber)) return await msg.send("Invalid Number!");
         if (songNumber > queue.songs.length - 1 || songNumber < 1) return await msg.send(`Please enter a number within the queue length`);
         queue.songs.splice(0, songNumber - 1);
-        await msg.reply(`⏭️ Skipped to ${songNumber}`);
+        await msg.send(`⏭️ Skipped to ${songNumber}`);
         queue.player.stopTrack();
     }
 }

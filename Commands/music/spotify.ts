@@ -55,7 +55,7 @@ export = class extends Command {
                 break;
             case "lyrics":
                 const s = (await this.client.Util.getLyrics(`${song.title} ${song.artist}`))[0].result
-                if (!s) return await msg.reply("Sorry, Genius couldn't find that song.");
+                if (!s) return await msg.send("Sorry, Genius couldn't find that song.");
                 embed = {
                     title: `Spotify Lyrics: ${song.title} by ${song.artist}`,
                     description: `[Lyrics to ${song.title}](${s.url})`,

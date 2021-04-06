@@ -89,7 +89,7 @@ export = class extends Command {
             queue = client.queue.get(msg.guild.id);
         }
         if (song.info.length > 24 * 60 * 60 * 1000) {
-            return await msg.reply("The song can't be longer than 1 day!")
+            return await msg.send("The song can't be longer than 1 day!")
         }
         //@ts-ignore
         song.info.duration = this.client.Util.timestamp(song.info.length);
@@ -160,7 +160,7 @@ export = class extends Command {
         } catch (e) {
             console.log(e)
             client.queue.delete(msg.guild.id)
-            return await msg.reply(`${client.config.emojis.cross} An error occured and I couldn't join the voice channel.`)
+            return await msg.send(`${client.config.emojis.cross} An error occured and I couldn't join the voice channel.`)
         }
     }
     async play(client: Client, guild: Guild, queue: {

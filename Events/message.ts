@@ -55,14 +55,14 @@ export = class extends Event {
         if (command.config.args > msg.args.length) return await msg.send(this.client.UsageEmbed(command));
         if (command.config.permissions.user &&
             !msg.member.permissions.has(command.config.permissions.user)
-            && !this.client.owner(msg.author.id)) return await msg.reply({
+            && !this.client.owner(msg.author.id)) return await msg.send({
                 embed: {
                     description: `${this.client.config.emojis.cross} You don't have the required permission to run \`${command.name}\`, you need the \`${permissions[command.config.permissions.user]}\` permission.`,
                     color: this.client.config.colours.error
                 }
             });
         if (command.config.permissions.bot &&
-            !msg.guild.me.permissions.has(command.config.permissions.bot)) return await msg.reply({
+            !msg.guild.me.permissions.has(command.config.permissions.bot)) return await msg.send({
                 embed: {
                     description: `${this.client.config.emojis.cross} I don't have the required permission to run \`${command.name}\`, I need the \`${permissions[command.config.permissions.bot]}\` permission.`,
                     color: this.client.config.colours.error
@@ -79,7 +79,7 @@ export = class extends Event {
                 if (Date.now() > cooldown.end) {
                     user.cooldown.splice(user.cooldown.indexOf(cooldown), 1);
                 }
-                else return msg.reply(`The command ${command.name} has a ${command.config.cooldown} cooldown. Please wait ${this.client.Util.duration(cooldown.end - Date.now())} before using the command again.`)
+                else return msg.send(`The command ${command.name} has a ${command.config.cooldown} cooldown. Please wait ${this.client.Util.duration(cooldown.end - Date.now())} before using the command again.`)
             }
             user.cooldown.push({ name: command.name, end: Date.now() + ms(command.config.cooldown) });
             await this.client.db.users.set(msg.author.id, user);

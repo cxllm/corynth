@@ -20,7 +20,7 @@ export = class extends Command {
     }
     async run(msg: Message) {
         let count = parseInt(msg.args[0]);
-        if (isNaN(count) || 0 >= count || 100 < count) return await msg.reply("Please enter a valid number between 1 and 100");
+        if (isNaN(count) || 0 >= count || 100 < count) return await msg.send("Please enter a valid number between 1 and 100");
         await msg.delete()
         //@ts-ignore
         let purged = (await msg.channel.bulkDelete(count, true)).size

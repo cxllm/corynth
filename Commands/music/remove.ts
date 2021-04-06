@@ -25,6 +25,6 @@ export = class extends Command {
         if (isNaN(songNumber)) return await msg.send("Invalid Number!");
         if (songNumber > queue.songs.length - 1 || songNumber < 1) return await msg.send(`Please enter a number within the queue length`);
         delete queue.songs[songNumber];
-        await msg.reply(`🗑️ Removed song ${songNumber}`)
+        await msg.send(`🗑️ Removed song ${songNumber}`)
     }
 }

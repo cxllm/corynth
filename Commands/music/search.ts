@@ -69,7 +69,7 @@ export = class extends Command {
             return await msg.send('Cancelled');
         }
         const song = results.tracks[parseInt(response.first().content) - 1];
-        if (song.info.isStream) return await msg.reply(`${this.client.config.emojis.cross} Livestreams can't be played at the moment`);
+        if (song.info.isStream) return await msg.send(`${this.client.config.emojis.cross} Livestreams can't be played at the moment`);
         //@ts-ignore
         this.client.commands.get("play").handle(this.client, msg, song, loadmsg);
     }

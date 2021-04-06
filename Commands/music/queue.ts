@@ -18,7 +18,7 @@ export = class extends Command {
     }
     async run(msg: Message) {
         let queue = this.client.queue.get(msg.guild.id);
-        if (!queue || !queue.player) return await msg.reply(this.client.presets.nothing_playing);
+        if (!queue || !queue.player) return await msg.send(this.client.presets.nothing_playing);
         let song = queue.songs[0]
         let i = 0;
         let embed = {
@@ -44,6 +44,6 @@ export = class extends Command {
                 }).slice(1, 6), queue.songs.length > 6 ? `And ${queue.songs.length - 6} more...` : ""].join("\n")
             })
         }
-        await msg.reply({ embed });
+        await msg.send({ embed });
     }
 }
