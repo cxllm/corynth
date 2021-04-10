@@ -74,7 +74,7 @@ export = class extends Command {
                 await msg.send(`${this.client.config.emojis.tick} Join message set!`)
                 break;
             case "off":
-                msg.db.join = {};
+                delete msg.db.join;
                 await this.client.db.guilds.set(msg.guild.id, msg.db);
                 await msg.send(`${this.client.config.emojis.tick} Join message turned off`)
                 break;

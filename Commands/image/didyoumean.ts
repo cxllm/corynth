@@ -40,7 +40,7 @@ export = class extends Command {
                 }]
             });
         } catch {
-            await msg.reply(this.client.presets.chars_inv)
+            await msg.send(this.client.presets.chars_inv)
         }
     }
 }

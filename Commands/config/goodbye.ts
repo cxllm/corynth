@@ -73,7 +73,7 @@ export = class extends Command {
                 await msg.send(`${this.client.config.emojis.tick} Leave message set!`)
                 break;
             case "off":
-                msg.db.leave = {};
+                delete msg.db.leave;
                 await this.client.db.guilds.set(msg.guild.id, msg.db);
                 await msg.send(`${this.client.config.emojis.tick} Leave message turned off`)
                 break;

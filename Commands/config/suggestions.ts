@@ -53,9 +53,9 @@ export = class extends Command {
                 await msg.send(`${this.client.config.emojis.tick} Suggestions channel set!`)
                 break;
             case "off":
-                msg.db.suggestions = null;
+                delete msg.db.suggestions;
                 await this.client.db.guilds.set(msg.guild.id, msg.db);
-                await msg.send(`${this.client.config.emojis.tick} Suggestions turned off`)
+                await msg.send(`${this.client.config.emojis.tick} Suggestions turned off, you may wish to remove the webhook.`)
                 break;
             default:
                 await msg.send(this.client.UsageEmbed(this));

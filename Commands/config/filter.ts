@@ -1,4 +1,3 @@
-import { Role } from "discord.js";
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import Message from "../../Structs/Message";
@@ -29,6 +28,7 @@ export = class extends Command {
         let words: string[];
         switch (arg) {
             case "on":
+                if (msg.db.swear) return await msg.send("The filter is already activated")
                 embed = {
                     description: `Would you like to add the default words (\`${defaults_filtered.join(", ")}\`)? [y/n] (default: yes)`,
                     color: this.client.config.colours.main
@@ -95,7 +95,7 @@ export = class extends Command {
                     word = word.toLowerCase();
                     let index = msg.db.swear.indexOf(word)
                     if (index < 0) return;
-                    delete msg.db[index];
+                    delete msg.db.swear[index];
                 });
                 await this.client.db.guilds.set(msg.db.id, msg.db);
                 return await msg.send({
@@ -106,7 +106,8 @@ export = class extends Command {
                     }
                 })
             case "off":
-                msg.db.swear = null;
+                if (!msg.db.swear) return await msg.send("The filter is not activated")
+                delete msg.db.swear;
                 await this.client.db.guilds.set(msg.db.id, msg.db);
                 return await msg.send(`${this.client.config.emojis.tick} Filter turned off.`)
         }
