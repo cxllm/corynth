@@ -38,6 +38,7 @@ export = class extends Command {
                         color: this.client.config.colours.main
                     }
                 ],
+                //@ts-ignore
                 username: msg.author.tag,
                 avatarURL: msg.author.avatarURL()
             });
