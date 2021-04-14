@@ -2,7 +2,6 @@ import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import Message from "../../Structs/Message";
 import { version } from "discord.js-light";
-import { promises as fs } from "fs";
 import os from "os";
 export = class extends Command {
     private client: Client;
@@ -20,13 +19,10 @@ export = class extends Command {
         this.client = client;
     }
     async run(msg: Message) {
-
-        const host = (await fs.readFile("/etc/os-release"))
         const m = await msg.send("Loading statistics, please wait...");
         const latency = {
             db: {
                 live: await this.client.Util.dbLatency(msg, false),
-                //cache: this.client.Util.dbLatency(msg, true)
             },
             msg: {
                 create: m.createdTimestamp - msg.createdTimestamp,
@@ -54,8 +50,8 @@ export = class extends Command {
                 value: this.client.music ? [`Active Players: ${stats.playingPlayers}`, `Memory Usage: ${this.client.Util.memory(stats.memory.used)} MB`, `CPU Usage: ${Math.round(stats.cpu.lavalinkLoad * 100) / 100}%`, `Uptime: ${this.client.Util.timestamp(stats.uptime)}`] : "Currently Unavailable",
             },
             {
-                name: "Bot Usage",
-                value: [`Memory: ${this.client.Util.memory(process.memoryUsage().heapUsed)}MB/${Math.round(this.client.Util.memory(os.totalmem(), "gb"))}GB (${Math.round(process.memoryUsage().heapUsed / os.totalmem() * 1000) / 10}%)`, `Uptime: ${this.client.Util.timestamp(this.client.uptime)}`],
+                name: "Bot Stats",
+                value: [`Memory Usage: ${this.client.Util.memory(process.memoryUsage().heapUsed)}MB/${Math.round(this.client.Util.memory(os.totalmem(), "gb"))}GB (${Math.round(process.memoryUsage().heapUsed / os.totalmem() * 1000) / 10}%)`, `Uptime: ${this.client.Util.timestamp(this.client.uptime)}`],
             },
             {
                 name: "System Stats",

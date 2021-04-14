@@ -410,14 +410,13 @@
   "resolved" "https://registry.npmjs.org/detect-libc/-/detect-libc-1.0.3.tgz"
   "version" "1.0.3"
 
-"discord.js-light@git://github.com/timotejroiko/discord.js-light.git#master":
+"discord.js-light@github:timotejroiko/discord.js-light#master":
   "resolved" "git+ssh://git@github.com/timotejroiko/discord.js-light.git#ef57dea660c9e02bb3375554d82a6145081b4ec8"
   dependencies:
     "discord.js" "github:discordjs/discord.js#d744e51c1bdb4c7a26c0faeea1f2f45baaf5fd3c"
 
-"discord.js@git://github.com/discordjs/discord.js.git#master":
-  "resolved" "git+ssh://git@github.com/discordjs/discord.js.git#e848d25c86fcd4a11a7879f7dcd55d0bc93faa6d"
-  "version" "12.5.0"
+"discord.js@github:discordjs/discord.js#d744e51c1bdb4c7a26c0faeea1f2f45baaf5fd3c":
+  "resolved" "git+ssh://git@github.com/discordjs/discord.js.git#d744e51c1bdb4c7a26c0faeea1f2f45baaf5fd3c"
   dependencies:
     "@discordjs/collection" "^0.1.6"
     "@discordjs/form-data" "^3.0.1"
@@ -427,8 +426,9 @@
     "tweetnacl" "^1.0.3"
     "ws" "^7.3.1"
 
-"discord.js@github:discordjs/discord.js#d744e51c1bdb4c7a26c0faeea1f2f45baaf5fd3c":
-  "resolved" "git+ssh://git@github.com/discordjs/discord.js.git#d744e51c1bdb4c7a26c0faeea1f2f45baaf5fd3c"
+"discord.js@github:discordjs/discord.js#master":
+  "resolved" "git+ssh://git@github.com/discordjs/discord.js.git#eb43ce4d4fb4d634696c5b0f026174dc0e435fe3"
+  "version" "12.5.0"
   dependencies:
     "@discordjs/collection" "^0.1.6"
     "@discordjs/form-data" "^3.0.1"

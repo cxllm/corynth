@@ -1,6 +1,13 @@
 //Modules
-import { Client, Collection, DMChannel, NewsChannel, TextChannel, VoiceChannel, WebhookClient } from "discord.js-light";
-import axios from "axios"
+import {
+  Client,
+  Collection,
+  DMChannel,
+  NewsChannel,
+  TextChannel,
+  VoiceChannel,
+} from "discord.js-light";
+import axios from "axios";
 import { readdirSync } from "fs";
 import { join } from "path";
 import { Db, MongoClient } from "mongodb";
@@ -9,7 +16,7 @@ const canvacord = require("canvacord"); //Module doesn't include typings
 //Files
 import config, { Config } from "../config";
 import presets = require("../presets");
-import Logger from "./Logger"
+import Logger from "./Logger";
 import Database from "./Database";
 import Util from "./Util";
 import UsageEmbed from "./UsageEmbed";
@@ -22,150 +29,162 @@ import Track from "./Track";
 import express from "express";
 
 export default class Corynth extends Client {
-    //Files
-    config: Config = config;
-    presets = presets;
-    UsageEmbed = UsageEmbed;
+  //Files
+  config: Config = config;
+  presets = presets;
+  UsageEmbed = UsageEmbed;
 
-    //Modules
-    web = axios;
-    logs = new Logger();
-    Util = new Util(this);
-    canva = canvacord.Canvas
-    server = express();
+  //Modules
+  web = axios;
+  logs = new Logger();
+  Util = new Util(this);
+  canva = canvacord.Canvas;
+  server = express();
 
-    webhooks: any = {}
+  webhooks: any = {};
 
-    website = "corynth.xyz";
-    links = {
-        "invite link": "",
-        "support server": "https://discord.gg/6kFbxxkX5p",
-        "website": `https://${this.website}`,
-        "donate": "https://paypal.me/cx11m"
+  website = "corynth.xyz";
+  links = {
+    "invite link": "",
+    "support server": "https://discord.gg/6kFbxxkX5p",
+    website: `https://${this.website}`,
+    donate: "https://paypal.me/cx11m",
+  };
+  //Collections
+  commands: Collection<string, Command> = new Collection();
+  events: Collection<string, Event> = new Collection();
+  aliases: Collection<string, string> = new Collection();
+  queue: Collection<
+    string,
+    {
+      text: TextChannel | DMChannel | NewsChannel;
+      voice: VoiceChannel;
+      player: ShoukakuPlayer;
+      songs: Track[];
+      loop: number;
+      npmsg: Message;
+      thumbnail: string;
+      filters: {
+        volume?: number;
+        bassboost?: number;
+        equalizer?: Array<any>;
+        karaoke?: {
+          level: number;
+        };
+        timescale?: {
+          pitch?: number;
+          speed?: number;
+        };
+      };
+      timedout?: boolean;
     }
-    //Collections
-    commands: Collection<string, Command> = new Collection();
-    events: Collection<string, Event> = new Collection();
-    aliases: Collection<string, string> = new Collection();
-    queue: Collection<string, {
-        text: TextChannel | DMChannel | NewsChannel,
-        voice: VoiceChannel,
-        player: ShoukakuPlayer,
-        songs: Track[],
-        loop: number,
-        npmsg: Message,
-        thumbnail: string,
-        filters: {
-            volume?: number,
-            bassboost?: number,
-            equalizer?: Array<any>,
-            karaoke?: {
-                level: number
-            },
-            timescale?: {
-                pitch?: number,
-                speed?: number
-            }
-        },
-        timedout?: boolean
-    }> = new Collection();
+  > = new Collection();
 
-    categories: string[];
+  categories: string[];
 
-    //Database stuff
-    mongo = new MongoClient(this.config.mongo, { useUnifiedTopology: true, keepAlive: true, useNewUrlParser: true });
-    database: Db;
-    db = {
-        guilds: new Database("Guilds", "id", true),
-        users: new Database("Users", "id", false)
-    }
-    music: ShoukakuSocket;
+  //Database stuff
+  mongo = new MongoClient(this.config.mongo, {
+    useUnifiedTopology: true,
+    keepAlive: true,
+    useNewUrlParser: true,
+  });
+  database: Db;
+  db = {
+    guilds: new Database("Guilds", "id", true),
+    users: new Database("Users", "id", false),
+  };
+  music: ShoukakuSocket;
 
-    public constructor() {
-        super(config.client);
-        const shoukaku = new Shoukaku(this, this.config.nodes, {
-            moveOnDisconnect: true,
-            resumable: false,
-            resumableTimeout: 30,
-            reconnectTries: 10,
-            restTimeout: 10000
+  public constructor() {
+    super(config.client);
+    const shoukaku = new Shoukaku(this, this.config.nodes, {
+      moveOnDisconnect: true,
+      resumable: false,
+      resumableTimeout: 30,
+      reconnectTries: 10,
+      restTimeout: 10000,
+    });
+    shoukaku.on("ready", async (name) => {
+      this.music = shoukaku.getNode("main");
+      this.logs.connection(`Node "${name}" has connected`);
+    });
+    shoukaku.on("error", (name, error) =>
+      this.logs.error(`Node ${name} encountered an error: ${error}`)
+    );
+    this.handleCommands();
+    this.handleDatabase();
+    this.handleEvents();
+    this.handleHooks();
+    this.handleServer();
+  }
+  public async connect(): Promise<string> {
+    return await this.login(this.config.token);
+  }
+  public handleCommands(): void {
+    this.categories = readdirSync(join(__dirname, "..", "Commands"));
+    this.categories.map((cat) =>
+      readdirSync(join(__dirname, "..", "Commands", cat)).map((file) => {
+        delete require.cache[require.resolve(`../Commands/${cat}/${file}`)];
+        const cmdConstructor = require(`../Commands/${cat}/${file}`);
+        const cmd: Command = new cmdConstructor(this);
+        cmd.info.category = cat;
+        if (this.commands.has(cmd.name)) {
+          this.commands.delete(cmd.name);
+          cmd.info.aliases.map((alias) => this.aliases.delete(alias));
+        }
+        this.commands.set(cmd.name, cmd);
+        cmd.info.aliases.map((alias) => this.aliases.set(alias, cmd.name));
+      })
+    );
+  }
+
+  private async handleDatabase(): Promise<void> {
+    await this.mongo.connect();
+    this.database = this.mongo.db(this.config.db);
+    if ((await this.database.command({ ping: 1 })).ok === 1)
+      this.logs.connection("MongoDB has connected");
+    Object.keys(this.db)
+      .filter((k) => k != "mongo")
+      .map((k) => {
+        this.db[k].init(this.database);
+      });
+  }
+
+  public handleEvents(): void {
+    readdirSync(join(__dirname, "..", "Events")).map((file) => {
+      delete require.cache[require.resolve(`../Events/${file}`)];
+      const eventConstructor = require(`../Events/${file}`);
+      const event: Event = new eventConstructor(this);
+      if (this.events.has(event.name)) {
+        this.events.delete(event.name);
+        this.events.set(event.name, event);
+      } else {
+        this.events.set(event.name, event);
+        this[event.method](event.name, async (...args) => {
+          this.events.get(event.name).run(...args);
         });
-        shoukaku.on('ready', async (name) => {
-            this.music = shoukaku.getNode("main");
-            this.logs.connection(`Node "${name}" has connected`)
-        });
-        shoukaku.on('error', (name, error) => this.logs.error(`Node ${name} encountered an error: ${error}`));
-        this.handleCommands();
-        this.handleDatabase();
-        this.handleEvents();
-        this.handleHooks();
-        this.handleServer();
-    }
-    public async connect(): Promise<string> {
-        return await this.login(this.config.token);
-    }
-    public handleCommands(): void {
-        this.categories = readdirSync(join(__dirname, "..", "Commands"));
-        this.categories.map(cat =>
-            readdirSync(join(__dirname, "..", "Commands", cat)).map(file => {
-                delete require.cache[require.resolve(`../Commands/${cat}/${file}`)]
-                const cmdConstructor = require(`../Commands/${cat}/${file}`);
-                const cmd: Command = new cmdConstructor(this);
-                cmd.info.category = cat;
-                if (this.commands.has(cmd.name)) {
-                    this.commands.delete(cmd.name);
-                    cmd.info.aliases.map(alias => this.aliases.delete(alias))
-                }
-                this.commands.set(cmd.name, cmd);
-                cmd.info.aliases.map(alias => this.aliases.set(alias, cmd.name));
-            })
-        )
-    }
+      }
+    });
+  }
+  public handleHooks() {
+    const hooks = this.config.webhooks;
+    Object.keys(hooks).map((hook) => {
+      this.webhooks[hook] = this.Util.webhook(hooks[hook], true);
+    });
+  }
+  private handleServer() {
+    this.server.get("/check-alive", (req, res) => {
+      res.status(200).send("OK");
+    });
+    this.server.get("*", (req, res) => {
+      res.destroy();
+    });
+  }
+  getCommand(name: string): Command | undefined {
+    return this.commands.get(name) || this.commands.get(this.aliases.get(name));
+  }
 
-    private async handleDatabase(): Promise<void> {
-        await this.mongo.connect();
-        this.database = this.mongo.db(this.config.db);
-        if ((await this.database.command({ ping: 1 })).ok === 1) this.logs.connection("MongoDB has connected");
-        Object.keys(this.db).filter(k => k != "mongo").map(k => {
-            this.db[k].init(this.database);
-        });
-    }
-
-    public handleEvents(): void {
-        readdirSync(join(__dirname, "..", "Events")).map(file => {
-            delete require.cache[require.resolve(`../Events/${file}`)]
-            const eventConstructor = require(`../Events/${file}`);
-            const event: Event = new eventConstructor(this);
-            if (this.events.has(event.name)) {
-                this.events.delete(event.name);
-                this.events.set(event.name, event)
-            } else {
-                this.events.set(event.name, event)
-                this[event.method](event.name, async (...args) => {
-                    this.events.get(event.name).run(...args);
-                })
-            }
-        })
-    }
-    public handleHooks() {
-        const hooks = this.config.webhooks;
-        Object.keys(hooks).map(hook => {
-            this.webhooks[hook] = this.Util.webhook(hooks[hook], true)
-        });
-    }
-    private handleServer() {
-        this.server.get("/check-alive", (req, res) => {
-            res.status(200).send("OK")
-        });
-        this.server.get("*", (req, res) => {
-            res.destroy();
-        })
-    }
-    getCommand(name: string): Command | undefined {
-        return this.commands.get(name) || this.commands.get(this.aliases.get(name));
-    }
-
-    owner(user: string): boolean {
-        return this.config.owners.includes(user);
-    }
+  owner(user: string): boolean {
+    return this.config.owners.includes(user);
+  }
 }
