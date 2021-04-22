@@ -17,7 +17,7 @@ export = class extends Command {
         this.client = client;
     }
     async run(msg: Message) {
-        const strings = [this.client.config.token, this.client.config.mongo, ...Object.keys(this.client.config.webhooks).map(w => this.client.config.webhooks[w]), this.client.music.rest?.url];
+        const strings = [this.client.config.token, this.client.config.mongo, ...Object.keys(this.client.config.webhooks).map(w => this.client.config.webhooks[w]), /*this.client.music.rest?.url*/];
         strings.map(string => {
             strings.push(string.toLowerCase(), string.toUpperCase(), string.toProperCase())
         });

@@ -66,6 +66,12 @@ export = class extends Event {
                     color: this.client.config.colours.error
                 }
             })
+        if (command.info.category === "music" && !["lyrics", "spotify"].includes(command.name)) return await msg.send({
+            embed: {
+                description: "Unfortunately, music commands are currently disabled due to issues with Lavalink. We apologise for any inconvenience",
+                color: this.client.config.colours.error
+            }
+        })
         if (command.config.cooldown && !this.client.owner(msg.author.id)) {
             let user = await this.client.db.users.get(msg.author.id);
             if (!user) user = {

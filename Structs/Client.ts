@@ -97,7 +97,7 @@ export default class Corynth extends Client {
 
   public constructor() {
     super(config.client);
-    const shoukaku = new Shoukaku(this, this.config.nodes, {
+    /*const shoukaku = new Shoukaku(this, this.config.nodes, {
       moveOnDisconnect: true,
       resumable: false,
       resumableTimeout: 30,
@@ -110,7 +110,7 @@ export default class Corynth extends Client {
     });
     shoukaku.on("error", (name, error) =>
       this.logs.error(`Node ${name} encountered an error: ${error}`)
-    );
+    );*/
     this.handleCommands();
     this.handleDatabase();
     this.handleEvents();
