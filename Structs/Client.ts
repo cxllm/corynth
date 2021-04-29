@@ -180,6 +180,11 @@ export default class Corynth extends Client {
       res.destroy();
     });
   }
+  getVersion() {
+    delete require.cache[require.resolve(process.cwd() + "/package.json")];
+    const { version } = require(process.cwd() + "/package.json");
+    return version;
+  }
   getCommand(name: string): Command | undefined {
     return this.commands.get(name) || this.commands.get(this.aliases.get(name));
   }
