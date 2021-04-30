@@ -5,7 +5,6 @@ const client = new Client();
 //Connect to discord
 client.connect();
 //Declare the toProperCase method globally
-
 declare global {
   interface String {
     toProperCase(): string;

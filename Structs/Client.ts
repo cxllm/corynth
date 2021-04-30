@@ -49,6 +49,7 @@ export default class Corynth extends Client {
     "support server": "https://discord.gg/6kFbxxkX5p",
     website: `https://${this.website}`,
     donate: "https://paypal.me/cx11m",
+    "source code": "https://github.com/cxllm/corynth",
   };
   //Collections
   commands: Collection<string, Command> = new Collection();

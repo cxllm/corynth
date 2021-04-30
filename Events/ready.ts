@@ -7,7 +7,7 @@ export = class extends Event {
   }
   async run() {
     this.client.logs.connection(`Client Connected as ${this.client.user.tag}`);
-    const activity = {
+    let activity = {
       name: `@${this.client.user.username} | v${this.client.getVersion()}`,
     };
     this.client.links[
@@ -39,7 +39,13 @@ export = class extends Event {
       this.client.db.guilds.clearCache();
     }, 10 * 60 * 1000);
     setTimeout(async () => {
-      this.client.user.setPresence({ activities: [activity], status: "idle" });
+      activity = {
+        name: `@${this.client.user.username} | v${this.client.getVersion()}`,
+      };
+      this.client.user.setPresence({
+        activities: [activity],
+        status: "idle",
+      });
       await this.client.Util.updateCovid19Info();
       if (this.client.user.id !== "692779290399604766")
         await this.client.Util.botLists();
