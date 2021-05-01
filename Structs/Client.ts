@@ -174,14 +174,14 @@ export default class Corynth extends Client {
     });
   }
   private handleServer() {
-    this.server.get("/check-alive", (req, res) => {
+    this.server.get("/check-alive", (_, res) => {
       res.status(200).send("OK");
     });
-    this.server.get("*", (req, res) => {
+    this.server.get("*", (_, res) => {
       res.destroy();
     });
   }
-  getVersion() {
+  getVersion(): string {
     delete require.cache[require.resolve(process.cwd() + "/package.json")];
     const { version } = require(process.cwd() + "/package.json");
     return version;

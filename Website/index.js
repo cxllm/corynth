@@ -3,7 +3,7 @@ const app = express();
 const { join } = require("path");
 const links = {
   invite:
-    "https://discord.com/api/oauth2/authorize?client_id=660818351638970370&permissions=8&scope=bot",
+    "https://discord.com/oauth2/authorize?client_id=660818351638970370&permissions=8&scope=applications.commands%20bot",
   support: "https://discord.gg/6kFbxxkX5p",
   donate: "https://paypal.me/cx11m",
   github: "https://github.com/corynth/corynth",

@@ -12,7 +12,7 @@ export = class extends Event {
     };
     this.client.links[
       "invite link"
-    ] = `https://discord.com/oauth2/authorize?client_id=${this.client.user.id}&permissions=8&scope=bot`;
+    ] = `https://discord.com/oauth2/authorize?client_id=${this.client.user.id}&permissions=8&scope=applications.commands%20bot`;
     this.client.user.setPresence({ activities: [activity], status: "idle" });
     this.client.Util.updateCovid19Info();
     this.client.server.listen(this.client.config.ping_server, () =>

@@ -87,6 +87,7 @@ export = class extends Command {
               ) / 10
             }%)`,
             `Uptime: ${this.client.Util.timestamp(this.client.uptime)}`,
+            `Version: v${this.client.getVersion()}`,
           ],
         },
         {
