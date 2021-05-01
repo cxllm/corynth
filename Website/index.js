@@ -6,7 +6,7 @@ const links = {
     "https://discord.com/oauth2/authorize?client_id=660818351638970370&permissions=8&scope=applications.commands%20bot",
   support: "https://discord.gg/6kFbxxkX5p",
   donate: "https://paypal.me/cx11m",
-  github: "https://github.com/corynth/corynth",
+  github: "https://github.com/cxllm/corynth",
 };
 const { server } = require("../dist/config.js").default;
 app.set("view engine", "ejs");

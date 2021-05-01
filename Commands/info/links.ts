@@ -23,6 +23,7 @@ export = class extends Command {
     await msg.send({
       embed: {
         title: "Important Links",
+        thumbnail: { url: this.client.user.avatarURL({ format: "png" }) },
         description: Object.keys(this.client.links)
           .map((link) => `[${link.toProperCase()}](${this.client.links[link]})`)
           .join(" | "),

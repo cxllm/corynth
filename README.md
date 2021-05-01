@@ -9,4 +9,4 @@ The point of this being open sourced is that you guys are able to help out with 
 
 ## Links
 
-[Website](https://corynth.xyz) | [Server](https://corynth.xyz/support) | [Invite](https://corynth.xyz/invite)
+[Website](https://corynth.xyz) | [Server](https://discord.gg/6kFbxxkX5p) | [Invite](https://discord.com/oauth2/authorize?client_id=660818351638970370&permissions=8&scope=applications.commands%20bot) | [Donations](https://paypal.me/cx11m)
