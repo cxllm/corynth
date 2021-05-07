@@ -21,7 +21,7 @@ export = class extends Command {
   }
   async run(msg: Message) {
     const m = await msg.send("Testing Latency");
-    const latency = m.createdTimestamp - msg.createdTimestamp;
+    const latency = m.createdTimestamp | m.editedTimestamp - msg.createdTimestamp | msg.editedTimestamp;
     await msg.send("", {
       embed: {
         title: "Bot Latency",

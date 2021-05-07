@@ -1,8 +1,10 @@
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import Message from "../../Structs/Message";
+
 export = class extends Command {
     private client: Client;
+
     constructor(client: Client) {
         super("bassboost", {
             description: "Change the bassboost of the player.",
@@ -17,6 +19,7 @@ export = class extends Command {
         })
         this.client = client;
     }
+
     async run(msg: Message) {
         let queue = this.client.queue.get(msg.guild.id)
         if (!queue || !queue.player) return await msg.send(this.client.presets.nothing_playing);
