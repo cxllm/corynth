@@ -20,8 +20,7 @@ export = class extends Command {
     this.client = client;
   }
   async run(msg: Message) {
-    if (!msg.guild.icon)
-      return await msg.send("This server does not have an icon!");
+    if (!msg.guild.icon) return await msg.send("This server does not have an icon!");
     const url = msg.guild.iconURL({ dynamic: true, size: 2048, format: "png" });
     const avatar = {
       png: msg.guild.iconURL({ format: "png" }),
