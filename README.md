@@ -12,8 +12,8 @@ or large chunks, as I've dedicated a lot of time and effort to this project
 
 ## Beta Branch
 
-Here I will be testing new features in Corynth, for the stable branch, please
-go [here](https://github.com/cxllm/corynth)
+Here I will be testing new features in Corynth, and you can see the code and
+contribute [here](https://github.com/cxllm/corynth/tree/beta)
 
 ## Links
 
