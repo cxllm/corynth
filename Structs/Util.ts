@@ -238,6 +238,9 @@ export default class Util {
                     member.displayName?.toLowerCase().includes(query.toLowerCase())
             ) ||
             ctx.member;
+        if (out.id == this.client.user.id) {
+            out = ctx.guild.me
+        }
         if (
             (out === ctx.member && [ctx.author.id, ctx.author.tag.toLowerCase()].includes(query.toLowerCase())) ||
             out != ctx.member
@@ -252,6 +255,9 @@ export default class Util {
                     member.displayName?.toLowerCase().includes(query.toLowerCase())
             ) ||
             ctx.member;
+        if (out.id == this.client.user.id) {
+            out = ctx.guild.me
+        }
         ctx.guild.members.fetch(out.id, cache ?? true);
         return out;
     }
