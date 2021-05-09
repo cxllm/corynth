@@ -25,7 +25,7 @@ export = class extends Command {
 		let { data } = await this.client.web.get(
 			`https://some-random-api.ml/img/birb`
 		);
-		await msg.reply({
+		await msg.editReply({
 			files: [
 				{
 					attachment: data.link,
