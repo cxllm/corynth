@@ -419,7 +419,7 @@ export default class Util {
 		let commands = await (this.client.Util.checkTesting()
 			? this.client.guilds.cache.get("764523835256864838").commands.fetch()
 			: this.client.application.commands.fetch());
-		console.log(commands.find((cmd) => cmd.name == "avatar"));
+		console.log(`New Commands`);
 		this.client.slashes
 			.filter((cmd) => !commands.find((c) => cmd.name == c.name))
 			.map(async (cmd) => {
@@ -429,6 +429,20 @@ export default class Util {
 					await server.commands.create(cmd.info);
 				} else {
 					await this.client.application.commands.create(cmd.info);
+				}
+			});
+		console.log();
+		console.log(`Updated Commands`);
+		this.client.slashes
+			.filter((cmd) => !!commands.find((c) => cmd.name == c.name))
+			.map(async (cmd) => {
+				console.log(cmd.name);
+				let command = commands.find((c) => cmd.name == c.name);
+				if (this.client.Util.checkTesting()) {
+					let server = this.client.guilds.cache.get("764523835256864838");
+					await server.commands.edit(command.id, cmd.info);
+				} else {
+					await this.client.application.commands.edit(command.id, cmd.info);
 				}
 			});
 	}

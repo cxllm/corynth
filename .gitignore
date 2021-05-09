@@ -5,6 +5,6 @@ yarn-error.log
 config.js
 dist
 config.backup.ts
-SlashCommands.ts
 package-lock.json
 .idea
+Old-Commands
