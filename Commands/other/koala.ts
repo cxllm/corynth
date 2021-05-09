@@ -2,36 +2,36 @@ import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import CommandInteraction from "../../Structs/CommandInteraction";
 export = class extends Command {
-	private client: Client;
+  private client: Client;
 
-	constructor(client: Client) {
-		super(
-			{
-				name: "koala",
-				description: "See an image of a koala",
-				defaultPermission: true
-			},
-			{
-				owner: false,
-				permissions: {},
-				slash: true
-			}
-		);
-		this.client = client;
-	}
+  constructor(client: Client) {
+    super(
+      {
+        name: "koala",
+        description: "See an image of a koala",
+        defaultPermission: true
+      },
+      {
+        owner: false,
+        permissions: {},
+        slash: true
+      }
+    );
+    this.client = client;
+  }
 
-	async run(msg: CommandInteraction) {
-		await msg.defer();
-		let { data } = await this.client.web.get(
-			`https://some-random-api.ml/img/koala`
-		);
-		await msg.editReply({
-			files: [
-				{
-					attachment: data.link,
-					name: "koala.gif"
-				}
-			]
-		});
-	}
+  async run(msg: CommandInteraction) {
+    await msg.defer();
+    let { data } = await this.client.web.get(
+      `https://some-random-api.ml/img/koala`
+    );
+    await msg.editReply({
+      files: [
+        {
+          attachment: data.link,
+          name: "koala.gif"
+        }
+      ]
+    });
+  }
 };

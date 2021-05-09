@@ -4,7 +4,7 @@ export default {
     LOW: "Low Verification (Verified Email)",
     MEDIUM: "Medium Verification (5 Minute Account Age)",
     HIGH: "High Verification (10 Minute Waiting Period)",
-    VERY_HIGH: "Very High Verification (Verified Phone Number)",
+    VERY_HIGH: "Very High Verification (Verified Phone Number)"
   },
   guildRegions: {
     brazil: "Brazil",
@@ -22,7 +22,7 @@ export default {
     russia: "Russia",
     southafrica: "South Africa",
     japan: "Japan",
-    india: "India",
+    india: "India"
   },
   guildFeatures: {
     ANIMATED_ICON: "Animated Icon",
@@ -40,6 +40,6 @@ export default {
     VANITY_URL: "Vanity URL (discord.gg/{code})",
     VERIFIED: "Verified",
     VIP_REGIONS: "VIP Regions",
-    WELCOME_SCREEN_ENABLED: "Welcome Splash Screen",
-  },
+    WELCOME_SCREEN_ENABLED: "Welcome Splash Screen"
+  }
 };

@@ -30,5 +30,5 @@ export default {
   MANAGE_ROLES: "Manage Roles",
   MANAGE_WEBHOOKS: "Manage Webhooks",
   MANAGE_EMOJIS: "Manage Emojis",
-  REQUEST_TO_SPEAK: "Request To Speak In Stage Channels",
+  REQUEST_TO_SPEAK: "Request To Speak In Stage Channels"
 };
