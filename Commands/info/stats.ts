@@ -17,8 +17,7 @@ export = class extends Command {
       {
         owner: false,
         permissions: {},
-        slash: true,
-        guild: true
+        slash: true
       }
     );
     this.client = client;
