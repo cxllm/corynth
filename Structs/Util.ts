@@ -445,5 +445,8 @@ export default class Util {
           await this.client.application.commands.edit(command.id, cmd.info);
         }
       });
+    commands.map((cmd) => {
+      if (!this.client.slashes.has(cmd.name)) return commands.delete(cmd.id);
+    });
   }
 }
