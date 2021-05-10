@@ -34,7 +34,7 @@ export = class extends Command {
     //@ts-ignore
     if (text.length > 500)
       return await msg.editReply(this.client.presets.less_than_500);
-    let data = this.client.canva.changemymind(text);
+    let data = await this.client.canva.changemymind(text);
     return await msg.editReply({
       files: [{ name: "changemymind.png", attachment: data }]
     });

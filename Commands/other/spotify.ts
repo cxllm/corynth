@@ -79,8 +79,8 @@ export = class extends Command {
                 value: [
                   `Currently at: \`${song.current}\``,
                   `Time Remaining: \`${song.left}\``,
-                  `${song.title} started at: \`${song.start}\``,
-                  `${song.title} will finish at: \`${song.end}\``
+                  `Start Time: \`${song.start}\``,
+                  `Finish Time: \`${song.end}\``
                 ]
               }
             ],
