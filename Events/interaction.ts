@@ -14,12 +14,12 @@ export = class extends Event {
     const command = this.client.slashes.get(msg.commandName);
     if (!command) return;
     if (!command.config.slash) return;
-    if (command.config.guild && !msg.guildID) {
+    if (command.config.guild && !msg.guild) {
       return msg.reply(
         "This command can't be run in DMs. Please re-run this command in a server."
       );
     }
-    if (msg.guildID) {
+    if (msg.guild) {
       let guild = await this.client.db.guilds.get(msg.guild.id);
       if (!guild) {
         guild = {
