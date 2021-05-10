@@ -26,7 +26,7 @@ export = class extends Command {
   async run(msg: Message) {
     await msg.send("Pulling changes and compiling...");
     exec(
-      "git fetch --all && git reset --hard origin/v4 && tsc",
+      "git fetch --all && git reset --hard origin/v4 && rm -rf dist &&  tsc",
       async (_, __, ___) => {
         return await msg.send(
           `Pulled latest changes & compiled into JavaScript.`

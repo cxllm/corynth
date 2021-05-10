@@ -24,7 +24,7 @@ export = class extends Command {
 
   async run(msg: Message) {
     await msg.send("Compiling...");
-    exec("tsc", async (_, __, ___) => {
+    exec("rm -rf dist && tsc", async (_, __, ___) => {
       return await msg.send(`Compiled into JavaScript.`);
     });
   }

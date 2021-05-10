@@ -5,8 +5,6 @@ import { readdirSync } from "fs";
 import { join } from "path";
 import { Db, MongoClient } from "mongodb";
 
-const canvacord = require("canvacord"); //Module doesn't include typings
-
 //Files
 import config, { Config } from "../config";
 import presets = require("../presets");
@@ -30,7 +28,6 @@ export default class Corynth extends Client {
   web = axios;
   logs = new Logger();
   Util = new Util(this);
-  canva = canvacord.Canvas;
   server = express();
 
   webhooks: any = {};

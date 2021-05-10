@@ -1,6 +1,7 @@
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import CommandInteraction from "../../Structs/CommandInteraction";
+const { Canvacord } = require("canvacord");
 export = class extends Command {
   private client: Client;
 
@@ -34,7 +35,7 @@ export = class extends Command {
     //@ts-ignore
     if (text.length > 500)
       return await msg.editReply(this.client.presets.less_than_500);
-    let data = await this.client.canva.changemymind(text);
+    let data = await Canvacord.changemymind(text);
     return await msg.editReply({
       files: [{ name: "changemymind.png", attachment: data }]
     });

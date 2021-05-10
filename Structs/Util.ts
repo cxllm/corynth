@@ -432,6 +432,14 @@ export default class Util {
         }
       });
     console.log();
+    console.log("Removed Commands");
+    commands
+      .filter((cmd) => !this.client.slashes.has(cmd.name))
+      .map(async (cmd) => {
+        await commands.delete(cmd.id);
+        console.log(cmd.name);
+      });
+    console.log();
     console.log(`Updated Commands`);
     this.client.slashes
       .filter((cmd) => !!commands.find((c) => cmd.name == c.name))
@@ -445,8 +453,5 @@ export default class Util {
           await this.client.application.commands.edit(command.id, cmd.info);
         }
       });
-    commands.map((cmd) => {
-      if (!this.client.slashes.has(cmd.name)) return commands.delete(cmd.id);
-    });
   }
 }
