@@ -1,6 +1,6 @@
 {
   "name": "corynth",
-  "version": "4.0.0",
+  "version": "4.2.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
