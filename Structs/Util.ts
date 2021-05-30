@@ -227,6 +227,7 @@ export default class Util {
           name: string;
           artist: string;
           scrobbles: number | null;
+          time: string | null;
           artist_url: string;
           song_url: string;
         }
@@ -259,6 +260,13 @@ export default class Util {
                       .split(" scrobbles")[0]
                   )
                 : null,
+              time: scrobbles
+                ? null
+                : element(".chartlist-timestamp")
+                    .text()
+                    .split("\n")
+                    .join("")
+                    .trim(),
               artist_url:
                 "https://www.last.fm" +
                 element(".chartlist-artist a").attr().href,

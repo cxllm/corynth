@@ -202,28 +202,26 @@ export = class extends Command {
       try {
         //@ts-ignore
         let data = await this.client.Util.getLastFMUser(opt.value);
-        console.log(data.recent, data.top);
-
         let embed = {
           title: `Last FM Info - ${data.username}`,
           description: [
             `Name: \`${data.username}\``,
-            `Total Scrobbles: \`${data.scrobbles}\``,
-            `Total Artists: \`${data.artists}\``
+            `Total Scrobbles: \`${data.scrobbles.toLocaleString("fr")}\``,
+            `Total Artists: \`${data.artists.toLocaleString("fr")}\``
           ].join("\n"),
           fields: [
             {
               name: "Recent Songs",
               value: data.recent.map(
                 (song) =>
-                  `[${song.name}](${song.song_url}) by [${song.artist}](${song.artist_url})`
+                  `[${song.name}](${song.song_url}) by [${song.artist}](${song.artist_url}) - ${song.time}`
               )
             },
             {
               name: "Top Songs",
               value: data.top.map(
                 (song, i) =>
-                  `[${song.name}](${song.song_url}) by [${song.artist}](${song.artist_url}) (${song.scrobbles} scrobbles)`
+                  `[${song.name}](${song.song_url}) by [${song.artist}](${song.artist_url}) - ${song.scrobbles} scrobbles`
               )
             }
           ],
