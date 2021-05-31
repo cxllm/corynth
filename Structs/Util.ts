@@ -268,10 +268,10 @@ export default class Util {
                     .join("")
                     .trim(),
               artist_url:
-                "https://www.last.fm" +
-                element(".chartlist-artist a").attr().href,
+                encodeURIComponent("https://www.last.fm" +
+                element(".chartlist-artist a").attr().href),
               song_url:
-                "https://www.last.fm" + element(".chartlist-name a").attr().href
+                encodeURIComponent("https://www.last.fm" + element(".chartlist-name a").attr().href)
             };
           })
       );
