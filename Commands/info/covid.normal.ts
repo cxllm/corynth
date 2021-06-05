@@ -17,7 +17,14 @@ export = class extends Command {
         permissions: {},
         slash: false,
         args: 1,
-        aliases: ["covid19", "covid", "cv", "covid-19"],
+        aliases: [
+          "covid19",
+          "covid",
+          "cv",
+          "covid-19",
+          "coronavirus",
+          "corona"
+        ],
         usage: "<world/country> [country]"
       }
     );
@@ -113,6 +120,6 @@ export = class extends Command {
           }
         }
       });
-    } else return msg.send("Invalid option");
+    } else return msg.send(this.client.UsageEmbed(this));
   }
 };

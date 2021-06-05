@@ -35,7 +35,8 @@ export = class extends Command {
       {
         owner: false,
         permissions: {},
-        slash: true
+        slash: true,
+        cooldown: "15s"
       }
     );
     this.client = client;

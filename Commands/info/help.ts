@@ -42,7 +42,7 @@ export = class extends Command {
               ? this.client.commands.size
               : this.client.commands.filter(
                   (cmd) => cmd.config.category != "owner"
-                )
+                ).size
           }`,
           color: this.client.config.colours.main,
           fields: [

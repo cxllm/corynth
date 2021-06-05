@@ -1,6 +1,6 @@
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
-import CommandInteraction from "../../Structs/CommandInteraction";
+import Message from "../../Structs/Message";
 import { Canvas } from "canvacord";
 export = class extends Command {
   private client: Client;
@@ -10,33 +10,26 @@ export = class extends Command {
       {
         name: "changemymind",
         description: "Make a change my mind meme with your specified text",
-        defaultPermission: true,
-        options: [
-          {
-            name: "text",
-            type: "STRING",
-            required: true,
-            description: "The text to put on the change my mind meme"
-          }
-        ]
+        defaultPermission: true
       },
       {
         owner: false,
         permissions: {},
-        slash: true
+        slash: false,
+        args: 1,
+        usage: "<text>"
       }
     );
     this.client = client;
   }
 
-  async run(msg: CommandInteraction) {
-    await msg.defer();
-    let text = msg.options[0].value;
-    //@ts-ignore
+  async run(msg: Message) {
+    await msg.send(this.client.presets.edit_image);
+    let text = msg.args.join(" ");
     if (text.length > 500)
-      return await msg.editReply(this.client.presets.less_than_500);
+      return await msg.send(this.client.presets.less_than_500);
     let data = await Canvas.changemymind(text);
-    return await msg.editReply({
+    return await msg.send({
       files: [{ name: "changemymind.png", attachment: data }]
     });
   }
