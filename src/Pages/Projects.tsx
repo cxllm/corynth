@@ -32,16 +32,6 @@ export default function Projects() {
 		<div className="content anim">
 			<Helmet>
 				<title>Callum - Projects</title>
-				<meta
-					name="description"
-					content="Find the projects I am working or have worked on "
-				/>
-				<meta property="og:url" content="https://cxllm.xyz/currency" />
-				<meta property="og:title" content="Callum - Projects" />
-				<meta
-					property="og:description"
-					content="Find the projects I am working or have worked on "
-				/>
 			</Helmet>
 			<img
 				src="/avatar.jpg"
