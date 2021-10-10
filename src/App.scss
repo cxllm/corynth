@@ -42,9 +42,7 @@
 				padding-bottom: 10px;
 			}
 			a {
-				color: #00aaff;
 				font-size: large;
-				text-decoration: none;
 			}
 			display: grid;
 			color: white;
@@ -60,6 +58,10 @@
 			}
 		}
 	}
+}
+a {
+	color: #00aaff;
+	text-decoration: none;
 }
 .spotify {
 	color: #1db954 !important;

@@ -27,7 +27,7 @@ export default function Home() {
 				alt="My avatar"
 			/>
 			<h1>Callum</h1>
-			<p>Full stack TypeScript and Python dev</p>
+			<p>British Full-Stack, TypeScript and Python developer</p>
 			<Socials />
 			<a href={lastFM?.url} className="spotify">
 				{lastFM ? `Listening to ${lastFM.song} by ${lastFM.artist}` : ""}
