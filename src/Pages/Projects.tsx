@@ -1,5 +1,6 @@
 import React from "react";
 import Socials from "../Components/Socials";
+import { Helmet } from "react-helmet";
 export default function Projects() {
 	const projects = [
 		{
@@ -16,7 +17,7 @@ export default function Projects() {
 				"A website that allows you to convert between different currencies",
 			start: "September 2021",
 			finish: "Present",
-			url: "https://currency.cxllm.xyz",
+			url: "/currency",
 		},
 		{
 			name: "Blog",
@@ -29,12 +30,23 @@ export default function Projects() {
 	];
 	return (
 		<div className="content anim">
+			<Helmet>
+				<title>Callum - Projects</title>
+				<meta name="description" content="" />
+				<meta property="og:url" content="https://cxllm.xyz/currency" />
+				<meta property="og:title" content="Callum - Projects" />
+				<meta
+					property="og:description"
+					content="Find the projects I am working or have worked on "
+				/>
+			</Helmet>
 			<img
 				src="/avatar.jpg"
 				width="100px"
 				style={{ borderRadius: "50px" }}
 				alt="My avatar"
 			/>
+
 			<h1>Callum</h1>
 			<p>
 				Below you can find some of my projects that I am working or have worked on

@@ -25,6 +25,9 @@ export default function NavBar() {
 							<Nav.Link as={Link} to="/projects">
 								Projects
 							</Nav.Link>
+							<Nav.Link as={Link} to="/currency">
+								Currency Converter
+							</Nav.Link>
 						</Nav>
 						<Nav>
 							<NavDropdown title="Links" id="collapsible-nav-dropdown">

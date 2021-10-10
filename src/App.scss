@@ -86,3 +86,41 @@ a {
 .App-link {
 	color: #61dafb;
 }
+.currency {
+	text-align: center;
+	display: flex;
+	color: white;
+	flex-direction: column;
+	align-items: center !important;
+	font-size: calc(10px + 2vmin);
+	td {
+		width: 20%;
+		padding: 10px;
+	}
+	.basic-single {
+		color: black;
+		text-align: left;
+	}
+	p.convert {
+		opacity: 1;
+	}
+	.rate {
+		font-size: 20px;
+	}
+	button {
+		margin: 20px auto;
+	}
+	@media screen and (max-width: 1000px) {
+		.convert {
+			font-size: 25px;
+		}
+		td {
+			display: block;
+			width: 100%;
+		}
+	}
+	a {
+		text-decoration: none;
+		color: #00aaff;
+	}
+}

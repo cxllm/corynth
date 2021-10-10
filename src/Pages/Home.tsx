@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import Socials from "../Components/Socials";
+
 export default function Home() {
 	const [lastFM, setLastFM] = useState<{
 		song: string;
@@ -20,6 +22,16 @@ export default function Home() {
 	}, 30 * 1000);
 	return (
 		<div className="content anim">
+			<Helmet>
+				<title>Callum - Homepage</title>
+				<meta name="description" content="" />
+				<meta property="og:url" content="https://cxllm.xyz/currency" />
+				<meta property="og:title" content="Callum - Homepage" />
+				<meta
+					property="og:description"
+					content="Full-Stack TypeScript and Python developer from the UK"
+				/>
+			</Helmet>
 			<img
 				src="/avatar.jpg"
 				width="100px"
