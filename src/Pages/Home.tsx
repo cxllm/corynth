@@ -21,7 +21,7 @@ export default function Home() {
 		updateLastFM();
 	}, 30 * 1000);
 	return (
-		<div className="content anim">
+		<>
 			<Helmet>
 				<title>Callum - Homepage</title>
 				<meta name="description" content="" />
@@ -32,18 +32,20 @@ export default function Home() {
 					content="Full-Stack TypeScript and Python developer from the UK"
 				/>
 			</Helmet>
-			<img
-				src="/avatar.jpg"
-				width="100px"
-				style={{ borderRadius: "50px" }}
-				alt="My avatar"
-			/>
-			<h1>Callum</h1>
-			<p>Full-Stack TypeScript and Python developer from the UK</p>
-			<Socials />
-			<a href={lastFM?.url} className="spotify">
-				{lastFM ? `Listening to ${lastFM.song} by ${lastFM.artist}` : ""}
-			</a>
-		</div>
+			<div className="content anim">
+				<img
+					src="/avatar.jpg"
+					width="100px"
+					style={{ borderRadius: "50px" }}
+					alt="My avatar"
+				/>
+				<h1>Callum</h1>
+				<p>Full-Stack TypeScript and Python developer from the UK</p>
+				<Socials />
+				<a href={lastFM?.url} className="spotify">
+					{lastFM ? `Listening to ${lastFM.song} by ${lastFM.artist}` : ""}
+				</a>
+			</div>
+		</>
 	);
 }
