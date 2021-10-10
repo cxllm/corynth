@@ -79,118 +79,110 @@ class App extends React.Component<
 	}
 	render() {
 		return (
-			<>
+			<div className="content anim">
 				<Helmet>
-					<title>Callum - Currency Convertor</title>
-					<meta name="description" content="" />
-					<meta property="og:url" content="https://cxllm.xyz/currency" />
-					<meta property="og:title" content="Callum - Currency Converter" />
-					<meta
-						property="og:description"
-						content="A converter to find out rates or conversions between currencies"
-					/>
+					<title>Callum - Currency Converter</title>
 				</Helmet>
-				<div className="content anim">
-					<div className="currency">
-						<h1>Currency Converter</h1>
-						<table>
-							<tr>
-								<td>
-									<h2>From</h2>
-									<Select
-										options={options}
-										className="basic-single"
-										defaultValue={options.find((c) => c.value === "GBP")}
-										onChange={this.handleChangeFrom}
-										value={
-											options.find((c) => c.value === this.state.from) ||
-											options.find((c) => c.value === "GBP")
-										}
-									/>
-								</td>
-								<td>
-									<h2>To</h2>
-									<Select
-										options={options}
-										className="basic-single"
-										defaultValue={options.find((c) => c.value === "USD")}
-										onChange={this.handleChangeTo}
-										value={
-											options.find((c) => c.value === this.state.to) ||
-											options.find((c) => c.value === "USD")
-										}
-									/>
-								</td>
-							</tr>
-						</table>
+				<div className="currency">
+					<h1>Currency Converter</h1>
 
-						<br />
-						<button
+					<table>
+						<tr>
+							<td>
+								<h2>From</h2>
+								<Select
+									options={options}
+									className="basic-single"
+									defaultValue={options.find((c) => c.value === "GBP")}
+									onChange={this.handleChangeFrom}
+									value={
+										options.find((c) => c.value === this.state.from) ||
+										options.find((c) => c.value === "GBP")
+									}
+								/>
+							</td>
+							<td>
+								<h2>To</h2>
+								<Select
+									options={options}
+									className="basic-single"
+									defaultValue={options.find((c) => c.value === "USD")}
+									onChange={this.handleChangeTo}
+									value={
+										options.find((c) => c.value === this.state.to) ||
+										options.find((c) => c.value === "USD")
+									}
+								/>
+							</td>
+						</tr>
+					</table>
+
+					<br />
+					<button
+						style={{
+							backgroundColor: "#00aaff",
+							fontSize: "20px",
+							width: "100px",
+							height: "50px",
+							cursor: "pointer",
+							color: "white",
+							border: "none",
+							fontFamily: "Poppins",
+							borderRadius: "5px",
+						}}
+						onClick={this.switch}
+					>
+						Switch
+					</button>
+					<form onSubmit={this.submit}>
+						<h2>Amount</h2>
+						<input
+							type="number"
+							id="quantity"
+							name="quantity"
+							min="0.01"
+							step="0.01"
+							defaultValue="1"
+							onChange={this.handleChangeInput}
 							style={{
-								backgroundColor: "#00aaff",
-								fontSize: "20px",
+								border: "none",
+								borderBottom: "2px solid #0af",
+								backgroundColor: "inherit",
+								color: "white",
+								height: "40px",
+								width: "200px",
+								fontSize: "30px",
+								fontFamily: "Poppins",
+							}}
+						/>
+						<input
+							type="submit"
+							value="Convert"
+							style={{
+								backgroundColor: "inherit",
 								width: "100px",
 								height: "50px",
-								cursor: "pointer",
-								color: "white",
 								border: "none",
+								fontSize: "20px",
+								cursor: "pointer",
+								padding: "10px",
+								color: "white",
 								fontFamily: "Poppins",
-								borderRadius: "5px",
 							}}
-							onClick={this.switch}
-						>
-							Switch
-						</button>
-						<form onSubmit={this.submit}>
-							<h2>Amount</h2>
-							<input
-								type="number"
-								id="quantity"
-								name="quantity"
-								min="0.01"
-								step="0.01"
-								defaultValue="1"
-								onChange={this.handleChangeInput}
-								style={{
-									border: "none",
-									borderBottom: "2px solid #0af",
-									backgroundColor: "inherit",
-									color: "white",
-									height: "40px",
-									width: "200px",
-									fontSize: "30px",
-									fontFamily: "Poppins",
-								}}
-							/>
-							<input
-								type="submit"
-								value="Convert"
-								style={{
-									backgroundColor: "inherit",
-									width: "100px",
-									height: "50px",
-									border: "none",
-									fontSize: "20px",
-									cursor: "pointer",
-									padding: "10px",
-									color: "white",
-									fontFamily: "Poppins",
-								}}
-							/>
-						</form>
-						<p className="convert">
-							{this.state.result.converted
-								? `${this.state.result.amount} ${this.state.result.from} = ${this.state.result.converted} ${this.state.result.to}`
-								: ``}
-						</p>
-						<i className="rate">
-							{this.state.result.rate
-								? `Rate: 1 ${this.state.result.from} = ${this.state.result.rate} ${this.state.result.to}`
-								: ``}
-						</i>
-					</div>
+						/>
+					</form>
+					<p className="convert">
+						{this.state.result.converted
+							? `${this.state.result.amount} ${this.state.result.from} = ${this.state.result.converted} ${this.state.result.to}`
+							: ``}
+					</p>
+					<i className="rate">
+						{this.state.result.rate
+							? `Rate: 1 ${this.state.result.from} = ${this.state.result.rate} ${this.state.result.to}`
+							: ``}
+					</i>
 				</div>
-			</>
+			</div>
 		);
 	}
 }
