@@ -2,7 +2,7 @@ module.exports = {
 	apps: [
 		{
 			name: "Backend",
-			script: "backend.js",
+			script: "last-fm.js",
 			autorestart: true,
 			watch: false,
 		},
