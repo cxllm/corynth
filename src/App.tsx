@@ -1,9 +1,5 @@
 import React from "react";
-import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
-import Projects from "./Pages/Projects";
-import NotFound from "./Pages/404";
-import Currency from "./Pages/Currency";
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -12,12 +8,9 @@ function App() {
 		<Router>
 			<div className="App">
 				<div className="content">
-					<Navbar />
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route exact path="/projects" component={Projects} />
-						<Route exact path="/currency" component={Currency} />
-						<Route exact path="*" component={NotFound} />
+						<Route exact path="*" component={Home} />
 					</Switch>
 				</div>
 			</div>

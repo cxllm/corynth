@@ -27,6 +27,10 @@
 			animation-delay: 100ms;
 			animation-fill-mode: backwards;
 		}
+		.avatar {
+			width: 100px;
+			border-radius: 50px;
+		}
 		color: white;
 		h1 {
 			margin: 5px 0;
@@ -34,7 +38,13 @@
 		}
 		p {
 			opacity: 0.5;
-			margin: 5px 0 10px 0;
+			margin: 5px 0 0px 0;
+			font-size: large;
+		}
+		.flag-icon {
+			background-size: cover;
+			width: 20px;
+			height: 15px;
 		}
 		.table {
 			padding: 10px 0;
@@ -59,8 +69,13 @@
 		}
 	}
 }
-a {
+a,
+button {
 	color: #00aaff;
+	border: none;
+	background-color: transparent;
+	width: fit-content;
+	padding-left: 0;
 	text-decoration: none;
 }
 .spotify {
@@ -69,6 +84,7 @@ a {
 	width: 100%;
 	text-decoration: none;
 	padding: 10px 0;
+	font-size: large;
 	i {
 		padding-right: 5px;
 	}

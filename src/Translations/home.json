@@ -1,0 +1,14 @@
+{
+	"en": {
+		"text": "TypeScript and Python developer from the UK.\nFor some of my projects, please visit my",
+		"listening": "Listening to [song] by [artist]",
+		"listened": "Last listened to [song] by [artist]",
+		"language": "Pour voir cette page en français, cliquez ici"
+	},
+	"fr": {
+		"text": "Développeur britannique full-stack de programmes TypeScript et Python.\nPour mes projets, veuillez visiter ma page",
+		"listening": "J'écoute [song] par [artist]",
+		"listened": "J'ai écouté [song] par [artist]",
+		"language": "To see this page in English, click here"
+	}
+}

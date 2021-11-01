@@ -9,24 +9,28 @@ const config = require("./config.json");
 let lastfm = null;
 
 async function updateLastFM() {
-	const { data } = await axios.get(
-		`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=cxllm&api_key=${config.lastfm}&format=json`
-	);
-	const song = data.recenttracks.track[0];
-	if (song["@attr"] && song["@attr"].nowplaying === "true")
-		lastfm = {
-			song: song.name,
-			artist: song.artist["#text"],
-			url: song.url,
-			playing: true,
-		};
-	else
-		lastfm = {
-			song: song.name,
-			artist: song.artist["#text"],
-			url: song.url,
-			playing: false,
-		};
+	try {
+		const { data } = await axios.get(
+			`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=cxllm&api_key=${config.lastfm}&format=json`
+		);
+		const song = data.recenttracks.track[0];
+		if (song["@attr"] && song["@attr"].nowplaying === "true")
+			lastfm = {
+				song: song.name,
+				artist: song.artist["#text"],
+				url: song.url,
+				playing: true,
+			};
+		else
+			lastfm = {
+				song: song.name,
+				artist: song.artist["#text"],
+				url: song.url,
+				playing: false,
+			};
+	} catch (e) {
+		console.log(e);
+	}
 }
 updateLastFM();
 setInterval(async () => {
