@@ -22,7 +22,7 @@ export default function Home() {
 	}
 	function changeLang() {
 		const lang = localStorage.getItem("lang");
-		localStorage.setItem("lang", lang === "en" ? "fr" : "en");
+		localStorage.setItem("lang", lang === "fr" ? "en" : "fr");
 	}
 	updateLastFM();
 	setInterval(() => {
