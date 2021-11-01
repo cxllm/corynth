@@ -7,10 +7,11 @@ export default function Home() {
 		song: string;
 		artist: string;
 		url: string;
+		playing: boolean;
 	} | null>(null);
 
 	function updateLastFM() {
-		fetch("https://www.cxllm.xyz/api/last-fm")
+		fetch("/api/last-fm")
 			.then((res) => res.json())
 			.then((res) => {
 				setLastFM(res);
@@ -35,7 +36,17 @@ export default function Home() {
 			<p>Full-Stack TypeScript and Python developer from the UK</p>
 			<Socials />
 			<a href={lastFM?.url} className="spotify">
-				{lastFM ? `Listening to ${lastFM.song} by ${lastFM.artist}` : ""}
+				{lastFM ? (
+					<>
+						<i className="fab fa-spotify"></i>
+						{lastFM.playing
+							? `Listening to ${lastFM.song} by ${lastFM.artist}`
+							: `
+						Last listened to ${lastFM.song} by ${lastFM.artist}`}
+					</>
+				) : (
+					""
+				)}
 			</a>
 		</div>
 	);

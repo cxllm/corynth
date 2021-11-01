@@ -18,9 +18,15 @@ async function updateLastFM() {
 			song: song.name,
 			artist: song.artist["#text"],
 			url: song.url,
+			playing: true,
+		};
+	else
+		lastfm = {
+			song: song.name,
+			artist: song.artist["#text"],
+			url: song.url,
 			playing: false,
 		};
-	else lastfm = null;
 }
 updateLastFM();
 setInterval(async () => {
