@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import Socials from "../Components/Socials";
 import translations from "../Translations/home.json";
-import { Link } from "react-router-dom";
 
 export default function Home() {
 	const [lastFM, setLastFM] = useState<{
