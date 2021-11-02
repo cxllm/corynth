@@ -11,9 +11,6 @@ function Socials() {
 			<a href="https://discord.com/users/536949735299219467">
 				<i className="fab fa-discord" />
 			</a>
-			<a href="https://steamcommunity.com/id/cx11m">
-				<i className="fab fa-steam"></i>
-			</a>
 		</div>
 	);
 }
