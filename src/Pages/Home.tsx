@@ -1,57 +1,67 @@
-import React, { useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import Socials from "../Components/Socials";
 import translations from "../Translations/home.json";
 
-export default function Home() {
-	const [lastFM, setLastFM] = useState<{
+export default class Home extends React.Component<
+	{
+		lang: "en" | "fr";
+	},
+	{
 		song: string;
 		artist: string;
 		url: string;
 		playing: boolean;
-	} | null>(null);
+	}
+> {
 	//@ts-ignore
-	const translation = translations[localStorage.getItem("lang") || "en"];
-	function updateLastFM() {
+	interval: NodeJS.Timer;
+	constructor(props: any) {
+		super(props);
+		this.state = {
+			song: "",
+			artist: "",
+			url: "",
+			playing: false,
+		};
+	}
+	updateLastFM() {
 		fetch("/api/last-fm")
 			.then((res) => res.json())
 			.then((res) => {
-				setLastFM(res);
+				this.setState(res);
 			});
 	}
-	function changeLang() {
-		const lang = localStorage.getItem("lang");
-		localStorage.setItem("lang", lang === "fr" ? "en" : "fr");
+	componentDidMount() {
+		this.updateLastFM();
+		this.interval = setInterval(() => {
+			this.updateLastFM();
+		}, 10 * 1000);
 	}
-	updateLastFM();
-	setInterval(() => {
-		updateLastFM();
-	}, 30 * 1000);
-	return (
-		<div className="content anim">
-			<Helmet>
-				<title>Callum</title>
-			</Helmet>
-			<h1 style={{ float: "right" }}>Callum</h1>
-			<p>
-				{translation["text"]} <a href="https://github.com/cxllm">GitHub</a>
-			</p>
-			{lastFM ? (
-				<a href={lastFM?.url} className="spotify">
-					<i className="fab fa-spotify"></i>
-					{lastFM.playing
-						? translation["listening"]
-								.replace("[song]", lastFM.song)
-								.replace("[artist]", lastFM.artist)
-						: translation["listened"]
-								.replace("[song]", lastFM.song)
-								.replace("[artist]", lastFM.artist)}
-				</a>
-			) : (
-				""
-			)}
-			<Socials />
-			<button onClick={changeLang}>{translation.language}</button>
-		</div>
-	);
+	componentWillUnmount() {
+		clearInterval(this.interval);
+	}
+	render() {
+		const translation = translations[this.props.lang];
+		return (
+			<div className="content anim">
+				<Helmet>
+					<title>{translation.title}</title>
+				</Helmet>
+				<h1 style={{ float: "right" }}>Callum</h1>
+				<p>{translation["text"]}</p>
+				{this.state.song ? (
+					<a href={this.state.url} className="spotify">
+						<i className="fab fa-spotify"></i>
+						{(this.state.playing ? translation["listening"] : translation["listened"])
+							.replace("[song]", this.state.song)
+							.replace("[artist]", this.state.artist)}
+					</a>
+				) : (
+					""
+				)}
+				<Socials />
+			</div>
+		);
+	}
 }

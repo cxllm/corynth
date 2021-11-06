@@ -1,0 +1,10 @@
+{
+	"en": {
+		"title": "Not Found",
+		"text": "The page requested was not found"
+	},
+	"fr": {
+		"title": "Page Non Trouvée",
+		"text": "La page demandée n'a pas été trouvée "
+	}
+}

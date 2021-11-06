@@ -1,21 +1,21 @@
 import React from "react";
 import Socials from "../Components/Socials";
 import { Helmet } from "react-helmet";
-export default function NotFound() {
-	return (
-		<div className="content anim">
-			<Helmet>
-				<title>Callum - Not Found</title>
-			</Helmet>
-			<img
-				src="/avatar.jpg"
-				width="100px"
-				style={{ borderRadius: "50px" }}
-				alt="My avatar"
-			/>
-			<h1>Callum</h1>
-			<p>The page requested ({window.location.pathname}) was not found</p>
-			<Socials />
-		</div>
-	);
+import translations from "../Translations/404.json";
+export default class NotFound extends React.Component<{
+	lang: "en" | "fr";
+}> {
+	render() {
+		const translation = translations[this.props.lang];
+		return (
+			<div className="content anim">
+				<Helmet>
+					<title>{translation.title}</title>
+				</Helmet>
+				<h1>{translation.title}</h1>
+				<p>{translation.text}</p>
+				<Socials />
+			</div>
+		);
+	}
 }

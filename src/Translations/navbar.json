@@ -1,0 +1,14 @@
+{
+	"en": {
+		"home": "Home",
+		"projects": "Projects",
+		"links": "Links",
+		"language": "Français"
+	},
+	"fr": {
+		"home": "Page d'Accuiel",
+		"projects": "Projets",
+		"links": "Liens",
+		"language": "English"
+	}
+}

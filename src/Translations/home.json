@@ -1,14 +1,14 @@
 {
 	"en": {
-		"text": "TypeScript and Python developer from the UK.\nFor some of my projects, please visit my",
+		"title": "Home",
+		"text": "Full-Stack TypeScript and Python developer from the UK.",
 		"listening": "Listening to [song] by [artist]",
-		"listened": "Last listened to [song] by [artist]",
-		"language": "Pour voir cette page en français, cliquez ici"
+		"listened": "Last listened to [song] by [artist]"
 	},
 	"fr": {
-		"text": "Développeur britannique full-stack de programmes TypeScript et Python.\nPour mes projets, veuillez visiter ma page",
+		"title": "Page d'Accuiel",
+		"text": "Développeur britannique full-stack de programmes TypeScript et Python.",
 		"listening": "J'écoute « [song] » par [artist]",
-		"listened": "J'ai écouté « [song] » par [artist] en dernier",
-		"language": "To see this page in English, click here"
+		"listened": "J'ai écouté « [song] » par [artist] en dernier"
 	}
 }
