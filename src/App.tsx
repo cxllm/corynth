@@ -14,7 +14,6 @@ class App extends React.Component<{}> {
 		localStorage.setItem("lang", lang === "fr" ? "en" : "fr");
 		//@ts-ignore
 		this.lang = localStorage.getItem("lang") || "en";
-		this.forceUpdate();
 	}
 	render() {
 		console.log("a");
