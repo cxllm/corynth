@@ -13,8 +13,8 @@ export default class Projects extends React.Component<{
 				<Helmet>
 					<title>{translation.title}</title>
 				</Helmet>
-				<h1>My Projects</h1>
-				<p>{translation.title}</p>
+				<h1>{translation.title}</h1>
+				<p>{translation.text}</p>
 				<Socials />
 				<div className="table">
 					{translation.projects.map((project) => {
