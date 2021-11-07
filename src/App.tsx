@@ -7,7 +7,8 @@ import Projects from "./Pages/Projects";
 import NotFound from "./Pages/404";
 
 class App extends React.Component<{}> {
-	lang: "en" | "fr" = "en";
+	//@ts-ignore
+	lang: "en" | "fr" = localStorage.getItem("lang") || "en";
 	changeLang() {
 		const lang = localStorage.getItem("lang");
 		localStorage.setItem("lang", lang === "fr" ? "en" : "fr");
