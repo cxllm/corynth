@@ -1,10 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const path = require("path");
 
 app.use(cors());
 const axios = require("axios").default;
 const config = require("./config.json");
+const buildPath = path.normalize(path.join(__dirname, "./build"));
+app.use(express.static(buildPath));
 
 let lastfm = null;
 
@@ -42,9 +45,9 @@ app.get("/api/last-fm", (_, res) => {
 });
 
 app.get("*", (_, res) => {
-	return res.redirect("https://cxllm.xyz/");
+	return res.sendFile(path.join(buildPath, "index.html"));
 });
 
-app.listen(9754, () => {
+app.listen(process.env.PORT || 9754, () => {
 	console.log("Webserver started");
 });
