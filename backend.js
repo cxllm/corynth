@@ -44,7 +44,7 @@ app.get("/api/last-fm", (_, res) => {
 	return res.json(lastfm);
 });
 
-app.get("*", (_, res) => {
+app.use((_, res) => {
 	return res.sendFile(path.join(buildPath, "index.html"));
 });
 
