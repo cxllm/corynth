@@ -40,7 +40,7 @@ export default class Navigation extends React.Component<{
 									<NavDropdown.Item href="https://twitter.com/CX11M">
 										Twitter
 									</NavDropdown.Item>
-									<NavDropdown.Item href="https://blog.cxllm.cf">Blog</NavDropdown.Item>
+									<NavDropdown.Item href="https://blog.cxllm.com">Blog</NavDropdown.Item>
 								</NavDropdown>
 								<Nav.Link onClick={this.props.setLang}>{translation.language}</Nav.Link>
 							</Nav>
