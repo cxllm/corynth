@@ -2,6 +2,7 @@
 	"en": {
 		"title": "My Projects",
 		"text": "Below you can find some of my Projects",
+		"not_mentioned": "To see other projects not listed here, please visit my",
 		"projects": [
 			{
 				"name": "Corynth",
@@ -15,20 +16,21 @@
 				"description": "A website that allows you to convert between different currencies",
 				"start": "September 2021",
 				"finish": "Present",
-				"url": "https://currency.cxllm.com"
+				"url": "https://currency.cxllm.co.uk"
 			},
 			{
 				"name": "Blog",
 				"description": "My blog/notes page where I occasionally post articles and other things",
 				"start": "April 2021",
 				"finish": "Present",
-				"url": "https://blog.cxllm.com"
+				"url": "https://blog.cxllm.co.uk"
 			}
 		]
 	},
 	"fr": {
 		"title": "Mes Projets",
 		"text": "Ci-dessous vous pouvez trouver une partie de mon travail",
+		"not_mentioned": "Pour voyez les projets qui sont pas là, veuillez visiter mon page",
 		"projects": [
 			{
 				"name": "Corynth",
@@ -42,14 +44,14 @@
 				"description": "Un site de conversion de devises",
 				"start": "septembre 2021",
 				"finish": "aujourd'hui",
-				"url": "https://currency.cxllm.com"
+				"url": "https://currency.cxllm.co.uk"
 			},
 			{
 				"name": "Blog",
 				"description": "Mon blog oú je poste des articles et des tutoriels",
 				"start": "avril 2021",
 				"finish": "aujourd'hui",
-				"url": "https://blog.cxllm.com"
+				"url": "https://blog.cxllm.co.uk"
 			}
 		]
 	}

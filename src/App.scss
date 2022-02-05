@@ -17,7 +17,7 @@
 	background-color: #212121 /*#282c34*/;
 	min-height: 100vh;
 	.content {
-		height: 100vh;
+		min-height: 90vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

@@ -14,7 +14,10 @@ export default class Projects extends React.Component<{
 					<title>{translation.title}</title>
 				</Helmet>
 				<h1>{translation.title}</h1>
-				<p>{translation.text}</p>
+				<p>
+					{translation.text}. {translation.not_mentioned}
+					<a href="https://github.com/cxllm">GitHub</a>
+				</p>
 				<Socials />
 				<div className="table">
 					{translation.projects.map((project) => {
