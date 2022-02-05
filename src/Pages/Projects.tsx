@@ -15,7 +15,7 @@ export default class Projects extends React.Component<{
 				</Helmet>
 				<h1>{translation.title}</h1>
 				<p>
-					{translation.text}. {translation.not_mentioned}
+					{translation.text}. {translation.not_mentioned}{" "}
 					<a href="https://github.com/cxllm">GitHub</a>
 				</p>
 				<Socials />
