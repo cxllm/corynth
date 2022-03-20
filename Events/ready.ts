@@ -15,7 +15,7 @@ export = class extends Event {
 					name: `@${this.client.user.username} | v${this.client.getVersion()}`
 				}
 			],
-			status: "idle"
+			status: "online"
 		};
 		this.client.links[
 			"invite link"
