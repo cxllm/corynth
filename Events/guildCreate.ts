@@ -10,8 +10,7 @@ export = class extends Event {
 		let guilddb = await this.client.db.guilds.get(guild.id);
 		if (!guilddb) {
 			guilddb = {
-				prefix: this.client.config.prefix,
-				ownerprefix: false
+				prefix: this.client.config.prefix
 			};
 			await this.client.db.guilds.set(guild.id, guilddb);
 		}
@@ -34,7 +33,7 @@ export = class extends Event {
 									).tag
 								}\``,
 								`ID: \`${guild.id}\``
-							]
+							].join("\n")
 						}
 					],
 					thumbnail: {

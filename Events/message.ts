@@ -137,7 +137,7 @@ export = class extends Event {
 				fields: [
 					{
 						name: "Details",
-						value: [`User: ${msg.author.tag}`, `Content: ${msg.content}`]
+						value: [`User: ${msg.author.tag}`, `Content: ${msg.content}`].join("\n")
 					},
 					{
 						name: "Error",

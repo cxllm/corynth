@@ -191,10 +191,11 @@ export = class extends Command {
 	}
 
 	async run(msg: CommandInteraction) {
-		let opt = msg.options[0];
-		if (opt.name == "info") {
-			console.log(msg.options[0].options[0].value);
-			switch (opt.options[0].value) {
+		let opt = msg.options.getSubcommand();
+		let group = msg.options.getSubcommandGroup(false);
+		if (opt == "info") {
+			console.log(msg.options.getString("module"));
+			switch (msg.options.getString("module")) {
 				case "welcome":
 					return await msg.reply({
 						embeds: [
@@ -264,8 +265,7 @@ export = class extends Command {
 						]
 					});
 			}
-		} else if (opt.name == "view") {
-			console.log(msg.db);
+		} else if (opt == "view") {
 			return await msg.reply({
 				embeds: [
 					{
@@ -307,47 +307,49 @@ export = class extends Command {
 				],
 				ephemeral: true
 			});
-		} else if (opt.name == "edit") {
-			let conf = opt.options[0];
-			if (conf.name == "autorole") {
-				if (!conf.options[0].value) {
+		} else if (group == "edit") {
+			if (opt == "autorole") {
+				let enable = msg.options.getBoolean("enable");
+				let type = msg.options.getString("type");
+				if (!enable) {
 					if (msg.db.autorole) {
 						// @ts-ignore
-						msg.db.autorole[conf.options[1].value] = null;
+						msg.db.autorole[type] = null;
 					}
-					await msg.reply(
-						`Autorole for ${conf.options[1].value}s has been disabled`
-					);
+					await msg.reply(`Autorole for ${type}s has been disabled`);
 				} else {
-					if (!conf.options[2])
+					let role = msg.options.getRole("role", false);
+					if (!role)
 						return msg.reply({
 							content: "Role is required when enabling autorole",
 							ephemeral: true
 						});
 					if (!msg.db.autorole) msg.db.autorole = {};
 					//@ts-ignore
-					msg.db.autorole[conf.options[1].value] = conf.options[2].value;
+					msg.db.autorole[type] = role.id;
 					await msg.reply({
-						content: `Autorole for ${conf.options[1].value}s has been set to ${conf.options[2].role}. Please ensure that my highest role is above this role, otherwise it will be disabled`,
+						content: `Autorole for ${type}s has been set to ${role}. Please ensure that my highest role is above this role, otherwise it will be disabled`,
 						ephemeral: true
 					});
 				}
-			} else if (conf.name == "prefix") {
+			} else if (opt == "prefix") {
 				//@ts-ignore
-				msg.db.prefix = conf.options[0].value.toLowerCase();
+				msg.db.prefix = msg.options.getString("prefix").toLowerCase();
 				await msg.reply({
 					content: `Prefix has been set to ${msg.db.prefix}`,
 					ephemeral: true
 				});
-			} else if (conf.name == "suggestions") {
-				if (!conf.options[0].value) {
+			} else if (opt == "suggestions") {
+				let enable = msg.options.getBoolean("enable");
+				if (!enable) {
 					msg.db.suggestions = null;
 					await msg.reply({
 						content: `Suggestions have been disabled`,
 						ephemeral: true
 					});
 				} else {
-					if (!conf.options[1]) {
+					let channel = msg.options.getChannel("channel", false);
+					if (!channel) {
 						return await msg.reply({
 							content: "Channel is required when enabling suggestions",
 							ephemeral: true
@@ -364,8 +366,6 @@ export = class extends Command {
 							ephemeral: true
 						});
 					//@ts-ignore
-					let channel: TextChannel = conf.options[1].channel;
-					console.log(channel.type);
 					if (channel.type != "GUILD_TEXT")
 						return await msg.reply({
 							content:
@@ -387,54 +387,60 @@ export = class extends Command {
 						ephemeral: true
 					});
 				}
-			} else if (conf.name == "welcome") {
-				if (!conf.options[0].value) {
-					msg.db.leave = null;
+			} else if (opt == "welcome") {
+				let enable = msg.options.getBoolean("enable");
+				if (!enable) {
+					msg.db.join = null;
 					await msg.reply({
 						content: `Welcome messages have been disabled`,
 						ephemeral: true
 					});
 				} else {
-					if (!conf.options[1])
+					let channel = msg.options.getChannel("channel", false);
+					let message = msg.options.getString("message", false);
+					if (!channel)
 						return await msg.reply({
 							content: "Channel is required when setting the welcome message",
 							ephemeral: true
 						});
-					if (!conf.options[2])
+					if (!message)
 						return await msg.reply({
 							content: "Message is required when setting the welcome message",
 							ephemeral: true
 						});
 					msg.db.join = {
-						channel: conf.options[1].value,
-						message: conf.options[2].value
+						channel: channel.id,
+						message
 					};
 					await msg.reply({
 						content: "The welcome message has been configured successfully",
 						ephemeral: true
 					});
 				}
-			} else if (conf.name == "welcome") {
-				if (!conf.options[0].value) {
+			} else if (opt == "goodbye") {
+				let enable = msg.options.getBoolean("enable");
+				if (!enable) {
 					msg.db.leave = null;
 					await msg.reply({
 						content: `Goodbye messages have been disabled`,
 						ephemeral: true
 					});
 				} else {
-					if (!conf.options[1])
+					let channel = msg.options.getChannel("channel", false);
+					let message = msg.options.getString("message", false);
+					if (!channel)
 						return await msg.reply({
 							content: "Channel is required when setting the goodbye message",
 							ephemeral: true
 						});
-					if (!conf.options[2])
+					if (!message)
 						return await msg.reply({
 							content: "Message is required when setting the goodbye message",
 							ephemeral: true
 						});
 					msg.db.leave = {
-						channel: conf.options[1].value,
-						message: conf.options[2].value
+						channel: channel.id,
+						message
 					};
 					await msg.reply({
 						content: "The welcome message has been configured successfully",
@@ -442,6 +448,7 @@ export = class extends Command {
 					});
 				}
 			}
+			console.log(msg.db);
 			return await this.client.db.guilds.set(msg.db.id, msg.db);
 		}
 	}

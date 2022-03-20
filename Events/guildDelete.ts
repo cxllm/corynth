@@ -27,7 +27,7 @@ export = class extends Event {
 									).tag
 								}\``,
 								`ID: \`${guild.id}\``
-							]
+							].join("\n")
 						}
 					],
 					thumbnail: {
