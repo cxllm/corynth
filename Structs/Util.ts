@@ -24,18 +24,20 @@ export default class Util {
 	}
 
 	async botLists() {
-		await this.client.web.post(
-			`https://discord.boats/api/bot/${this.client.user.id}`,
-			{
-				server_count: this.client.guilds.cache.size
-			},
-			{
-				headers: {
-					Authorization: this.client.config.botlists.boats,
-					"Content-Type": "application/json"
+		await this.client.web
+			.post(
+				`https://discord.boats/api/bot/${this.client.user.id}`,
+				{
+					server_count: this.client.guilds.cache.size
+				},
+				{
+					headers: {
+						Authorization: this.client.config.botlists.boats,
+						"Content-Type": "application/json"
+					}
 				}
-			}
-		);
+			)
+			.catch(() => console.log("Discord Boats failed"));
 		await this.client.web
 			.post(
 				`https://botsfordiscord.com/api/bot/${this.client.user.id}`,
