@@ -10,13 +10,8 @@ that you guys are able to help out with bugs and also so that you are able to us
 not see Corynth clones appearing all of a sudden, so I would appreciate it if you wouldn't copy a majority of the code
 or large chunks, as I've dedicated a lot of time and effort to this project
 
-## Beta Branch
-
-Here I will be testing new features in Corynth, and you can see the code and
-contribute [here](https://github.com/cxllm/corynth/tree/beta)
-
 ## Links
 
-[Website](https://corynth.xyz) | [Server](https://discord.gg/6kFbxxkX5p)
+[Website](https://corynth.xyz) Returning Soon | [Server](https://discord.gg/6kFbxxkX5p)
 | [Invite](https://discord.com/oauth2/authorize?client_id=660818351638970370&permissions=8&scope=applications.commands%20bot)
 | [Donations](https://paypal.me/cx11m)
