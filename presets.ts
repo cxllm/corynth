@@ -1,8 +1,6 @@
 import config from "./config";
 
 export = {
-	//nothing_playing: `${emojis.cross} There is nothing playing!`,
-	// not_queue_vc: `${emojis.cross} You aren't in the queue voice channel!`,
 	invalid_role: `Invalid Role!`,
 	invalid_user: `Invalid User!`,
 	invalid_channel: `Invalid Channel!`,
@@ -16,5 +14,4 @@ export = {
 	edit_image: `Editing image...`,
 	loading_image: `Loading image...`,
 	loading: `Loading...`
-	//not_found: `${emojis.cross} This song was not found. Please try again (if you know it's a real song and it fails a second time, it's most likely a rate limit on our end).`
 };

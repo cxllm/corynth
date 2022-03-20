@@ -2,7 +2,6 @@ import config from "../config";
 import Command from "./Command";
 
 const {
-	emojis,
 	colours: { error }
 } = config;
 
@@ -10,7 +9,7 @@ export default function (command: Command) {
 	return {
 		embeds: [
 			{
-				description: `${emojis.cross} Incorrect usage of ${command.name}`,
+				description: `Incorrect usage of ${command.name}`,
 				fields: [
 					{
 						name: "Command Description",
