@@ -33,7 +33,7 @@ export = class extends Command {
 				embeds: [
 					{
 						title: "Prefix Reset",
-						description: `${this.client.config.emojis.tick} Server prefix was reset to ${msg.db.prefix}`,
+						description: ` Server prefix was reset to ${msg.db.prefix}`,
 						color: this.client.config.colours.success
 					}
 				]
@@ -44,7 +44,7 @@ export = class extends Command {
 				embeds: [
 					{
 						title: "Prefix Set",
-						description: `${this.client.config.emojis.tick} Server prefix was set to ${msg.db.prefix}`,
+						description: `Server prefix was set to ${msg.db.prefix}`,
 						color: this.client.config.colours.success
 					}
 				]

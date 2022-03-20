@@ -357,7 +357,7 @@ export = class extends Command {
 						return await msg.reply({
 							embeds: [
 								{
-									description: `${this.client.config.emojis.cross} I don't have the required permission to set suggestions, as I need to be able to create a webhook. I need the \`Manage Webhooks\` permission to be able to create a webhook.`,
+									description: `I don't have the required permission to set suggestions, as I need to be able to create a webhook. I need the \`Manage Webhooks\` permission to be able to create a webhook.`,
 									color: this.client.config.colours.error
 								}
 							],

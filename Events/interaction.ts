@@ -38,9 +38,7 @@ export = class extends Event {
 			return await msg.reply({
 				embeds: [
 					{
-						description: `${
-							this.client.config.emojis.cross
-						} You don't have the required permission to run \`${
+						description: `You don't have the required permission to run \`${
 							command.name
 						}\`, you need the \`${
 							permissions[command.config.permissions.user]
@@ -57,9 +55,7 @@ export = class extends Event {
 			return await msg.reply({
 				embeds: [
 					{
-						description: `${
-							this.client.config.emojis.cross
-						} I don't have the required permission to run \`${
+						description: `I don't have the required permission to run \`${
 							command.name
 						}\`, I need the \`${
 							permissions[command.config.permissions.bot]

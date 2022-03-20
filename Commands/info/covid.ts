@@ -89,9 +89,7 @@ export = class extends Command {
 			const country: string = option.options[0].value;
 			let data = this.client.Util.getCovidInfo("country", country);
 			if (!data)
-				return await msg.reply(
-					`${this.client.config.emojis.cross} The country \`${country}\` was not found`
-				);
+				return await msg.reply(`The country \`${country}\` was not found`);
 			return await msg.reply({
 				embeds: [
 					{
