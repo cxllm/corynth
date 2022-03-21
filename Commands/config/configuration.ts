@@ -448,7 +448,6 @@ export = class extends Command {
 					});
 				}
 			}
-			console.log(msg.db);
 			return await this.client.db.guilds.set(msg.db.id, msg.db);
 		}
 	}

@@ -39,7 +39,10 @@ export = class extends Command {
 			return await msg.editReply(`Suggestions are disabled in this server`);
 		let webhook: WebhookClient;
 		try {
-			webhook = new WebhookClient(suggestions.id, suggestions.token);
+			webhook = new WebhookClient({
+				id: suggestions.id,
+				token: suggestions.token
+			});
 			await webhook.send({
 				embeds: [
 					{
