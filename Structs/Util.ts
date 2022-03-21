@@ -516,7 +516,7 @@ export default class Util {
 					!(
 						cmd.info.name == command.name &&
 						cmd.info.description == command.description &&
-						cmd.info.options == command.options
+						(cmd.info.options ? cmd.info.options == command.options : true)
 					)
 				) {
 					if (this.client.Util.checkTesting()) {
