@@ -512,11 +512,19 @@ export default class Util {
 			.map(async (cmd) => {
 				console.log(cmd.name);
 				let command = commands.find((c) => cmd.name == c.name);
-				if (this.client.Util.checkTesting()) {
-					let server = this.client.guilds.cache.get(this.client.config.test_guild);
-					await server.commands.edit(command.id, cmd.info);
-				} else {
-					await this.client.application.commands.edit(command.id, cmd.info);
+				if (
+					!(
+						cmd.info.name == command.name &&
+						cmd.info.description == command.description &&
+						cmd.info.options == command.options
+					)
+				) {
+					if (this.client.Util.checkTesting()) {
+						let server = this.client.guilds.cache.get(this.client.config.test_guild);
+						await server.commands.edit(command.id, cmd.info);
+					} else {
+						await this.client.application.commands.edit(command.id, cmd.info);
+					}
 				}
 			});
 	}
