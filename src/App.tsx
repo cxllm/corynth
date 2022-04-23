@@ -5,25 +5,11 @@ import "./App.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Projects from "./Pages/Projects";
 import NotFound from "./Pages/404";
-import { Helmet } from "react-helmet";
 
 class App extends React.Component<{}> {
 	render() {
 		return (
 			<Router>
-				<Helmet>
-					<title>Callum</title>
-					<meta
-						name="description"
-						content="Full-Stack TypeScript and Python developer from the UK"
-					/>
-					<meta property="og:url" content="https://cxllm.co.uk/" />
-					<meta property="og:title" content="Callum - Homepage" />
-					<meta
-						property="og:description"
-						content="Full-Stack TypeScript and Python developer from the UK"
-					/>
-				</Helmet>
 				<div className="App">
 					<div className="content">
 						<Navbar />
