@@ -44,11 +44,10 @@ export default class Projects extends React.Component {
 						content="The projects that I have been working on"
 					/>
 				</Helmet>
-
 				<h1>My Projects</h1>
 				<p>
 					Below you can find some of my projects. To see more of my projects that
-					aren't listed here, please visit my
+					aren't listed here, please visit my{" "}
 					<a href="https://github.com/cxllm">GitHub</a>
 				</p>
 				<Socials />
