@@ -1,19 +1,15 @@
 import React from "react";
 import Socials from "../Components/Socials";
 import { Helmet } from "react-helmet";
-import translations from "../Translations/404.json";
-export default class NotFound extends React.Component<{
-	lang: "en" | "fr";
-}> {
+export default class NotFound extends React.Component {
 	render() {
-		const translation = translations[this.props.lang];
 		return (
-			<div className="content anim">
+			<div className="content text">
 				<Helmet>
-					<title>{translation.title}</title>
+					<title>404 - Not Found</title>
 				</Helmet>
-				<h1>{translation.title}</h1>
-				<p>{translation.text}</p>
+				<h1>404 - Not Found</h1>
+				<p>The page you were looking for ({window.location.href}) was not found</p>
 				<Socials />
 			</div>
 		);
