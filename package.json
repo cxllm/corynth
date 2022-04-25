@@ -15,7 +15,7 @@
 		"@types/react-dom": "^18.0.2",
 		"@types/react-helmet": "^6.1.5",
 		"@types/react-router-dom": "^5.3.3",
-		"axios": "^0.26.1",
+		"axios": "^0.27.0",
 		"babel-register": "^6.26.0",
 		"cors": "^2.8.5",
 		"express": "^4.17.3",
