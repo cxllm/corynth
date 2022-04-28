@@ -22,7 +22,7 @@
 		"ignore-styles": "^5.0.1",
 		"lodash": "^4.17.21",
 		"react": "^18.1.0",
-		"react-bootstrap": "^2.3.0",
+		"react-bootstrap": "^2.3.1",
 		"react-dom": "^18.0.0",
 		"react-helmet": "^6.1.0",
 		"react-router-dom": "^6.3.0",
