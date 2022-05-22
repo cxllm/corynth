@@ -16,11 +16,10 @@ export default class Navigation extends React.Component<{ active: string }> {
 						animation: "none",
 						padding: "10px 20px"
 					}}
-					sticky="top"
 				>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
-						<Nav className="me-auto" activeKey={this.props.active}>
+						<Nav className="me-auto">
 							<Nav.Link as={Link} to="/">
 								Home
 							</Nav.Link>
