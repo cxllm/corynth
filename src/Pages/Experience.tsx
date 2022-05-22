@@ -23,8 +23,8 @@ export default class Home extends React.Component {
 					<img src="/avatar.jpg" width="120px" alt="Avatar" />
 					<h1>Experience</h1>
 					<p>
-						Here you what different languages, frameworks and operating systems I have
-						experience with.
+						My experience with different languages, frameworks, software and operating
+						systems.
 					</p>
 					<Socials />
 					<div className="table">
@@ -40,9 +40,10 @@ export default class Home extends React.Component {
 						<div>
 							<h3>Operating Systems</h3>
 							<p>
-								Linux: Fedora, openSUSE, Ubuntu, Arch Linux
+								Linux Distros (Desktop and Server): Fedora, openSUSE, Ubuntu, Arch
+								Linux, Debian, Raspbian
 								<br />
-								Windows: 10 and 11 on desktop
+								Windows (Desktop): 10 and 11
 							</p>
 						</div>
 						<div>
