@@ -1,8 +1,9 @@
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import React from "react";
 import { Link } from "react-router-dom";
-export default class Navigation extends React.Component {
+export default class Navigation extends React.Component<{ active: string }> {
 	render() {
+		console.log(this.props.active);
 		return (
 			<>
 				<Navbar
@@ -19,7 +20,7 @@ export default class Navigation extends React.Component {
 				>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
-						<Nav className="me-auto">
+						<Nav className="me-auto" activeKey={this.props.active}>
 							<Nav.Link as={Link} to="/">
 								Home
 							</Nav.Link>
@@ -28,17 +29,10 @@ export default class Navigation extends React.Component {
 							</Nav.Link>
 						</Nav>
 						<Nav>
-							<NavDropdown title="Links" id="collapsible-nav-dropdown">
-								<NavDropdown.Item href="https://github.com/cxllm">
-									GitHub
-								</NavDropdown.Item>
-								<NavDropdown.Item href="https://twitter.com/CX11M">
-									Twitter
-								</NavDropdown.Item>
-								<NavDropdown.Item href="https://blog.cxllm.co.uk">
-									Blog
-								</NavDropdown.Item>
-							</NavDropdown>
+							<Nav.Link href="https://github.com/cxllm">GitHub</Nav.Link>
+							<Nav.Link href="https://twitter.com/CX11M">Twitter</Nav.Link>
+							<Nav.Link href="https://npmjs.com/~cxllm">NPM</Nav.Link>
+							<Nav.Link href="https://pypi.org/user/cxllm/">PyPi</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>

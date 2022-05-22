@@ -7,7 +7,7 @@ export default class Home extends React.Component {
 		return (
 			<div className="content text">
 				<Helmet>
-					<title>Home</title>
+					<title>Callum | Home</title>
 					<meta
 						name="description"
 						content="Full-Stack TypeScript and Python developer from the UK"

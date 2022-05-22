@@ -7,32 +7,35 @@ export default class Projects extends React.Component {
 			{
 				name: "Corynth",
 				description:
-					"A discord.js bot written in Typescript, based on slash commands",
+					"A multi-purpose discord bot written using Discord.JS and TypeScript that is updated to utilise slash commands",
 				start: "December 2019",
 				finish: "April 2022",
-				url: "https://github.com/cxllm/corynth"
+				url: "https://github.com/cxllm/corynth",
+				image: "/corynth.png"
 			},
 			{
 				name: "Currency Converter",
 				description:
-					"A website that allows you to convert between different currencies",
+					"An exchange rate website that allows for conversion between multiple different currencies with up-to-date rates",
 				start: "September 2021",
 				finish: "Present",
-				url: "https://currency.cxllm.co.uk"
+				url: "https://currency.cxllm.co.uk",
+				image: "/currency-converter.png"
 			},
 			{
-				name: "Blog",
+				name: "Underground Status CLI",
 				description:
-					"My blog/notes page where I occasionally post articles and other things",
-				start: "April 2021",
+					"A Python CLI that allows you to see disruptions and status updates on the London Underground, Overground and Trams",
+				start: "April 2022",
 				finish: "Present",
-				url: "https://blog.cxllm.co.uk"
+				url: "https://github.com/cxllm/tube-cli",
+				image: "/underground.png"
 			}
 		];
 		return (
 			<div className="content text">
 				<Helmet>
-					<title>Projects</title>
+					<title>Callum | Projects</title>
 					<meta
 						name="description"
 						content="The projects that I have been working on"
@@ -55,6 +58,9 @@ export default class Projects extends React.Component {
 					{projects.map((project) => {
 						return (
 							<div>
+								<div className="image">
+									<img src={project.image} alt="Avatar" />
+								</div>
 								<a href={project.url}>{project.name}</a>
 								<p>{project.description}</p>
 								<p>

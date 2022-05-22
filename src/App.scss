@@ -52,14 +52,29 @@
 		.table {
 			padding: 10px 0;
 			div {
-				padding-bottom: 10px;
+				margin: 10px 10px 10px 0;
+				padding: 10px 10px;
+				border-radius: 10px;
+				background-color: #2a2a2aaa;
 			}
 			a {
 				font-size: large;
 			}
+			img {
+				object-fit: cover;
+			}
 			display: grid;
 			color: white;
 			grid-template-columns: 1fr 1fr 1fr; /* fraction*/
+			div.image {
+				width: 150px;
+				background-color: #00000000;
+				padding: 0;
+				margin: 0;
+				img {
+					height: 150px;
+				}
+			}
 		}
 	}
 	@media screen and (max-width: 1000px) {
@@ -79,6 +94,9 @@
 
 			.table {
 				grid-template-columns: 1fr; /* fraction*/
+				div.image {
+					display: flex;
+				}
 			}
 		}
 	}
