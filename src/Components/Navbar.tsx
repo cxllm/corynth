@@ -26,12 +26,13 @@ export default class Navigation extends React.Component<{ active: string }> {
 							<Nav.Link as={Link} to="/projects">
 								Projects
 							</Nav.Link>
+							<Nav.Link as={Link} to="/experience">
+								Experience
+							</Nav.Link>
 						</Nav>
 						<Nav>
 							<Nav.Link href="https://github.com/cxllm">GitHub</Nav.Link>
 							<Nav.Link href="https://twitter.com/CX11M">Twitter</Nav.Link>
-							<Nav.Link href="https://npmjs.com/~cxllm">NPM</Nav.Link>
-							<Nav.Link href="https://pypi.org/user/cxllm/">PyPi</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>

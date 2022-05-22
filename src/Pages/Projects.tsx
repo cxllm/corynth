@@ -5,7 +5,7 @@ export default class Projects extends React.Component {
 	render() {
 		const projects = [
 			{
-				name: "Corynth",
+				name: "Corynth (Discord Bot)",
 				description:
 					"A multi-purpose discord bot written using Discord.JS and TypeScript that is updated to utilise slash commands",
 				start: "December 2019",
@@ -47,13 +47,15 @@ export default class Projects extends React.Component {
 						content="The projects that I have been working on"
 					/>
 				</Helmet>
-				<h1>My Projects</h1>
-				<p>
-					Below you can find some of my projects. To see more of my projects that
-					aren't listed here, please visit my{" "}
-					<a href="https://github.com/cxllm">GitHub</a>
-				</p>
-				<Socials />
+				<span>
+					<img src="/avatar.jpg" width="120px" alt="Avatar" />
+					<h1>My Projects</h1>
+					<p>
+						Below you can find some of my projects, and my{" "}
+						<a href="https://github.com/cxllm">GitHub</a>
+					</p>
+					<Socials />
+				</span>
 				<div className="table">
 					{projects.map((project) => {
 						return (
