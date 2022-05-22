@@ -23,8 +23,8 @@ export default class Home extends React.Component {
 					<img src="/avatar.jpg" width="120px" alt="Avatar" />
 					<h1>Experience</h1>
 					<p>
-						My experience with different languages, frameworks, software and operating
-						systems.
+						Here is the experience I have with different languages, frameworks,
+						software and operating systems.
 					</p>
 					<Socials />
 					<div className="table">
