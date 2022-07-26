@@ -25,11 +25,29 @@ export default class Projects extends React.Component {
 			{
 				name: "Underground Status CLI",
 				description:
-					"A Python CLI that allows you to see disruptions and status updates on the London Underground, Overground and Trams",
+					"A Python CLI that allows you to see disruptions and status updates on the London Underground, Overground, and more.",
 				start: "April 2022",
 				finish: "Present",
 				url: "https://github.com/cxllm/tube-cli",
 				image: "/underground.png"
+			},
+			{
+				name: "Underground Status API",
+				description:
+					"An API written in Python (using Flask) that provides an easy-to-use way of finding out the latest status updates on the TfL network.",
+				url: "https://github.com/cxllm/tfl-status-api#tfl-status-api",
+				start: "May 2022",
+				finish: "Present",
+				image: "/underground.png"
+			},
+			{
+				name: "This Website",
+				description:
+					"This website is a project I have been working on for a very long time in various different languages and frameworks.",
+				url: "https://github.com/cxllm/website",
+				start: "August 2021",
+				finish: "Present",
+				image: "/avatar.jpg"
 			}
 		];
 		return (
