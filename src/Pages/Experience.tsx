@@ -21,23 +21,26 @@ export default class Home extends React.Component {
 				</Helmet>
 				<span>
 					<img src="/avatar.jpg" width="120px" alt="Avatar" />
-					<h1>Experience</h1>
-					<p>
-						Below is a list of various different languages, frameworks, software and
-						operating systems I have an understanding of and can use confidently.
-					</p>
-					<Socials />
+					<div className="intro">
+						<h1>Experience</h1>
+						<p>
+							Below is a list of various different languages, frameworks, software and
+							operating systems I have an understanding of and can use confidently.
+						</p>
+
+						<Socials />
+					</div>
 					<div className="table">
 						<div>
 							<h3>Programming Languages</h3>
 							<p>
-								Languages: Python, JavaScript/TypeScript, HTML/CSS/SCSS
+								Languages: Python, Java/TypeScript, HTML/CSS/SCSS
 								<br />
 								Python Frameworks: Flask, Jinja2, PyPi Packages <br />
-								TS/JS Frameworks: Node.js, React JSX/TSX, Express.js, NPM
+								TS/JS Frameworks: Node.js, React, Express, NPM
 							</p>
 						</div>
-						<div>
+						<div className="edge">
 							<h3>Operating Systems</h3>
 							<p>
 								Linux Distros (Desktop and Server): Fedora, openSUSE, Ubuntu, Arch

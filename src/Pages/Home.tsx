@@ -21,9 +21,11 @@ export default class Home extends React.Component {
 				</Helmet>
 				<span>
 					<img src="/avatar.jpg" width="120px" alt="Avatar" />
-					<h1>Callum (cxllm)</h1>
-					<p>Full-Stack TypeScript and Python developer from the UK.</p>
-					<Socials />
+					<div className="intro">
+						<h1>Callum (cxllm)</h1>
+						<p>Full-Stack TypeScript and Python developer from the UK.</p>
+						<Socials />
+					</div>
 				</span>
 			</div>
 		);

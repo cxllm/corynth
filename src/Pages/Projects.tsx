@@ -25,16 +25,16 @@ export default class Projects extends React.Component {
 			{
 				name: "Underground Status CLI",
 				description:
-					"A Python CLI that allows you to see disruptions and status updates on the London Underground, Overground, and more.",
+					"A Python CLI that allows you to see disruptions and status updates on the TfL network.",
 				start: "April 2022",
 				finish: "Present",
 				url: "https://github.com/cxllm/tube-cli",
 				image: "/underground.png"
 			},
 			{
-				name: "Underground Status API",
+				name: "Underground Status API and Website",
 				description:
-					"An API written in Python (using Flask) that provides an easy-to-use way of finding out the latest status updates on the TfL network.",
+					"An API written in Python that provides a way of finding out the latest status updates on the TfL network.",
 				url: "https://github.com/cxllm/tfl-status-api#tfl-status-api",
 				start: "May 2022",
 				finish: "Present",
@@ -43,7 +43,7 @@ export default class Projects extends React.Component {
 			{
 				name: "This Website",
 				description:
-					"This website is a project I have been working on for a very long time in various different languages and frameworks.",
+					"This website is a project I have been working on for a while in many languages and frameworks.",
 				url: "https://github.com/cxllm/website",
 				start: "August 2021",
 				finish: "Present",
@@ -67,23 +67,25 @@ export default class Projects extends React.Component {
 				</Helmet>
 				<span>
 					<img src="/avatar.jpg" width="120px" alt="Avatar" />
-					<h1>My Projects</h1>
-					<p>
-						Below you can find some of my projects, and my{" "}
-						<a href="https://github.com/cxllm">GitHub</a>
-					</p>
-					<Socials />
+					<div className="intro">
+						<h1>My Projects</h1>
+						<p>
+							Below you can find some of my projects, and my{" "}
+							<a href="https://github.com/cxllm">GitHub</a>
+						</p>
+						<Socials />
+					</div>
 				</span>
 				<div className="table">
-					{projects.map((project) => {
+					{projects.map((project, i) => {
 						return (
-							<div>
+							<div className={i % 2 == 1 ? "edge" : ""}>
 								<div className="image">
 									<img src={project.image} alt="Avatar" />
 								</div>
 								<a href={project.url}>{project.name}</a>
 								<p>{project.description}</p>
-								<p>
+								<p className="time">
 									{project.start} - {project.finish}
 								</p>
 							</div>
