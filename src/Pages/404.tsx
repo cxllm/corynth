@@ -1,17 +1,32 @@
 import React from "react";
 import Socials from "../Components/Socials";
 import { Helmet } from "react-helmet";
+import Navbar from "../Components/Navbar";
+
 export default class NotFound extends React.Component {
 	render() {
 		return (
-			<div className="content text">
-				<Helmet>
-					<title>404 - Not Found</title>
-				</Helmet>
-				<h1>404 - Not Found</h1>
-				<p>The page you were looking for ({window.location.href}) was not found</p>
-				<Socials />
-			</div>
+			<>
+				<Navbar active={window.location.pathname} />
+				<div className="content text">
+					<Helmet>
+						<title>404 - Not Found</title>
+					</Helmet>
+					<span>
+						<img src="/avatar.jpg" width="120px" alt="Avatar" />
+						<div className="intro">
+							<h1>404 - Not Found</h1>
+							<p>
+								The page you were looking for ({window.location.pathname}) was not found
+								<br />
+								<a href="/">{"<<"} Home</a>
+							</p>
+
+							<Socials />
+						</div>
+					</span>
+				</div>
+			</>
 		);
 	}
 }

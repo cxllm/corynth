@@ -1,6 +1,5 @@
 import React from "react";
 import Home from "./Pages/Home";
-import Navbar from "./Components/Navbar";
 import "./App.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Projects from "./Pages/Projects";
@@ -13,7 +12,6 @@ class App extends React.Component<{}> {
 			<Router>
 				<div className="App">
 					<div className="content">
-						<Navbar active={window.location.pathname} />
 						<Routes>
 							<Route path="/" element={<Home />} />
 							<Route path="/projects" element={<Projects />} />

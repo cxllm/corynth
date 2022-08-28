@@ -1,6 +1,8 @@
 import React from "react";
 import Socials from "../Components/Socials";
 import { Helmet } from "react-helmet";
+import Navbar from "../Components/Navbar";
+
 export default class Projects extends React.Component {
 	render() {
 		const projects = [
@@ -51,48 +53,51 @@ export default class Projects extends React.Component {
 			}
 		];
 		return (
-			<div className="content text">
-				<Helmet>
-					<title>Callum | Projects</title>
-					<meta
-						name="description"
-						content="The projects that I have been working on"
-					/>
-					<meta property="og:url" content="https://cxllm.co.uk/" />
-					<meta property="og:title" content="Callum - Projects" />
-					<meta
-						property="og:description"
-						content="The projects that I have been working on"
-					/>
-				</Helmet>
-				<span>
-					<img src="/avatar.jpg" width="120px" alt="Avatar" />
-					<div className="intro">
-						<h1>My Projects</h1>
-						<p>
-							Below you can find some of my projects, and my{" "}
-							<a href="https://github.com/cxllm">GitHub</a>
-						</p>
-						<Socials />
-					</div>
-				</span>
-				<div className="table">
-					{projects.map((project, i) => {
-						return (
-							<div className={i % 2 == 1 ? "edge" : ""}>
-								<div className="image">
-									<img src={project.image} alt="Avatar" />
+			<>
+				<Navbar active={window.location.pathname} />
+				<div className="content text">
+					<Helmet>
+						<title>Callum | Projects</title>
+						<meta
+							name="description"
+							content="The projects that I have been working on"
+						/>
+						<meta property="og:url" content="https://cxllm.co.uk/" />
+						<meta property="og:title" content="Callum - Projects" />
+						<meta
+							property="og:description"
+							content="The projects that I have been working on"
+						/>
+					</Helmet>
+					<span>
+						<img src="/avatar.jpg" width="120px" alt="Avatar" />
+						<div className="intro">
+							<h1>My Projects</h1>
+							<p>
+								Below you can find some of my projects, and you can find more listed on
+								my <a href="https://github.com/cxllm">GitHub</a>
+							</p>
+							<Socials />
+						</div>
+					</span>
+					<div className="table">
+						{projects.map((project, i) => {
+							return (
+								<div className={i % 2 === 1 ? "edge" : ""}>
+									<div className="image">
+										<img src={project.image} alt="Avatar" />
+									</div>
+									<a href={project.url}>{project.name}</a>
+									<p>{project.description}</p>
+									<p className="time">
+										{project.start} - {project.finish}
+									</p>
 								</div>
-								<a href={project.url}>{project.name}</a>
-								<p>{project.description}</p>
-								<p className="time">
-									{project.start} - {project.finish}
-								</p>
-							</div>
-						);
-					})}
+							);
+						})}
+					</div>
 				</div>
-			</div>
+			</>
 		);
 	}
 }

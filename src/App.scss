@@ -4,7 +4,7 @@
 @keyframes slide-in {
 	from {
 		transform: translateX(-100%);
-		opacity: 0.1;
+		opacity: 0;
 	}
 	to {
 		transform: translateX(0%);
@@ -13,6 +13,15 @@
 }
 
 .App {
+	.nav {
+		background-color: #0000;
+	}
+	.page {
+		background-color: #ffffff22 !important;
+		border-radius: 10px;
+		transition: fade-in 5s;
+	}
+
 	font-family: "Poppins";
 	background-color: #212121 /*#282c34*/;
 	min-height: 100vh;
@@ -25,6 +34,8 @@
 		flex-direction: column;
 		justify-content: center;
 		.text {
+			animation-name: slide-in;
+			animation-duration: 0.8s;
 			.intro {
 				text-align: right;
 			}
@@ -59,7 +70,7 @@
 		.table {
 			padding: 10px 0;
 			div {
-				margin: 10px 10px 10px 0;
+				margin: 5px 5px 5px 5px;
 				padding: 10px 10px;
 				border-radius: 10px;
 				background-color: #2a2a2aaa;

@@ -1,9 +1,8 @@
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import React from "react";
 import { Link } from "react-router-dom";
 export default class Navigation extends React.Component<{ active: string }> {
 	render() {
-		console.log(this.props.active);
 		return (
 			<>
 				<Navbar
@@ -27,36 +26,39 @@ export default class Navigation extends React.Component<{ active: string }> {
 									fontSize: "35"
 								}}
 							>
-								<img
-									src="/avatar.jpg"
-									width="35"
-									height="35"
-									style={{
-										borderRadius: "50px"
-									}}
-									className="d-inline-block align-top"
-									alt=""
-								/>
+								Callum
 							</Navbar.Brand>
 						</Nav>
-						<Nav>
-							<Nav.Link as={Link} to="/">
+						<Nav defaultActiveKey="/">
+							<Nav.Link
+								as={Link}
+								to="/"
+								className={this.props.active === "/" ? "active" : ""}
+							>
 								Home
 							</Nav.Link>
-							<Nav.Link as={Link} to="/projects">
+							<Nav.Link
+								as={Link}
+								to="/projects"
+								className={this.props.active === "/projects" ? "active" : ""}
+							>
 								Projects
 							</Nav.Link>
-							<Nav.Link as={Link} to="/experience">
+							<Nav.Link
+								as={Link}
+								to="/experience"
+								className={this.props.active === "/experience" ? "active" : ""}
+							>
 								Experience
 							</Nav.Link>
-							<NavDropdown title="Links" id="basic-nav-dropdown">
+							{/*<NavDropdown title="Links" id="basic-nav-dropdown">
 								<NavDropdown.Item href="https://github.com/cxllm">
 									GitHub
 								</NavDropdown.Item>
 								<NavDropdown.Item href="https://twitter.com/CX11M">
 									Twitter
 								</NavDropdown.Item>
-							</NavDropdown>
+								</NavDropdown>*/}
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
