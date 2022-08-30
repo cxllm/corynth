@@ -11,8 +11,8 @@ function Socials() {
 			<a href="https://discord.com/users/536949735299219467">
 				<i className="fab fa-discord" />
 			</a>
-			<a href="https://npmjs.com/~cxllm">
-				<i className="fab fa-npm"></i>
+			<a href="mailto:hello@cxllm.uk">
+				<i className="far fa-envelope"></i>
 			</a>
 		</div>
 	);

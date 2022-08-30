@@ -21,7 +21,7 @@ export default class Projects extends React.Component {
 					"An exchange rate website that allows for conversion between multiple different currencies with up-to-date rates",
 				start: "September 2021",
 				finish: "Present",
-				url: "https://currency.cxllm.co.uk",
+				url: "https://currency.cxllm.uk",
 				image: "/currency-converter.png"
 			},
 			{
@@ -36,8 +36,8 @@ export default class Projects extends React.Component {
 			{
 				name: "Underground Status API and Website",
 				description:
-					"An API written in Python that provides a way of finding out the latest status updates on the TfL network.",
-				url: "https://github.com/cxllm/tfl-status-api#tfl-status-api",
+					"An API written in Python and frontend writen in React providing an API-keyless way to find the status of the TfL network.",
+				url: "https://tfl.cxllm.uk",
 				start: "May 2022",
 				finish: "Present",
 				image: "/underground.png"
