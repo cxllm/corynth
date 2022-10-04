@@ -47,8 +47,7 @@ export default class Home extends React.Component {
 							<div className="edge">
 								<h3>Operating Systems</h3>
 								<p>
-									I have been using Linux distros since 2020 and I am confident with
-									Fedora, openSUSE, Ubuntu, Arch Linux
+									Linux Distros: Fedora, openSUSE, Ubuntu, Arch Linux
 									<br />
 									Windows (Desktop): 10 and 11
 								</p>
