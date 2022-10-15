@@ -2,9 +2,10 @@ import React from "react";
 import Home from "./Pages/Home";
 import "./App.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Projects from "./Pages/Projects";
+import Features from "./Pages/Features";
 import NotFound from "./Pages/404";
-import Experience from "./Pages/Experience";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import TOS from "./Pages/TOS";
 
 class App extends React.Component<{}> {
 	render() {
@@ -14,8 +15,9 @@ class App extends React.Component<{}> {
 					<div className="content">
 						<Routes>
 							<Route path="/" element={<Home />} />
-							<Route path="/projects" element={<Projects />} />
-							<Route path="/experience" element={<Experience />} />
+							<Route path="/features" element={<Features />} />
+							<Route path="/privacy-policy" element={<PrivacyPolicy />} />
+							<Route path="/tos" element={<TOS />} />
 							<Route path="*" element={<NotFound />} />
 						</Routes>
 					</div>

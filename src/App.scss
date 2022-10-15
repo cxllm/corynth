@@ -34,14 +34,14 @@
 		flex-direction: column;
 		justify-content: center;
 		.text {
-			.intro {
-				text-align: right;
-			}
 			width: 100%;
 			img {
 				float: left;
 				border-radius: 100px;
-				margin: 0 20px 0 0;
+				margin: 0 20px 10px 0;
+			}
+			img.botlist {
+				border-radius: 0px !important;
 			}
 		}
 
@@ -154,9 +154,7 @@ button {
 
 .socials {
 	a {
-		color: white;
-		font-size: 20px;
-		padding: 0 0 0 30px;
+		font-size: 17.5px;
 		opacity: 0.9;
 	}
 }

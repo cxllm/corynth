@@ -13,13 +13,13 @@ export default class NotFound extends React.Component {
 						<title>404 - Not Found</title>
 					</Helmet>
 					<span>
-						<img src="/avatar.jpg" width="120px" alt="Avatar" />
+						<img src="/corynth.png" width="120px" alt="Avatar" />
 						<div className="intro">
 							<h1>404 - Not Found</h1>
 							<p>
 								The page you were looking for ({window.location.pathname}) was not found
 								<br />
-								<a href="/">{"<<"} Home</a>
+								<a href="/">{"<"} Back Home</a>
 							</p>
 
 							<Socials />

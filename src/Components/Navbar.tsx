@@ -1,4 +1,4 @@
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import React from "react";
 import { Link } from "react-router-dom";
 export default class Navigation extends React.Component<{ active: string }> {
@@ -26,7 +26,16 @@ export default class Navigation extends React.Component<{ active: string }> {
 									fontSize: "35"
 								}}
 							>
-								Callum
+								<img
+									src="/corynth.png"
+									width="30"
+									height="30"
+									className="d-inline-block align-top"
+									alt="React Bootstrap logo"
+									style={{
+										borderRadius: "50px"
+									}}
+								/>
 							</Navbar.Brand>
 						</Nav>
 						<Nav defaultActiveKey="/">
@@ -39,26 +48,45 @@ export default class Navigation extends React.Component<{ active: string }> {
 							</Nav.Link>
 							<Nav.Link
 								as={Link}
-								to="/projects"
-								className={this.props.active === "/projects" ? "active" : ""}
+								to="/features"
+								className={this.props.active === "/features" ? "active" : ""}
 							>
-								Projects
+								Features
 							</Nav.Link>
 							<Nav.Link
 								as={Link}
-								to="/experience"
-								className={this.props.active === "/experience" ? "active" : ""}
+								to="/privacy-policy"
+								className={this.props.active === "/privacy-policy" ? "active" : ""}
 							>
-								Experience
+								Privacy Policy
 							</Nav.Link>
-							{/*<NavDropdown title="Links" id="basic-nav-dropdown">
-								<NavDropdown.Item href="https://github.com/cxllm">
-									GitHub
+							<Nav.Link
+								as={Link}
+								to="/tos"
+								className={this.props.active === "/tos" ? "active" : ""}
+							>
+								Terms of Use
+							</Nav.Link>
+							<NavDropdown title="Links" id="basic-nav-dropdown">
+								<NavDropdown.Item href="https://github.com/cxllm/corynth">
+									Source Code
 								</NavDropdown.Item>
-								<NavDropdown.Item href="https://twitter.com/CX11M">
+								<NavDropdown.Item href="https://twitter.com/CorynthBot">
 									Twitter
 								</NavDropdown.Item>
-								</NavDropdown>*/}
+								<NavDropdown.Item href="https://discord.com/oauth2/authorize?client_id=660818351638970370&permissions=8&scope=applications.commands%20bot">
+									Invite
+								</NavDropdown.Item>
+								<NavDropdown.Item href="https://discord.gg/MddmTkjsmg">
+									Support Server
+								</NavDropdown.Item>
+								<NavDropdown.Item
+									href="
+						https://top.gg/api/widget/660818351638970370."
+								>
+									Top.gg Vote Link
+								</NavDropdown.Item>
+							</NavDropdown>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>

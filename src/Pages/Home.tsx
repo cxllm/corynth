@@ -11,24 +11,22 @@ export default class Home extends React.Component {
 
 				<div className="content text">
 					<Helmet>
-						<title>Callum | Home</title>
-						<meta
-							name="description"
-							content="Full-Stack TypeScript and Python developer from the UK"
-						/>
-						<meta property="og:url" content="https://cxllm.co.uk/" />
-						<meta property="og:title" content="Callum - Homepage" />
-						<meta
-							property="og:description"
-							content="Full-Stack TypeScript and Python developer from the UK"
-						/>
+						<title>Corynth</title>
 					</Helmet>
 					<span>
-						<img src="/avatar.jpg" width="120px" alt="Avatar" />
+						<img src="/corynth.png" width="120px" alt="Avatar" />
 						<div className="intro">
-							<h1>Callum (cxllm)</h1>
-							<p>Full-Stack TypeScript and Python developer from the UK.</p>
+							<h1>Corynth</h1>
+							<p>The multi-purpose discord bot for all your server's needs</p>
 							<Socials />
+							<br />
+							<a href="https://top.gg/bot/660818351638970370">
+								<img
+									alt="Top.gg Info"
+									className="botlist"
+									src="https://top.gg/api/widget/660818351638970370.svg"
+								/>
+							</a>
 						</div>
 					</span>
 				</div>
