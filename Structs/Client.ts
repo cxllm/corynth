@@ -35,10 +35,11 @@ export default class Corynth extends Client {
 	website = "corynth.cxllm.uk";
 	links = {
 		"invite link": "",
-		"support server": "https://discord.gg/6kFbxxkX5p",
+		"support server": "https://discord.gg/MddmTkjsmg",
 		website: `https://corynth.cxllm.uk`,
 		twitter: "https://twitter.com/CorynthBot",
-		"source code": "https://github.com/cxllm/corynth"
+		"source code": "https://github.com/cxllm/corynth",
+		"top.gg (vote)": "https://top.gg/bot/660818351638970370"
 	};
 	//Collections
 	commands: Collection<string, Command> = new Collection<string, Command>();
