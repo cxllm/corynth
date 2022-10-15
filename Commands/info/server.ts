@@ -27,6 +27,7 @@ export = class extends Command {
 		const guildInfo =
 			guild.features
 				.map((feat) => {
+					console.log(feat);
 					return info.guildFeatures[feat].replace("{code}", guild.vanityURLCode);
 				})
 				.join(", ") || "No Features";

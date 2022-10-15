@@ -266,7 +266,6 @@ export = class extends Command {
 					});
 			}
 		} else if (opt == "view") {
-			console.log(msg.db.autorole);
 			return await msg.reply({
 				embeds: [
 					{
