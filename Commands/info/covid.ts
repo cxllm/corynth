@@ -62,7 +62,7 @@ export = class extends Command {
 									`Total Deaths: \`${data.deaths.toLocaleString()}\``,
 									`Total Recovered: \`${data.recovered.toLocaleString()}\``,
 									`Active Cases: \`${data.active.toLocaleString()}\``
-								]
+								].join("\n")
 							},
 							{
 								name: "Today",
@@ -70,7 +70,7 @@ export = class extends Command {
 									`Cases Today: \`${data.todayCases.toLocaleString()}\``,
 									`Deaths Today: \`${data.todayDeaths.toLocaleString()}\``,
 									`Recoveries Today: \`${data.todayRecovered.toLocaleString()}\``
-								]
+								].join("\n")
 							},
 							{
 								name: "Population",
@@ -85,9 +85,9 @@ export = class extends Command {
 				]
 			});
 		} else if (option == "country") {
-			//@ts-ignore
-			const country: string = option.options[0].value;
+			const country = msg.options.getString("country");
 			let data = this.client.Util.getCovidInfo("country", country);
+			console.log(data);
 			if (!data)
 				return await msg.reply(`The country \`${country}\` was not found`);
 			return await msg.reply({

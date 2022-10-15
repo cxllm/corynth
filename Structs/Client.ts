@@ -32,11 +32,11 @@ export default class Corynth extends Client {
 
 	webhooks: any = {};
 
-	website = "corynth.xyz";
+	website = "corynth.cxllm.uk";
 	links = {
 		"invite link": "",
 		"support server": "https://discord.gg/6kFbxxkX5p",
-		website: `https://corynth.xyz`,
+		website: `https://corynth.cxllm.uk`,
 		twitter: "https://twitter.com/CorynthBot",
 		"source code": "https://github.com/cxllm/corynth"
 	};

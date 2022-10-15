@@ -116,7 +116,7 @@ export = class extends Event {
 			} catch {
 				await msg.editReply(content);
 			}
-
+			console.log(msg.options.data[0]);
 			let err = {
 				title: "An Error Occured",
 				description: `An error occured while running the ${command.name} command.`,
@@ -128,10 +128,10 @@ export = class extends Event {
 							`Content: /${command.name} ${msg.options.data
 								.map(
 									(opt) =>
-										`${opt.value} ${
+										`${
 											opt.type == "SUB_COMMAND" && opt.options
 												? opt.options.map((opt) => opt.value)
-												: ""
+												: opt.value
 										}`
 								)
 								.join(" ")}`

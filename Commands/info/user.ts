@@ -39,6 +39,7 @@ export = class extends Command {
 				? msg.member
 				: msg.guild.members.cache.get(user.id) ||
 				  (await msg.guild.members.fetch({ user: user.id, cache: false }));
+		console.log(member.presence);
 		const avatar = user.displayAvatarURL({ dynamic: true, format: "png" });
 		const permissions =
 			member.permissions
@@ -90,36 +91,38 @@ export = class extends Command {
 				},
 				{
 					name: "Presence",
-					value: [
-						`Status: \`${
-							member.presence.status === "dnd"
-								? "Do Not Disturb"
-								: member.presence.status.toProperCase()
-						}\``,
-						`Activities: \`${
-							member.presence.activities.length === 0
-								? "None"
-								: member.presence.activities
-										.map(
-											(a) =>
-												`${
-													a.type === "LISTENING"
-														? "Listening to"
-														: a.type == "CUSTOM"
-														? "Custom Status:"
-														: a.type.toProperCase()
-												} ${a.type === "CUSTOM" ? a.state : a.name}`
-										)
-										.join(", ")
-						}\``,
-						`Client Status: \`${
-							member.presence.clientStatus
-								? Object.keys(member.presence.clientStatus)
-										.map((c) => c.toProperCase())
-										.join(" & ") || "N/A"
-								: "N/A"
-						}\``
-					].join("\n")
+					value: member.presence
+						? [
+								`Status: \`${
+									member.presence.status === "dnd"
+										? "Do Not Disturb"
+										: member.presence.status.toProperCase()
+								}\``,
+								`Activities: \`${
+									member.presence.activities.length === 0
+										? "None"
+										: member.presence.activities
+												.map(
+													(a) =>
+														`${
+															a.type === "LISTENING"
+																? "Listening to"
+																: a.type == "CUSTOM"
+																? "Custom Status:"
+																: a.type.toProperCase()
+														} ${a.type === "CUSTOM" ? a.state : a.name}`
+												)
+												.join(", ")
+								}\``,
+								`Client Status: \`${
+									member.presence.clientStatus
+										? Object.keys(member.presence.clientStatus)
+												.map((c) => c.toProperCase())
+												.join(" & ") || "N/A"
+										: "N/A"
+								}\``
+						  ].join("\n")
+						: "Status: `Offline`"
 				}
 			],
 			color: this.client.config.colours.main,

@@ -1,7 +1,7 @@
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import CommandInteraction from "../../Structs/CommandInteraction";
-import { WebhookClient } from "discord.js-light";
+import { TextChannel, WebhookClient } from "discord.js-light";
 
 export = class extends Command {
 	private client: Client;
@@ -43,7 +43,7 @@ export = class extends Command {
 				id: suggestions.id,
 				token: suggestions.token
 			});
-			await webhook.send({
+			const hookmsg = await webhook.send({
 				embeds: [
 					{
 						title: `Suggestion from ${msg.user.tag}`,
@@ -62,6 +62,13 @@ export = class extends Command {
 				username: msg.user.tag,
 				avatarURL: msg.user.avatarURL()
 			});
+			//@ts-ignore
+			const channel: TextChannel = await msg.client.channels.fetch(
+				hookmsg.channel_id
+			);
+			const message = await channel.messages.fetch(hookmsg.id);
+			await message.react("👍");
+			await message.react("👎");
 		} catch (e) {
 			console.log(e);
 			msg.db.suggestions = null;

@@ -266,6 +266,7 @@ export = class extends Command {
 					});
 			}
 		} else if (opt == "view") {
+			console.log(msg.db.autorole);
 			return await msg.reply({
 				embeds: [
 					{
@@ -294,11 +295,12 @@ export = class extends Command {
 							{
 								name: "Auto Role",
 								value: msg.db.autorole
-									? "User:" + msg.db.autorole.user
-										? `<@&${msg.db.autorole.user}>`
-										: "Disabled" + "\nBot" + msg.db.autorole.bot
-										? `<@&${msg.db.autorole.bot}>`
-										: "Disabled"
+									? "User:" +
+									  (msg.db.autorole.user
+											? ` <@&${msg.db.autorole.user}>`
+											: " Disabled") +
+									  "\nBot" +
+									  (msg.db.autorole.bot ? ` <@&${msg.db.autorole.bot}>` : " Disabled")
 									: "Disabled"
 							}
 						],
@@ -325,6 +327,7 @@ export = class extends Command {
 							ephemeral: true
 						});
 					if (!msg.db.autorole) msg.db.autorole = {};
+					console.log(type, role.id);
 					//@ts-ignore
 					msg.db.autorole[type] = role.id;
 					await msg.reply({

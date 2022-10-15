@@ -1,3 +1,4 @@
+import { User, GuildMember } from "discord.js-light";
 import Client from "../../Structs/Client";
 import Command from "../../Structs/Command";
 import CommandInteraction from "../../Structs/CommandInteraction";
@@ -9,7 +10,15 @@ export = class extends Command {
 			{
 				name: "spotify",
 				description: "See info for your spotify presence",
-				defaultPermission: true
+				defaultPermission: true,
+				options: [
+					{
+						name: "user",
+						type: "USER",
+						description: "User to get the spotify status of",
+						required: false
+					}
+				]
 			},
 			{
 				owner: false,
@@ -22,6 +31,13 @@ export = class extends Command {
 	}
 
 	async run(msg: CommandInteraction) {
+		let user: User = msg.options.getUser("user", false) || msg.user;
+		//@ts-ignore
+		let member: GuildMember =
+			user.id == msg.user.id
+				? msg.member
+				: msg.guild.members.cache.get(user.id) ||
+				  (await msg.guild.members.fetch({ user: user.id, cache: false }));
 		await msg.deferReply();
 		//@ts-ignore
 		const song: {
@@ -37,9 +53,8 @@ export = class extends Command {
 			artistArray: string;
 			left: string;
 			//@ts-ignore
-		} = this.client.Util.getSpotifyInfo(msg.member);
+		} = this.client.Util.getSpotifyInfo(member);
 		if (!song) return msg.editReply("You aren't listening to Spotify!");
-		const member = msg.member;
 		await msg.editReply({
 			embeds: [
 				{
