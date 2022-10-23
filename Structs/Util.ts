@@ -367,6 +367,7 @@ export default class Util {
 	 * @param {GuildMember} member
 	 */
 	getSpotifyInfo(member: GuildMember) {
+		if (!member.presence) return false;
 		const info: Activity = member.presence.activities.find(
 			(act) => act.name === "Spotify" && act.type === "LISTENING"
 		);
@@ -383,7 +384,7 @@ export default class Util {
 			start: this.utcDateShort(info.timestamps.start),
 			end: this.utcDateShort(info.timestamps.end),
 			//@ts-ignore
-			url: `https://open.spotify.com/track/${info.syncID}`,
+			url: `https://open.spotify.com/track/${info.syncId}`,
 			image: `https://i.scdn.co/image/${
 				info.assets.largeImage.split("spotify:")[1]
 			}`,

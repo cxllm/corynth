@@ -17,11 +17,17 @@ export = class extends Command {
 						required: true,
 						type: "STRING",
 						choices: [
-							{ name: "Bird", value: "birb" },
+							{ name: "Bird", value: "bird" },
 							{ name: "Dog", value: "dog" },
 							{ name: "Cat", value: "cat" },
 							{ name: "Koala", value: "koala" },
-							{ name: "Panda", value: "panda" }
+							{ name: "Panda", value: "panda" },
+							{ name: "Fox", value: "fox" },
+							{
+								name: "Kangaroo",
+								value: "kangaroo"
+							},
+							{ name: "Koala", value: "koala" }
 						]
 					}
 				]

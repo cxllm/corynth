@@ -41,6 +41,7 @@ export default {
 		VANITY_URL: "Vanity URL (discord.gg/{code})",
 		VERIFIED: "Verified",
 		VIP_REGIONS: "VIP Regions",
-		WELCOME_SCREEN_ENABLED: "Welcome Splash Screen"
+		WELCOME_SCREEN_ENABLED: "Welcome Splash Screen",
+		DEVELOPER_SUPPORT_SERVER: "Developer Support Server"
 	}
 };
