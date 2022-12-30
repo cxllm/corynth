@@ -42,6 +42,7 @@ export default {
 		VERIFIED: "Verified",
 		VIP_REGIONS: "VIP Regions",
 		WELCOME_SCREEN_ENABLED: "Welcome Splash Screen",
-		DEVELOPER_SUPPORT_SERVER: "Developer Support Server"
+		DEVELOPER_SUPPORT_SERVER: "Developer Support Server",
+		APPLICATION_COMMAND_PERMISSIONS_V2: "Application Command Permissions V2"
 	}
 };

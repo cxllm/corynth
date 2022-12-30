@@ -28,7 +28,9 @@ export = class extends Command {
 			guild.features
 				.map((feat) => {
 					console.log(feat);
-					return info.guildFeatures[feat].replace("{code}", guild.vanityURLCode);
+					if (info.guildFeatures) {
+						return info.guildFeatures[feat].replace("{code}", guild.vanityURLCode);
+					}
 				})
 				.join(", ") || "No Features";
 		const icon = guild.iconURL({ dynamic: true, format: "png" });
