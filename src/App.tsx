@@ -13,13 +13,15 @@ class App extends React.Component<{}> {
 			<Router>
 				<div className="App">
 					<div className="content">
-						<Routes>
+						<h1>Corynth is no longer maintained</h1>
+						<p>Thank you for your support. Corynth was a discord bot that has now shut down, as it became too consuming to keep up to date. You can find the code in a public archive here: <a href="https://github.com/cxllm/corynth">https://github.com/cxllm/corynth</a></p>
+						{/*<Routes>
 							<Route path="/" element={<Home />} />
 							<Route path="/features" element={<Features />} />
 							<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 							<Route path="/tos" element={<TOS />} />
 							<Route path="*" element={<NotFound />} />
-						</Routes>
+						</Routes>*/}
 					</div>
 				</div>
 			</Router>
